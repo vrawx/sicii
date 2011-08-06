@@ -1,5 +1,18 @@
 package br.gov.pmdf.sicii.domain.repositorio;
 
-public interface Repositorio {
+import java.io.Serializable;
+import java.util.List;
 
+import br.gov.pmdf.sicii.domain.entidade.BaseEntity;
+
+public interface Repositorio<T extends BaseEntity> extends Serializable{
+
+	void armazenar(T entidade);
+	
+	T recuperarPorId(Long id);
+	
+	// Este método deve lancar uma exception ao retornar mais de 50 results	
+	List<T> recuperarTodos();
+	
+	void remover(T entidade);
 }

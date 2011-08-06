@@ -1,6 +1,9 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 /**
  * Classe PesquisaEmbasamento
@@ -8,7 +11,8 @@ import java.util.Date;
  * AUTORES: Rogerio & Vitor
  */
 
-public class PesquisaEmbasamento extends BaseEntity {
+@Entity 
+public class PesquisaEmbasamento extends BaseEntity implements Serializable {
 	//atributos da classe
 	private Integer pemCodigo;
 	private Pesquisa pesquisa;

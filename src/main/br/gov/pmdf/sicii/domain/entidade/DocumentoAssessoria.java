@@ -1,12 +1,17 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 /**
  * Classe DocumentoAssessoria
  * OBJETIVO: Representa os registros do tramite dos documentos entre as Assessorias
  * AUTORES: Rogerio & Vitor
  */
 
-public class DocumentoAssessoria extends BaseEntity {
+@Entity
+public class DocumentoAssessoria extends BaseEntity implements Serializable {
 
 	//atributos da classe
 	private Integer dasCodigo;

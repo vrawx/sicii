@@ -1,12 +1,17 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 /**
  * Classe Situacao
  * OBJETIVO: Representa a situacao de Pesquisas, Evento de Investigacao e Investigacoes
  * AUTORES: Rogerio & Vitor
  */
 
-public class Situacao extends BaseEntity {
+@Entity
+public class Situacao extends BaseEntity implements Serializable {
 	//atributos da classe
 	private Integer orgCodigo;
 	private Integer tipo;

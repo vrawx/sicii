@@ -1,7 +1,10 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
 
 /**
  * Classe Assessoria
@@ -9,7 +12,8 @@ import java.util.List;
  * AUTORES: Rogério & Vitor
  */
 
-public class Assessoria extends BaseEntity{
+@Entity
+public class Assessoria extends BaseEntity implements Serializable {
 	
 	private static final long serialversionUID = 1L;
 	

@@ -1,14 +1,19 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
 
 /**
  * Classe Investigacao
  * OBJETIVO: Representa as Investigacoes do Investigado
  * AUTORES: Rogerio & Vitor
  */
-public class Investigacao extends BaseEntity {
+
+@Entity
+public class Investigacao extends BaseEntity implements Serializable {
 	
 	private static final long serialversionUID = 1L;
 	

@@ -1,6 +1,9 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 /**
  * Classe Parecer
@@ -9,7 +12,8 @@ import java.util.Date;
  * AUTORES: Rogerio & Vitor
  */
 
-public class Parecer extends BaseEntity {
+@Entity
+public class Parecer extends BaseEntity implements Serializable {
 	
 	private static final long serialversionUID = 1L;
 	

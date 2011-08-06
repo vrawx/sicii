@@ -1,14 +1,18 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 /**
  * Classe TipoUsuario
  * OBJETIVO: Representa os tipos de usuarios do Sistema
- * AUTORES: Rog�rio & Vitor
+ * AUTORES: Rogerio & Vitor
  */
 
-public class TipoUsuario extends BaseEntity {
+@Entity
+public class TipoUsuario extends BaseEntity implements Serializable {
 	
 	private static final long serialversionUID = 1L;
 	

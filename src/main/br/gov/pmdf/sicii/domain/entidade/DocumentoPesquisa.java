@@ -1,12 +1,17 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
 /**
  * Classe DocumentoPesquisa 
  * OBJETIVO: Representa a associacao entre os Documentos e as Pesquisas
  * AUTORES: Rogerio & Vitor
  */
 
-public class DocumentoPesquisa extends BaseEntity{
+@Entity
+public class DocumentoPesquisa extends BaseEntity implements Serializable {
 	//atributos da classe
 	private Integer dpeCodigo;
 	private Pesquisa pesquisa;

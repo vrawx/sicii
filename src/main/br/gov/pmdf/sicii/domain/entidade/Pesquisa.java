@@ -1,7 +1,10 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
 
 /**
  * Classe Pesquisa
@@ -10,7 +13,8 @@ import java.util.List;
  * AUTORES: Rogerio & Vitor
  */
 
-public class Pesquisa extends BaseEntity {
+@Entity
+public class Pesquisa extends BaseEntity implements Serializable {
 	
 	private static final long serialversionUID = 1L;
 	

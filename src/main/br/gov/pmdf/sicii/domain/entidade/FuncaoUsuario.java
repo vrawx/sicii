@@ -1,6 +1,9 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Entity;
 
 /**
  * Classe FuncaoUsuario
@@ -8,7 +11,8 @@ import java.util.Date;
  * AUTORES: Rogerio & Vitor
  */
 
-public class FuncaoUsuario extends BaseEntity {
+@Entity
+public class FuncaoUsuario extends BaseEntity implements Serializable {
 	
 	private static final long serialversionUID = 1L;
 	
