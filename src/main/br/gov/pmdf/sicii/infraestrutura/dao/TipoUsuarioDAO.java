@@ -10,7 +10,7 @@ import br.gov.sicii.domain.Investigado;
 import br.gov.sicii.domain.Situacao;
 import br.gov.sicii.domain.TipoUsuario;
 
-public class TipoUsuarioDAO extends AbstractBaseEntityDAO<TipoUsuario> implements ITipoUsuarioDAO{
+public class TipoUsuarioDAO extends AbstractBaseEntityDAO<TipoUsuario> implements RepositorioTipoUsuario{
 
 	@Override
 	protected MontaWhere consultaWhere(TipoUsuario baseEntity) {

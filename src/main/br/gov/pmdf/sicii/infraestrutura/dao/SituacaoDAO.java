@@ -8,7 +8,7 @@ import br.gov.sicii.domain.Investigacao;
 import br.gov.sicii.domain.Investigado;
 import br.gov.sicii.domain.Situacao;
 
-public class SituacaoDAO extends AbstractBaseEntityDAO<Situacao> implements ISituacaoDAO{
+public class SituacaoDAO extends AbstractBaseEntityDAO<Situacao> implements RepositorioSituacao{
 
 	@Override
 	protected MontaWhere consultaWhere(Situacao baseEntity) {

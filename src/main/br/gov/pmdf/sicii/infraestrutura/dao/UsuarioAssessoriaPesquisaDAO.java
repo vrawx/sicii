@@ -10,7 +10,7 @@ import br.gov.sicii.domain.Investigado;
 import br.gov.sicii.domain.Situacao;
 import br.gov.sicii.domain.UsuarioAssessoriaPesquisa;
 
-public class UsuarioAssessoriaPesquisaDAO extends AbstractBaseEntityDAO<UsuarioAssessoriaPesquisa> implements IUsuarioAssessoriaPesquisaDAO{
+public class UsuarioAssessoriaPesquisaDAO extends AbstractBaseEntityDAO<UsuarioAssessoriaPesquisa> implements RepositorioUsuarioAssessoriaPesquisa{
 	@Override
 	protected MontaWhere consultaWhere(UsuarioAssessoriaPesquisa baseEntity) {
 		MontaWhere consulta = new MontaWhere();

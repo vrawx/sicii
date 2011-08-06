@@ -6,7 +6,7 @@ import br.gov.sicii.dao.util.MontaWhere;
 import br.gov.sicii.domain.Parecer;
 import br.gov.sicii.domain.Pesquisa;
 
-public class ParecerDAO extends AbstractBaseEntityDAO<Parecer> implements IParecerDAO{
+public class ParecerDAO extends AbstractBaseEntityDAO<Parecer> implements RepositorioParecer{
 
 	@Override
 	protected MontaWhere consultaWhere(Parecer baseEntity) {
@@ -19,10 +19,8 @@ public class ParecerDAO extends AbstractBaseEntityDAO<Parecer> implements IParec
 		if(!StringUtil.isVazia(baseEntity.getDescricao())){
 			consulta.addQuery(" and entidade.descricao = :desc");
 			consulta.addParametro("desc", baseEntity.getDescricao());
-		}
-		
-		return consulta;
-	}
+		}		
+		return consulta;	
 	}
 
 }
