@@ -1,13 +1,13 @@
-/**
- * Classe Usuario
- * OBJETIVO: Representa os usuarios do Sistema
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe Usuario
+ * OBJETIVO: Representa os usuarios do Sistema
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class Usuario extends BaseEntity {
 	

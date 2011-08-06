@@ -1,13 +1,13 @@
-/**
- * Classe UsuarioAssessoria
- * OBJETIVO: Representa a integração entre os usuarios e as Assessorias do Sistema
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe UsuarioAssessoria
+ * OBJETIVO: Representa a integracao entre os usuarios e as Assessorias do Sistema
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class UsuarioAssessoria extends BaseEntity {
 	

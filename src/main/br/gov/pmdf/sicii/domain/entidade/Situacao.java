@@ -1,10 +1,10 @@
+package br.gov.pmdf.sicii.domain.entidade;
+
 /**
  * Classe Situacao
- * OBJETIVO: Representa a situação de Pesquisas, Evento de Investigacao e Investigações
- * AUTORES: Rogério & Vitor
+ * OBJETIVO: Representa a situacao de Pesquisas, Evento de Investigacao e Investigacoes
+ * AUTORES: Rogerio & Vitor
  */
-
-package br.gov.sicii.domain;
 
 public class Situacao extends BaseEntity {
 	//atributos da classe

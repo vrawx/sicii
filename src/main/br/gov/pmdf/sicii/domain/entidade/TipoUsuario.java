@@ -1,12 +1,12 @@
+package br.gov.pmdf.sicii.domain.entidade;
+
+import java.util.Date;
+
 /**
  * Classe TipoUsuario
  * OBJETIVO: Representa os tipos de usuarios do Sistema
- * AUTORES: Rogério & Vitor
+ * AUTORES: Rogï¿½rio & Vitor
  */
-
-package br.gov.sicii.domain;
-
-import java.util.Date;
 
 public class TipoUsuario extends BaseEntity {
 	

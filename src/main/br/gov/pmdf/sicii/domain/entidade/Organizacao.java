@@ -1,12 +1,12 @@
-/**
- * Classe Organizacao
- * OBJETIVO: Representa as Organizações que solicitam ou são responsáveis por pesquisas
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
+
+/**
+ * Classe Organizacao
+ * OBJETIVO: Representa as Organizacoes que solicitam ou sao responsaveis por pesquisas
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class Organizacao extends BaseEntity {
 	

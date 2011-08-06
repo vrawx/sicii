@@ -1,10 +1,10 @@
+package br.gov.pmdf.sicii.domain.entidade;
+
 /**
  * Classe DocumentoPesquisa 
- * OBJETIVO: Representa a associaçao entre os Documentos e as Pesquisas
- * AUTORES: Rogério & Vitor
+ * OBJETIVO: Representa a associacao entre os Documentos e as Pesquisas
+ * AUTORES: Rogerio & Vitor
  */
-
-package br.gov.sicii.domain;
 
 public class DocumentoPesquisa extends BaseEntity{
 	//atributos da classe

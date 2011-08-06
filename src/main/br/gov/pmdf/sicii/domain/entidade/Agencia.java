@@ -1,14 +1,13 @@
-/**
- * Classe Agencia
- * OBJETIVO: Representa as Agência do Sistema
- * AUTORES: Rogério & Vitor
- */
-
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe Agencia
+ * OBJETIVO: Representa as AgÃªncia do Sistema
+ * AUTORES: RogÃ©rio & Vitor
+ */
 
 public class Agencia extends BaseEntity{
 	

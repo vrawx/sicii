@@ -1,13 +1,13 @@
-/**
- * Classe Investigado
- * OBJETIVO: Representar os investigados, alvo das invetigações
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe Investigado
+ * OBJETIVO: Representar os investigados, alvo das invetigacoes
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class Investigado extends BaseEntity {
 	
@@ -33,7 +33,7 @@ public class Investigado extends BaseEntity {
 	
 	private List<Investigacao> investigacoes;
 	
-	//método construtor
+	//mï¿½todo construtor
 	public Investigado() {
 		
 	}

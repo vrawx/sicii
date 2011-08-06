@@ -1,12 +1,12 @@
-/**
- * Classe PesquisaEmbasamento
- * OBJETIVO: Representa a associaçao entre as Pesquisas e os Embasamentos
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
+
+/**
+ * Classe PesquisaEmbasamento
+ * OBJETIVO: Representa a associacao entre as Pesquisas e os Embasamentos
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class PesquisaEmbasamento extends BaseEntity {
 	//atributos da classe

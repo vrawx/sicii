@@ -1,12 +1,12 @@
+package br.gov.pmdf.sicii.domain.entidade;
+
+import java.util.Date;
+
 /**
  * Classe TipoEmbasamento
  * OBJETIVO: Representar os Tipos de Embasamento das Pesquisas realizadas pelos Agentes
- * AUTORES: Rogério & Vitor
+ * AUTORES: Rogerio & Vitor
  */
-
-package br.gov.sicii.domain;
-
-import java.util.Date;
 
 public class TipoEmbasamento extends BaseEntity {
 	

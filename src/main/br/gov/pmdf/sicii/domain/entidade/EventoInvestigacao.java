@@ -1,13 +1,13 @@
-/**
- * Classe EventoInvestigacao
- * OBJETIVO: Representa os Eventos de Investigação que contém as investigações sobre o Investigado
- * AUTORES: Rogï¿½rio & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe EventoInvestigacao
+ * OBJETIVO: Representa os Eventos de Investigacao que contem as Investigacoes sobre o Investigado
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class EventoInvestigacao extends BaseEntity{
 	

@@ -1,12 +1,12 @@
-/**
- * Classe FuncaoUsuario
- * OBJETIVO: Representa as Funções dos usuários do Sistema
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
+
+/**
+ * Classe FuncaoUsuario
+ * OBJETIVO: Representa as Funcoes dos usuarios do Sistema
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class FuncaoUsuario extends BaseEntity {
 	

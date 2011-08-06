@@ -1,14 +1,13 @@
-/**
- * Classe Investigacao
- * OBJETIVO: Representa as Investigaï¿½ï¿½es do Investigado
- * AUTORES: Rogï¿½rio & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Classe Investigacao
+ * OBJETIVO: Representa as Investigacoes do Investigado
+ * AUTORES: Rogerio & Vitor
+ */
 public class Investigacao extends BaseEntity {
 	
 	private static final long serialversionUID = 1L;
@@ -27,7 +26,7 @@ public class Investigacao extends BaseEntity {
 	private List<Investigado> investigados;
 	private List<Pesquisa> pesquisas;
 	
-	//método Construtor
+	//mï¿½todo Construtor
 	public Investigacao() {
 		
 	}

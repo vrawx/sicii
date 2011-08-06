@@ -1,12 +1,12 @@
-/**
- * Classe UsuarioAssessoriaPesquisa 
- * OBJETIVO: Representa pesquisa e parecer realizados por usuário de determinada Assessoria
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
+
+/**
+ * Classe UsuarioAssessoriaPesquisa 
+ * OBJETIVO: Representa pesquisa e parecer realizados por usuario de determinada Assessoria
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class UsuarioAssessoriaPesquisa extends BaseEntity {
 	

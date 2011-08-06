@@ -1,12 +1,12 @@
+package br.gov.pmdf.sicii.domain.entidade;
+
+import java.util.Date;
+
 /**
  * Classe TipoDocumento
  * OBJETIVO: Representa os tipos de documentos existentes no Sistema
- * AUTORES: Rogério & Vitor
+ * AUTORES: Rogerio & Vitor
  */
-
-package br.gov.sicii.domain;
-
-import java.util.Date;
 
 public class TipoDocumento extends BaseEntity {
 	

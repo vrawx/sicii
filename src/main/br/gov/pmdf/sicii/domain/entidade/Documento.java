@@ -1,13 +1,13 @@
-/**
- * Classe Documento
- * OBJETIVO: Representa os Documentos criados para envio às Agências do Sistema
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe Documento
+ * OBJETIVO: Representa os Documentos criados para envio as Agencias do Sistema
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class Documento extends BaseEntity{
 	

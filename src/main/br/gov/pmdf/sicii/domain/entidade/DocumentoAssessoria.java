@@ -1,12 +1,13 @@
+package br.gov.pmdf.sicii.domain.entidade;
+
 /**
  * Classe DocumentoAssessoria
- * OBJETIVO: Representa os registros do trâmite dos documentos entre as Assessorias
- * AUTORES: Rogério & Vitor
+ * OBJETIVO: Representa os registros do tramite dos documentos entre as Assessorias
+ * AUTORES: Rogerio & Vitor
  */
 
-package br.gov.sicii.domain;
-
 public class DocumentoAssessoria extends BaseEntity {
+
 	//atributos da classe
 	private Integer dasCodigo;
 	private Documento documento;

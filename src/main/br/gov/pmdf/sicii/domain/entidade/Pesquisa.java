@@ -1,14 +1,14 @@
-/**
- * Classe Pesquisa
- * OBJETIVO: Representar as Pesquisas que compõem as Investigações dos Eventos 
- * de Investigação
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe Pesquisa
+ * OBJETIVO: Representar as Pesquisas que compoem as Investigacoes dos Eventos 
+ * de Investigacao
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class Pesquisa extends BaseEntity {
 	

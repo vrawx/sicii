@@ -1,13 +1,13 @@
-/**
- * Classe Assessoria
- * OBJETIVO: Representa as Assessorias que compoem as Agências do Sistema
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe Assessoria
+ * OBJETIVO: Representa as Assessorias que compoem as AgÃªncias do Sistema
+ * AUTORES: RogÃ©rio & Vitor
+ */
 
 public class Assessoria extends BaseEntity{
 	

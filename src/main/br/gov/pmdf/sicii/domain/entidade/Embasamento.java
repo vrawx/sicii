@@ -1,13 +1,13 @@
-/**
- * Classe Embasamento
- * OBJETIVO: Representar os Embasamentos das Pesquisas realizadas pelos Agentes
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
+/**
+ * Classe Embasamento
+ * OBJETIVO: Representar os Embasamentos das Pesquisas realizadas pelos Agentes
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class Embasamento extends BaseEntity {
 	

@@ -1,13 +1,13 @@
-/**
- * Classe Parecer
- * OBJETIVO: Representar os Pareceres das Pesquisas, Investigações e Eventos 
- * de Investigação
- * AUTORES: Rogério & Vitor
- */
-
-package br.gov.sicii.domain;
+package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
+
+/**
+ * Classe Parecer
+ * OBJETIVO: Representar os Pareceres das Pesquisas, Investigacoes e Eventos 
+ * de Investigacao
+ * AUTORES: Rogerio & Vitor
+ */
 
 public class Parecer extends BaseEntity {
 	
