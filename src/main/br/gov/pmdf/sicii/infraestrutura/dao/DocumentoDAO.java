@@ -5,7 +5,7 @@ import br.gov.sicii.dao.util.MontaWhere;
 import br.gov.sicii.domain.Assessoria;
 import br.gov.sicii.domain.Documento;
 
-public class DocumentoDAO extends AbstractBaseEntityDAO<Documento> implements IDocumentoDAO{
+public class DocumentoDAO extends AbstractBaseEntityDAO<Documento> implements RepositorioDocumento{
 
 	@Override
 	protected MontaWhere consultaWhere(Documento baseEntity) {

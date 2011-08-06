@@ -4,7 +4,7 @@ import br.gov.sicii.dao.interfaces.IEventoInvestigacaoDAO;
 import br.gov.sicii.dao.util.MontaWhere;
 import br.gov.sicii.domain.EventoInvestigacao;
 
-public class EventoInvestigacaoDAO extends AbstractBaseEntityDAO<EventoInvestigacao> implements IEventoInvestigacaoDAO{
+public class EventoInvestigacaoDAO extends AbstractBaseEntityDAO<EventoInvestigacao> implements RepositorioEventoInvestigacao{
 
 	@Override
 	protected MontaWhere consultaWhere(EventoInvestigacao baseEntity) {

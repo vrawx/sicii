@@ -6,7 +6,7 @@ import br.gov.sicii.dao.util.MontaWhere;
 import br.gov.sicii.domain.DocumentoPesquisa;
 import br.gov.sicii.domain.Embasamento;
 
-public class EmbasamentoDAO extends AbstractBaseEntityDAO<Embasamento> implements IEmbasamentoDAO{
+public class EmbasamentoDAO extends AbstractBaseEntityDAO<Embasamento> implements RepositorioEmbasamento{
 	@Override
 	protected MontaWhere consultaWhere(Embasamento baseEntity) {
 		MontaWhere consulta = new MontaWhere();
@@ -19,7 +19,7 @@ public class EmbasamentoDAO extends AbstractBaseEntityDAO<Embasamento> implement
 			consulta.addQuery(" and entidade.descricao = :desc");
 			consulta.addParametro("desc", baseEntity.getDescricao());
 		}
+		return consulta;
 	}
 	
-	return consulta;
 }
