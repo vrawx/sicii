@@ -1,5 +1,7 @@
 package br.gov.pmdf.sicii.aplicacao;
 
+import javax.faces.context.FacesContext;
+
 import org.jboss.seam.annotations.Name;
 
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
@@ -12,9 +14,9 @@ public class UserAction {
 	private RepositorioUsuario repositorioUsuario;
 	
 		
-	public boolean logarSistema() {
-		
-		
-		return true;
+	public String logarSistema() {
+		if(!repositorioUsuario.validarLogin(usuarioLogado))
+			return "FAIL";
+		return "SUCESS";
 	}
 }
