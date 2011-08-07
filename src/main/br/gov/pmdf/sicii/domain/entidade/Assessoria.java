@@ -3,7 +3,6 @@ package br.gov.pmdf.sicii.domain.entidade;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Entity;
 
 /**
@@ -15,7 +14,7 @@ import javax.persistence.Entity;
 @Entity
 public class Assessoria extends BaseEntity implements Serializable {
 	
-	private static final long serialversionUID = 1L;
+	private static final long serialVersionUID = 1L;	
 	
 	private Integer assCodigo;
 	private Agencia agencia;
