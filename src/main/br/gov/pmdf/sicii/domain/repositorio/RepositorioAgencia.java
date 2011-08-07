@@ -1,9 +1,9 @@
 package br.gov.pmdf.sicii.domain.repositorio;
 
-import br.gov.pmdf.sicii.domain.entidade.BaseEntity;
+import br.gov.pmdf.sicii.domain.entidade.Agencia;
 
 
-public interface RepositorioAgencia extends Repositorio<BaseEntity> {
+public interface RepositorioAgencia extends Repositorio<Agencia> {
 
 	
 }

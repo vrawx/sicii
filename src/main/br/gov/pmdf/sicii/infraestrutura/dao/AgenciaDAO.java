@@ -1,25 +1,12 @@
-package br.gov.sicii.dao.impl;
+package br.gov.pmdf.sicii.infraestrutura.dao;
 
-import br.gov.sicii.dao.interfaces.IAgenciaDAO;
-import br.gov.sicii.dao.util.MontaWhere;
-import br.gov.sicii.domain.Agencia;
+import br.gov.pmdf.sicii.domain.entidade.Agencia;
+import br.gov.pmdf.sicii.domain.repositorio.RepositorioAgencia;
 
-public class AgenciaDAO extends AbstractBaseEntityDAO<Agencia> implements IAgenciaDAO{
 
-	@Override
-	protected MontaWhere consultaWhere(Agencia baseEntity) {
-		MontaWhere consulta = new MontaWhere();
-		
-		if(baseEntity.getId() != null){
-			consulta.addQuery(" and entidade.id = :id");
-			consulta.addParametro("id", baseEntity.getId());
-		}
-		if(!StringUtil.isVazia(baseEntity.getDescricao())){
-			consulta.addQuery(" and entidade.descricao = :desc");
-			consulta.addParametro("desc", baseEntity.getDescricao());
-		}
-		
-		return consulta;
-	}
+public class AgenciaDAO extends AbstractDAO<Agencia> implements RepositorioAgencia {
 
+	private static final long serialVersionUID = 1L;
+
+	
 }

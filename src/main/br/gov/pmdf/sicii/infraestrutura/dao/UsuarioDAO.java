@@ -1,24 +1,10 @@
-package br.gov.sicii.dao.impl;
+package br.gov.pmdf.sicii.infraestrutura.dao;
 
-import br.gov.sicii.dao.interfaces.IUsuarioDAO;
-import br.gov.sicii.dao.util.MontaWhere;
-import br.gov.sicii.domain.Usuario;
+import br.gov.pmdf.sicii.domain.entidade.Usuario;
+import br.gov.pmdf.sicii.domain.repositorio.RepositorioUsuario;
 
-public class UsuarioDAO extends AbstractBaseEntityDAO<Usuario> implements RepositorioUsuario{
-
-	@Override
-	protected MontaWhere consultaWhere(Usuario baseEntity) {
-		MontaWhere consulta = new MontaWhere();
-		
-		if(baseEntity.getId() != null){
-			consulta.addQuery(" and entidade.id = :id");
-			consulta.addParametro("id", baseEntity.getId());
-		}
-		if(!StringUtil.isVazia(baseEntity.getDescricao())){
-			consulta.addQuery(" and entidade.descricao = :desc");
-			consulta.addParametro("desc", baseEntity.getDescricao());
-		}
-		
-		return consulta;
-	}
+public class UsuarioDAO extends AbstractDAO<Usuario> implements RepositorioUsuario {
+	
+	private static final long serialVersionUID = 1L;
+	
 }
