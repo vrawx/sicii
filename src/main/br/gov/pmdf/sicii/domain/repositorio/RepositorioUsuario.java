@@ -4,5 +4,5 @@ import br.gov.pmdf.sicii.domain.entidade.Usuario;
 
 public interface RepositorioUsuario extends Repositorio<Usuario> {
 	
-	boolean validarLogin(Usuario usuario);
+	boolean getByCredentials(String username, String password);
 }

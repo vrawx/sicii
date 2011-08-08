@@ -44,7 +44,10 @@ public class Usuario extends BaseEntity implements Serializable {
 	public Usuario() {
 
 	}
-
+	public Usuario(String username, String password){
+		this.login = username;
+		this.senha = password;
+	}
 	/**
 	 *  Este método será usado para validar a tentativa de login
 	 */
