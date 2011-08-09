@@ -16,9 +16,10 @@ public class UsuarioDAO extends AbstractDAO<Usuario> implements RepositorioUsuar
 
 	public Usuario getByCredentials(String username, String password) {
 		//List<Usuario> usuarios = recuperarTodos();
-		String query = "FROM USUARIO WHERE login = :login AND senha = :senha ";
+		String query = "SELECT usuario FROM usuario WHERE login = :login AND senha = :senha ";
 		List<Usuario> users = (List<Usuario>) entityManager.createQuery(query, Usuario.class).setParameter("login",username).setParameter("senha",password).getResultList();
-		Usuario usuario = new Usuario(username, password);		
+		Usuario usuario = new Usuario(username, password);
+		System.out.println(username + "   " + password);
 		for (Usuario user : users) {
 			if(usuario.equals(user) )
 				return user;

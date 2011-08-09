@@ -9,6 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.validator.Length;
+import org.hibernate.validator.NotNull;
 
 /**
  * Classe Usuario
@@ -16,7 +20,8 @@ import javax.persistence.OneToMany;
  * AUTORES: Rogerio & Vitor
  */
 
-@Entity(name="USUARIO")
+@Entity
+@Table(name="USUARIO")
 public class Usuario extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
@@ -25,19 +30,21 @@ public class Usuario extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="usuCodigo")
-	private Long codigoUsuario;
-	
-	/** ESTE ATRIBUTO FOI SUBSTITUIDO POR codigoUsuario
-		private Integer usuCodigo;
-	*/
-	
-	private TipoUsuario tipoUsuario;
+	private Long codigoUsuario;		
+		
+	@NotNull
+	@Length(min=6, max=10)
 	private String login;
+	
+	@NotNull
+	@Length(min=6, max=10)
 	private String senha;
+	
 	private Date cadastradoEm;
 	private Date alteradoEm;
 	private Integer cadastradoPor;
 	private Integer alteradoPor;	
+	private TipoUsuario tipoUsuario;
 	
 	@OneToMany
 	private List<Assessoria> assessorias;
