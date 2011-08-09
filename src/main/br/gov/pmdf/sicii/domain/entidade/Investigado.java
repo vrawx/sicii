@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.jboss.seam.annotations.Name;
@@ -28,13 +29,13 @@ public class Investigado extends BaseEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long invCodigo;
-	
+		
 	private Integer cpf;
 	private String nome;
 	private Date nascimento;
 	private String pai;
 	private String mae;
-	private String rua;
+	private String sexo;
 	private String logradouro;
 	private String bairro;
 	private String cidade;
@@ -46,6 +47,7 @@ public class Investigado extends BaseEntity implements Serializable {
 	private Integer cadastradoPor;
 	private Integer alteradoPor;
 	
+	@OneToMany
 	private List<Investigacao> investigacoes;
 	
 	//metodo construtor
@@ -91,11 +93,11 @@ public class Investigado extends BaseEntity implements Serializable {
 	public void setMae(String mae) {
 		this.mae = mae;
 	}
-	public String getRua() {
-		return rua;
+	public String getSexo() {
+		return sexo;
 	}
-	public void setRua(String rua) {
-		this.rua = rua;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 	public String getLogradouro() {
 		return logradouro;

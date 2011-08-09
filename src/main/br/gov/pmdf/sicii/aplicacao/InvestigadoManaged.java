@@ -10,6 +10,7 @@ import org.jboss.seam.annotations.security.Restrict;
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
 
+
 @Name("investigadoManaged")
 public class InvestigadoManaged  {
 	
