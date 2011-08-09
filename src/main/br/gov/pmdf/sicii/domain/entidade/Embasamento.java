@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Classe Embasamento
@@ -32,7 +33,8 @@ public class Embasamento extends BaseEntity {
 	private Date alteradoEm;
 	private Integer cadastradoPor;
 	private Integer alteradoPor;
-
+	
+	@OneToMany
 	private List<Pesquisa> pesquisas;	
 	
 	public Embasamento() {

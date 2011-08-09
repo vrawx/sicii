@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Classe EventoInvestigacao
@@ -36,6 +37,7 @@ public class EventoInvestigacao extends BaseEntity {
 	private Integer cadastradoPor;
 	private Integer alteradoPor;	
 	
+	@OneToMany
 	private List<Investigado> investigados;
 	
 	public EventoInvestigacao() {

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Classe Investigacao
@@ -33,10 +34,13 @@ public class Investigacao extends BaseEntity {
 	private Integer cadastradoPor;
 	private Integer alteradoPor;
 	
+	@OneToMany
 	private List<Investigado> investigados;
+	
+	@OneToMany
 	private List<Pesquisa> pesquisas;
 	
-	//m�todo Construtor
+	//metodo Construtor
 	public Investigacao() {
 		
 	}

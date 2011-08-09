@@ -3,10 +3,13 @@ package br.gov.pmdf.sicii.domain.entidade;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Classe UsuarioAssessoria
@@ -33,6 +36,7 @@ public class UsuarioAssessoria extends BaseEntity {
 	private Integer cadastradoPor;
 	private Integer alteradoPor;
 	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Pesquisa> pesquisas;
 	
 	public UsuarioAssessoria() {

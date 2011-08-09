@@ -32,7 +32,7 @@ public class InvestigadoManaged  {
 			
 	
 	
-	//
+
 	public List<Investigado> getInvestigadosConsultados() {
 		return investigadosConsultados;
 	}
