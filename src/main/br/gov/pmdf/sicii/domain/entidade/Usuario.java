@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
  * AUTORES: Rogerio & Vitor
  */
 
-@Entity
+@Entity(name="USUARIO")
 public class Usuario extends BaseEntity implements Serializable {
 	
 	private static final long serialversionUID = 1L;

@@ -13,9 +13,9 @@ import javax.persistence.Entity;
 
 @Entity
 public class TipoUsuario extends BaseEntity implements Serializable {
-	
-	private static final long serialversionUID = 1L;
-	
+
+	private static final long serialVersionUID = 1L;
+
 	//atributos do sistema
 	private Integer tipCodigo;
 	private String sigla;

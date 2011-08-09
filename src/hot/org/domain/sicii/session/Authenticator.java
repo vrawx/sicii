@@ -6,7 +6,7 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.log.Log;
 import org.jboss.seam.security.Credentials;
 import org.jboss.seam.security.Identity;
-
+import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioUsuario;
 
 @Name("authenticator")
@@ -19,12 +19,12 @@ public class Authenticator {
     @In RepositorioUsuario repositorioUsuario;    
     
     public boolean authenticate()    {
-        log.info("authenticating {0}", credentials.getUsername());
-        //write your authentication logic here,
-        //return true if the authentication was
-        //successful, false otherwise
-        if( repositorioUsuario.getByCredentials(credentials.getUsername(), credentials.getPassword()) ) {
-        	identity.addRole("AGENTE");
+        log.info("authenticating {0}", credentials.getUsername());      
+        
+        Usuario user = repositorioUsuario.getByCredentials(credentials.getUsername(), credentials.getPassword());
+        if( user != null ) {
+        	//identity.addRole(user.getTipoUsuario());
+        	identity.addRole("PERFILUSER");
         	return true;
         }        
         return false;
