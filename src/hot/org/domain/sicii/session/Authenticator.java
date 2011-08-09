@@ -22,9 +22,10 @@ public class Authenticator {
         
     	log.info("authenticating {0}", credentials.getUsername());        
         Usuario user = repositorioUsuario.getByCredentials(credentials.getUsername(), credentials.getPassword());
+        
         if( user != null ) {
-        	//identity.addRole(user.getTipoUsuario());
-        	identity.addRole(user.getTipoUsuario().getSigla());
+        	identity.addRole("ADMINISTRADOR");
+        	//identity.addRole(user.getTipoUsuario().getSigla());
         	return true;
         }        
         return false;
