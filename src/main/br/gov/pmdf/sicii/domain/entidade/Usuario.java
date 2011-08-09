@@ -63,8 +63,8 @@ public class Usuario extends BaseEntity {
 	public boolean equals(Object obj) {
 		Usuario usuario = null;
 		if(obj instanceof Usuario) { 
-			usuario = (Usuario) obj;
-			if(( usuario.login == this.login ) && (usuario.senha == this.senha))
+			usuario = (Usuario) obj;			
+			if(( usuario.login.equalsIgnoreCase(this.login)) && (usuario.senha.equalsIgnoreCase(this.senha)))
 				return true;			
 		}		
 		return false;		

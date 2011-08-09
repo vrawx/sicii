@@ -19,8 +19,8 @@ public class Authenticator {
     @In RepositorioUsuario repositorioUsuario;    
     
     public boolean authenticate()    {
-        log.info("authenticating {0}", credentials.getUsername());      
         
+    	log.info("authenticating {0}", credentials.getUsername());        
         Usuario user = repositorioUsuario.getByCredentials(credentials.getUsername(), credentials.getPassword());
         if( user != null ) {
         	//identity.addRole(user.getTipoUsuario());
