@@ -1,9 +1,11 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Classe TipoEmbasamento
@@ -12,9 +14,13 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class TipoEmbasamento extends BaseEntity implements Serializable{
+public class TipoEmbasamento extends BaseEntity {
 	
-	private static final long serialversionUID = 1L;
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	
 	private Integer tipEmbasamento;
 	private String sigla;
@@ -29,10 +35,12 @@ public class TipoEmbasamento extends BaseEntity implements Serializable{
 	}
 
 	//get and set
+	public Long getId() {
+		return id;
+	}
 	public Integer getTipEmbasamento() {
 		return tipEmbasamento;
 	}
-
 	public void setTipEmbasamento(Integer tipEmbasamento) {
 		this.tipEmbasamento = tipEmbasamento;
 	}

@@ -1,10 +1,12 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Classe Documento
@@ -13,12 +15,15 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class Documento extends BaseEntity implements Serializable {
+public class Documento extends BaseEntity {
 	
-	private static final long serialversionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;
+		
 	//atributos da classe
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer docCodigo;
+	
 	private Organizacao organizacao;
 	private TipoDocumento tipoDocumento;
 	private Situacao situacao;

@@ -1,10 +1,12 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Classe Pesquisa
@@ -14,11 +16,14 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class Pesquisa extends BaseEntity implements Serializable {
-	
-	private static final long serialversionUID = 1L;
-	
+public class Pesquisa extends BaseEntity {
+			
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer pesCodigo;
+	
 	private Situacao situacao;
 	private Organizacao organizacao;
 	private TipoPesquisa tipoPesquisa;

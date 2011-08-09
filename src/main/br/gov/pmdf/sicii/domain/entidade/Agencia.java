@@ -1,6 +1,5 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -17,9 +16,9 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
-public class Agencia extends BaseEntity implements Serializable {
-	
-	private static final long serialversionUID = 1L;
+public class Agencia extends BaseEntity {
+		
+	private static final long serialVersionUID = 1L;
 	
 	//atributos da classe
 	@Id

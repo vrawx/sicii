@@ -1,6 +1,5 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -16,10 +15,10 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class UsuarioAssessoria extends BaseEntity implements Serializable {
-	
-	private static final long serialversionUID = 1L;
-	
+public class UsuarioAssessoria extends BaseEntity {
+		
+	private static final long serialVersionUID = 1L;
+
 	//atributos da classe
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -1,6 +1,5 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +21,7 @@ import org.jboss.seam.annotations.Name;
 @Entity
 @Table(name="INVESTIGADO")
 @Name("investigado")
-public class Investigado extends BaseEntity implements Serializable {
+public class Investigado extends BaseEntity {
 			
 	private static final long serialVersionUID = 1L;
 

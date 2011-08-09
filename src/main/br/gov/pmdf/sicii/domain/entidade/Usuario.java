@@ -1,9 +1,9 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,16 +17,17 @@ import javax.persistence.OneToMany;
  */
 
 @Entity(name="USUARIO")
-public class Usuario extends BaseEntity implements Serializable {
+public class Usuario extends BaseEntity {
 	
-	private static final long serialversionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;
+
 	//atributos do sistema
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	@Column(name="usuCodigo")
+	private Long codigoUsuario;
 	
-	/** ESTE ATRIBUTO FOI SUBSTITUIDO POR ID
+	/** ESTE ATRIBUTO FOI SUBSTITUIDO POR codigoUsuario
 		private Integer usuCodigo;
 	*/
 	
@@ -63,8 +64,8 @@ public class Usuario extends BaseEntity implements Serializable {
 	}
 	
 	//get and set
-	public Long getId() {
-		return id;
+	public Long getCodigoUsuario() {
+		return codigoUsuario;
 	}	
 	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;

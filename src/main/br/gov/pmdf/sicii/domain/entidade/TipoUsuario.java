@@ -1,9 +1,11 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Classe TipoUsuario
@@ -12,12 +14,15 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class TipoUsuario extends BaseEntity implements Serializable {
+public class TipoUsuario extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	//atributos do sistema
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private Integer tipCodigo;
+	
 	private String sigla;
 	private String descricao;
 	private Date cadastradoEm;

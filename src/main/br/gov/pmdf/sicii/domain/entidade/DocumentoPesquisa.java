@@ -1,8 +1,9 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Classe DocumentoPesquisa 
@@ -11,8 +12,14 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class DocumentoPesquisa extends BaseEntity implements Serializable {
+public class DocumentoPesquisa extends BaseEntity {
+
+	
+	private static final long serialVersionUID = 1L;
+	
 	//atributos da classe
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer dpeCodigo;
 	private Pesquisa pesquisa;
 	private Documento documento;
