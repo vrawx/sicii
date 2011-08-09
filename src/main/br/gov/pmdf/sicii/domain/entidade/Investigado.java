@@ -5,6 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe Investigado
@@ -13,11 +19,16 @@ import javax.persistence.Entity;
  */
 
 @Entity
+@Table(name="INVESTIGADO")
+@Name("investigado")
 public class Investigado extends BaseEntity implements Serializable {
+			
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long invCodigo;
 	
-	private static final long serialversionUID = 1L;
-	
-	private Integer invCodigo;
 	private Integer cpf;
 	private String nome;
 	private Date nascimento;
@@ -37,17 +48,17 @@ public class Investigado extends BaseEntity implements Serializable {
 	
 	private List<Investigacao> investigacoes;
 	
-	//m�todo construtor
+	//metodo construtor
 	public Investigado() {
 		
 	}
 	
 	
 	//get and set da classe
-	public Integer getInvCodigo() {
+	public Long getInvCodigo() {
 		return invCodigo;
 	}
-	public void setInvCodigo(Integer invCodigo) {
+	public void setInvCodigo(Long invCodigo) {
 		this.invCodigo = invCodigo;
 	}
 	public Integer getCpf() {

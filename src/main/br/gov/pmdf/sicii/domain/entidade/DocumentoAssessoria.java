@@ -3,6 +3,9 @@ package br.gov.pmdf.sicii.domain.entidade;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Classe DocumentoAssessoria
@@ -14,7 +17,9 @@ import javax.persistence.Entity;
 public class DocumentoAssessoria extends BaseEntity implements Serializable {
 
 	//atributos da classe
-	private Integer dasCodigo;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)	
+	private Long dasCodigo;
 	private Documento documento;
 	private Assessoria assessoria;
 	private Boolean status;
@@ -24,11 +29,10 @@ public class DocumentoAssessoria extends BaseEntity implements Serializable {
 	}
 
 	//get and set
-	public Integer getDasCodigo() {
+	public Long getDasCodigo() {
 		return dasCodigo;
 	}
-
-	public void setDasCodigo(Integer dasCodigo) {
+	public void setDasCodigo(Long dasCodigo) {
 		this.dasCodigo = dasCodigo;
 	}
 

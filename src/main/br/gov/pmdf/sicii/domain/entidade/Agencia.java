@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Classe Agencia
@@ -18,7 +22,10 @@ public class Agencia extends BaseEntity implements Serializable {
 	private static final long serialversionUID = 1L;
 	
 	//atributos da classe
-	private Integer ageCodigo;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long ageCodigo;
+	
 	private Organizacao organizacao;
 	private Integer tipo;
 	private String status;
@@ -27,6 +34,7 @@ public class Agencia extends BaseEntity implements Serializable {
 	private Integer cadastradoPor;
 	private Integer alteradoPor;
 	
+	@OneToMany
 	private List<Assessoria> assessorias;
 	
 	public Agencia() {
@@ -34,18 +42,15 @@ public class Agencia extends BaseEntity implements Serializable {
 	}
 
 	//get and set da classe
-	public Integer getAgeCodigo() {
+	public Long getAgeCodigo() {
 		return ageCodigo;
 	}
-
-	public void setAgeCodigo(Integer ageCodigo) {
+	public void setAgeCodigo(Long ageCodigo) {
 		this.ageCodigo = ageCodigo;
 	}
-
 	public Organizacao getOrganizacao() {
 		return organizacao;
 	}
-
 	public void setOrganizacao(Organizacao organizacao) {
 		this.organizacao = organizacao;
 	}

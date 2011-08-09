@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Classe UsuarioAssessoria
@@ -18,7 +21,10 @@ public class UsuarioAssessoria extends BaseEntity implements Serializable {
 	private static final long serialversionUID = 1L;
 	
 	//atributos da classe
-	private Integer uasCodigo;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long uasCodigo;
+	
 	private FuncaoUsuario funcaoUsuario;
 	private Usuario usuario;
 	private Assessoria assessoria;
@@ -35,11 +41,10 @@ public class UsuarioAssessoria extends BaseEntity implements Serializable {
 	}
 
 	//get and set
-	public Integer getUasCodigo() {
+	public Long getUasCodigo() {
 		return uasCodigo;
 	}
-
-	public void setUasCodigo(Integer uasCodigo) {
+	public void setUasCodigo(Long uasCodigo) {
 		this.uasCodigo = uasCodigo;
 	}
 

@@ -1,27 +1,23 @@
-package br.gov.sicii.dao.impl;
+package br.gov.pmdf.sicii.infraestrutura.dao;
 
-import br.gov.sicii.dao.interfaces.IInvestigacaoDAO;
-import br.gov.sicii.dao.interfaces.IInvestigadoDAO;
-import br.gov.sicii.dao.util.MontaWhere;
-import br.gov.sicii.domain.Investigacao;
-import br.gov.sicii.domain.Investigado;
+import java.util.List;
 
-public class InvestigadoDAO extends AbstractBaseEntityDAO<Investigado> implements RepositorioInvestigado{
+import org.jboss.seam.annotations.AutoCreate;
+import org.jboss.seam.annotations.Name;
 
-	@Override
-	protected MontaWhere consultaWhere(Investigado baseEntity) {
-		MontaWhere consulta = new MontaWhere();
-		
-		if(baseEntity.getId() != null){
-			consulta.addQuery(" and entidade.id = :id");
-			consulta.addParametro("id", baseEntity.getId());
-		}
-		if(!StringUtil.isVazia(baseEntity.getDescricao())){
-			consulta.addQuery(" and entidade.descricao = :desc");
-			consulta.addParametro("desc", baseEntity.getDescricao());
-		}
-		
-		return consulta;
+import br.gov.pmdf.sicii.domain.entidade.Investigado;
+import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
+
+@Name("repositorioInvestigado")
+@AutoCreate
+public class InvestigadoDAO extends AbstractDAO<Investigado> implements RepositorioInvestigado {
+
+	private static final long serialVersionUID = 1L;
+
+	public List<Investigado> recuperarPorFragmento(Investigado investigado) {
+		String query = "FROM investigado as inv WHERE in inv.cpf LIKE :cpf AND inv.nome = :nome";
+		return entityManager.createQuery(query, Investigado.class).setParameter("cpf",investigado.getCpf()).setParameter("nome", investigado.getNome()).getResultList();		
 	}
 
+	
 }

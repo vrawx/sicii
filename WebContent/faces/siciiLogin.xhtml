@@ -9,10 +9,7 @@
 	template="/layout/template.xhtml">
 
 	<ui:define name="body">
-
-		<h:form id="loginForm">
-
-			<p:spinner />
+		<h:form id="loginForm">			
 			<p:panel>
 				<f:facet name="header">Login</f:facet>
 				<p>Please login here</p>
@@ -29,9 +26,16 @@
 					</h:panelGrid>
 				</div>
 			</p:panel>
+
+			<h:dataTable value="#{investigadoManaged.investigadosConsultados}" var="investigado">
+				<h:column><h:outputText value="#{investigado.nome}" /></h:column>
+				<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
+				<h:column><h:outputText value="#{investigado.nascimento}" /></h:column>				
+			</h:dataTable>
+						
 			<div class="actionButtons">
 				<h:commandButton id="submit" value="Login"
-					action="#{identity.login}" />
+					action="#{identity.login}"/>
 			</div>
 		</h:form>
 	</ui:define>

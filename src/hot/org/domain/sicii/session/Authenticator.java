@@ -24,7 +24,7 @@ public class Authenticator {
         Usuario user = repositorioUsuario.getByCredentials(credentials.getUsername(), credentials.getPassword());
         if( user != null ) {
         	//identity.addRole(user.getTipoUsuario());
-        	identity.addRole("PERFILUSER");
+        	identity.addRole(user.getTipoUsuario().getSigla());
         	return true;
         }        
         return false;
