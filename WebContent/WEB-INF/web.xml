@@ -9,11 +9,28 @@
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.seam</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>   
   <context-param>
     <param-name>org.jboss.jbossfaces.JSF_CONFIG_NAME</param-name>
-    <param-value>Mojarra-1.2</param-value>
+    <param-value>Mojarra-1.2</param-value>  
   </context-param> 
+  
+  <context-param>  
+    <param-name>org.rechfaces.SKIN</param-name>  
+    <!-- <param-value>emeraldTown</param-value>-->           
+    <param-value>classic</param-value>   
+    <!-- <param-value>blueSky</param-value> -->  
+    <!-- <param-value>ruby</param-value> -->  
+     <!-- <param-value>wine</param-value> -->   
+    <!-- <param-value>deepMarine</param-value> -->  
+    <!-- <param-value>japanCherry</param-value> -->  
+    <!-- <param-value>plain</param-value> -->  
+  </context-param>    
+  <context-param>    
+    <param-name>org.richfaces.CONTROL_SKINNING</param-name>    
+    <param-value>enable</param-value>    
+  </context-param>  
+    
   <listener>
     <listener-class>org.jboss.seam.servlet.SeamListener</listener-class>
   </listener>
@@ -33,6 +50,21 @@
     <servlet-name>Seam Resource Servlet</servlet-name>
     <url-pattern>/seam/resource/*</url-pattern>
   </servlet-mapping>
+  
+  <!-- Prime Faces Config 
+  <servlet>
+	<servlet-name>Resource Servlet</servlet-name>
+	<servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+		<servlet-name>Resource Servlet</servlet-name>
+		<url-pattern>/primefaces_resource/*</url-pattern>
+  </servlet-mapping>
+  <context-param>
+		<param-name>primefaces.skin</param-name>
+		<param-value>none</param-value>
+  </context-param>
+  -->
   <context-param>
     <param-name>facelets.DEVELOPMENT</param-name>
     <param-value>true</param-value>
@@ -49,5 +81,5 @@
     </web-resource-collection>
     <auth-constraint/>
   </security-constraint>
-       
+  
 </web-app>
