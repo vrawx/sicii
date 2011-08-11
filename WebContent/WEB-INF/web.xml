@@ -13,11 +13,7 @@
   <context-param>
     <param-name>org.jboss.jbossfaces.JSF_CONFIG_NAME</param-name>
     <param-value>Mojarra-1.2</param-value>
-  </context-param>
-  <context-param>
-    <param-name>org.richfaces.SKIN</param-name>
-    <param-value>blueSky</param-value>
-  </context-param>
+  </context-param> 
   <listener>
     <listener-class>org.jboss.seam.servlet.SeamListener</listener-class>
   </listener>
