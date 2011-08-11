@@ -51,7 +51,7 @@
     <url-pattern>/seam/resource/*</url-pattern>
   </servlet-mapping>
   
-  <!-- Prime Faces Config 
+<!--  
   <servlet>
 	<servlet-name>Resource Servlet</servlet-name>
 	<servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
@@ -64,7 +64,8 @@
 		<param-name>primefaces.skin</param-name>
 		<param-value>none</param-value>
   </context-param>
-  -->
+ -->
+ 
   <context-param>
     <param-name>facelets.DEVELOPMENT</param-name>
     <param-value>true</param-value>
