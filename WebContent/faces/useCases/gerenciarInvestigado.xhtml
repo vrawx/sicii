@@ -7,8 +7,10 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:rich="http://richfaces.org/rich"
     template="/template/siciiLayout.xhtml">
-
-    <ui:define name="body">        
+	
+	<ui:define name="title">PMDF - SICII - Gerenciar Investigado</ui:define>
+	
+    <ui:define name="bodyContent">        
         <rich:panel>
             <div class="dialog">
 					<h:panelGrid columns="2">
@@ -19,8 +21,10 @@
 					</h:panelGrid>
 			</div>											
 			<div class="actionButtons">
-				<h:commandButton id="submit" value="Login" action="#{identity.login}"/>
+				<h:commandButton id="submit" value="Login" action="#{investigadoManaged.pesquisarInvestigado}"/>
 			</div>
         </rich:panel>
+        <h:dataTable  var="investigado">
+        </h:dataTable>
     </ui:define>
 </ui:composition>
