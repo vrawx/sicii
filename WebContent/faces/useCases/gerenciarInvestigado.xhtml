@@ -8,8 +8,6 @@
     xmlns:rich="http://richfaces.org/rich"
     template="/template/siciiLayout.xhtml">
 	
-	<ui:define name="title">PMDF - SICII - Gerenciar Investigado</ui:define>
-	
     <ui:define name="bodyContent">        
         <rich:panel>
             <div class="dialog">
@@ -24,7 +22,10 @@
 				<h:commandButton id="submit" value="Login" action="#{investigadoManaged.pesquisarInvestigado}"/>
 			</div>
         </rich:panel>
-        <h:dataTable  var="investigado">
+        <h:dataTable value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.statusConsulta}">
+        	<h:column><h:outputText value="#{investigado.nome}" /></h:column>
+        	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
+        	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado(investigado)}" value="selecionar" /></h:column>
         </h:dataTable>
     </ui:define>
 </ui:composition>

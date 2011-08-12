@@ -4,7 +4,4 @@ INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastrado
 
 -- INVESTIGADO
 
-INSERT INTO USUARIO(codigoInvestigado, cpf, nome, nascimento, nomeDoPai, nomeDaMae, sexo, logradouro, bairro, cidade, cidadeUF, numeroTelefone,
-					numeroCelular, cadastradoEm, alteradoEm, cadastradoPor, alteradoPor)
-	VALUES(00001,99999999,'investigado', now(), 
-		'paiDoInvestigado','maeDoInvestigado', 'feminino', 'LOGRADOURO DO INVESTIGADO', 'BAIRRO DO INVESTIGADO', 'BRASILIA', 'DF', 99999999, 99999999, now(), now(), NULL, NULL);
+INSERT INTO INVESTIGADO(invcodigo, cpf, nome, nascimento, nomedopai, nomedamae, sexo, logradouro, bairro, cidade, cidadeuf, numerotelefone,numerocelular, cadastradoem, alteradoem, cadastradopor, alteradopor) VALUES(00001,99999999,'investigado', now(),'paiDoInvestigado','maeDoInvestigado', 'feminino', 'LOGRADOURO DO INVESTIGADO', 'BAIRRO DO INVESTIGADO', 'BRASILIA', 'DF', 99999999, 99999999, now(), now(), NULL, NULL);
