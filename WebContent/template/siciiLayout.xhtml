@@ -30,7 +30,9 @@
 		</ui:insert>
 	
 		<!-- O CONTEUDO DO MENU SERÁ INCLUIDO -->
-		<ui:include src="/template/siciiMenu.xhtml" />
+		<ui:include src="/template/siciiMenu.xhtml" >
+			<ui:param name="projectName" value="sicii" />
+		</ui:include>
 	
 		<!-- CONTEUDO VARIAVEL  -->
 		<ui:insert name="bodyContent">

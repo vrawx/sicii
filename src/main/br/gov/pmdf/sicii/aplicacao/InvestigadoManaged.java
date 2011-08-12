@@ -18,7 +18,7 @@ public class InvestigadoManaged  {
 	
 	@Out
 	private Investigado investigado;
-		
+	
 	private List<Investigado> investigadosConsultados;
 	
 	@In
@@ -28,7 +28,6 @@ public class InvestigadoManaged  {
 	public void pesquisarInvestigado() {
 		investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);		
 	}
-			
 	
 	
 

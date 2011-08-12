@@ -6,16 +6,21 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:rich="http://richfaces.org/rich"
-    template="/template.xhtml">
+    template="/template/siciiLayout.xhtml">
 
     <ui:define name="body">        
         <rich:panel>
-            <h:panelGrid columns="2">
-                <h:graphicImage value="/img/seamlogo.png" alt="Seam logo"/>
-                <s:div styleClass="info">                   
-                    
-                </s:div>
-            </h:panelGrid>
+            <div class="dialog">
+					<h:panelGrid columns="2">
+						<h:outputLabel for="cpf">cpf</h:outputLabel>
+						<h:inputText id="cpf" value="#{investigado.cpf}" />
+						<h:outputLabel for="nome">nome</h:outputLabel>
+						<h:inputSecret id="nome" value="#{investigado.nome}" />						
+					</h:panelGrid>
+			</div>											
+			<div class="actionButtons">
+				<h:commandButton id="submit" value="Login" action="#{identity.login}"/>
+			</div>
         </rich:panel>
     </ui:define>
 </ui:composition>

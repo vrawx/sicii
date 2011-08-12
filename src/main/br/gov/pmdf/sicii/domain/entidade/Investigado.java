@@ -1,21 +1,26 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import org.hibernate.validator.Length;
+import org.hibernate.validator.NotNull;
 import org.jboss.seam.annotations.Name;
 
 /**
  * Classe Investigado
  * OBJETIVO: Representar os investigados, alvo das invetigacoes
  * AUTORES: Rogerio & Vitor
+ * Obs: A LISTA DE INVESTIGACOES FOI RETIRADA DESTA CLASSE PARA NAO GERAR UMA NOVA TABELA
+ * 	E UM CONFLITO DE SEGURANCA DA INFORMACAO, JÁ QUE O INVESTIGADO FICARÁ DISPONIVEL PARA OUTROS
+ *  PERFIS VIZUALIZAREM SEU ESTADO, NAO SENDO INTERESSANTE DEIXAR INFORMACOES DE INVESTIGACOES
+ *  DISPONIVEIS.
+ * 
  */
 
 @Entity
@@ -27,28 +32,36 @@ public class Investigado extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long invCodigo;
-		
+	@Column(name="invCodigo")
+	private Long codigoInvestigado;
+	
+	@NotNull
+	@Length(min=8, max=12)
 	private Integer cpf;
+	
+	@NotNull	
 	private String nome;
 	private Date nascimento;
-	private String pai;
-	private String mae;
+	private String nomeDoPai;
+	private String nomeDaMae;
 	private String sexo;
 	private String logradouro;
 	private String bairro;
 	private String cidade;
 	private String cidadeUF;
-	private Integer telefone;
-	private Integer celular;
+	
+	@Length(max=8)
+	private Integer numeroTelefone;
+	@Length(max=8)
+	private Integer numeroCelular;
+	
 	private Date cadastradoEm;
 	private Date alteradoEm;
-	private Integer cadastradoPor;
-	private Integer alteradoPor;
+	// Este objeto não tem SET, pois o registro é feito somente uma vez
+	private Usuario cadastradoPor;
+	private Usuario alteradoPor;
 	
-	@OneToMany
-	private List<Investigacao> investigacoes;
-	
+		
 	//metodo construtor
 	public Investigado() {
 		
@@ -56,12 +69,9 @@ public class Investigado extends BaseEntity {
 	
 	
 	//get and set da classe
-	public Long getInvCodigo() {
-		return invCodigo;
-	}
-	public void setInvCodigo(Long invCodigo) {
-		this.invCodigo = invCodigo;
-	}
+	public Long getCodigoInvestigado() {
+		return codigoInvestigado;
+	}	
 	public Integer getCpf() {
 		return cpf;
 	}
@@ -80,17 +90,17 @@ public class Investigado extends BaseEntity {
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
 	}
-	public String getPai() {
-		return pai;
+	public String getNomeDoPai() {
+		return nomeDoPai;
 	}
-	public void setPai(String pai) {
-		this.pai = pai;
+	public void setNomeDoPai(String nomeDoPai) {
+		this.nomeDoPai = nomeDoPai;
 	}
-	public String getMae() {
-		return mae;
+	public String getNomeDaMae() {
+		return nomeDaMae;
 	}
-	public void setMae(String mae) {
-		this.mae = mae;
+	public void setNomeDaMae(String nomeDaMae) {
+		this.nomeDaMae = nomeDaMae;
 	}
 	public String getSexo() {
 		return sexo;
@@ -122,66 +132,37 @@ public class Investigado extends BaseEntity {
 	public void setCidadeUF(String cidadeUF) {
 		this.cidadeUF = cidadeUF;
 	}
-	public Integer getTelefone() {
-		return telefone;
+	public Integer getNumeroCelular() {
+		return numeroCelular;
 	}
-	public void setTelefone(Integer telefone) {
-		this.telefone = telefone;
+	public void setNumeroCelular(Integer numeroCelular) {
+		this.numeroCelular = numeroCelular;
 	}
-	public Integer getCelular() {
-		return celular;
+	public Integer getNumeroTelefone() {
+		return numeroTelefone;
 	}
-	public void setCelular(Integer celular) {
-		this.celular = celular;
+	public void setNumeroTelefone(Integer numeroTelefone) {
+		this.numeroTelefone = numeroTelefone;
 	}
-
-
 	public Date getCadastradoEm() {
 		return cadastradoEm;
 	}
-
-
 	public void setCadastradoEm(Date cadastradoEm) {
 		this.cadastradoEm = cadastradoEm;
 	}
-
-
 	public Date getAlteradoEm() {
 		return alteradoEm;
 	}
-
-
 	public void setAlteradoEm(Date alteradoEm) {
 		this.alteradoEm = alteradoEm;
 	}
-
-
-	public Integer getCadastradoPor() {
+	public Usuario getCadastradoPor() {
 		return cadastradoPor;
 	}
-
-
-	public void setCadastradoPor(Integer cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
-	}
-
-
-	public Integer getAlteradoPor() {
+	public Usuario getAlteradoPor() {
 		return alteradoPor;
 	}
-
-
-	public void setAlteradoPor(Integer alteradoPor) {
+	public void setAlteradoPor(Usuario alteradoPor) {
 		this.alteradoPor = alteradoPor;
-	}
-
-
-	public List<Investigacao> getInvestigacoes() {
-		return investigacoes;
-	}
-
-
-	public void setInvestigacoes(List<Investigacao> investigacoes) {
-		this.investigacoes = investigacoes;
-	}
+	}	
 }
