@@ -15,7 +15,7 @@
 						<h:outputLabel for="cpf">cpf</h:outputLabel>
 						<h:inputText id="cpf" value="#{investigado.cpf}" />
 						<h:outputLabel for="nome">nome</h:outputLabel>
-						<h:inputSecret id="nome" value="#{investigado.nome}" />						
+						<h:inputText id="nome" value="#{investigado.nome}" />						
 					</h:panelGrid>
 			</div>											
 			<div class="actionButtons">
@@ -25,7 +25,7 @@
         <h:dataTable value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.statusConsulta}">
         	<h:column><h:outputText value="#{investigado.nome}" /></h:column>
         	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
-        	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado(investigado)}" value="selecionar" /></h:column>
+        	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado}" value="selecionar" /></h:column>
         </h:dataTable>
     </ui:define>
 </ui:composition>
