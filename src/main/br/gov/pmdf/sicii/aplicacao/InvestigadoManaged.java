@@ -33,7 +33,9 @@ public class InvestigadoManaged  {
 	public void selecionarInvestigado(Investigado investigado) {
 		
 	}
-	
+	public void cadastrarInvestigado() {
+		
+	}
 	
 	public void setStatusConsulta(Boolean statusConsulta) {
 		this.statusConsulta = statusConsulta;

@@ -29,24 +29,26 @@
         </h:dataTable>
         
         
-        <h:form id="form1">
-			<h:outputText value="The value is null." 
-						  rendered="#{investigadoManaged.statusConsulta}"/>
-			<h:outputText value="The value is Value"			 			  
-			              rendered="#{investigadoManaged.statusConsulta}"/>	
-			<br/><br/>
-			<h:outputLink value="#" id="link">
-	    		Cadastrar Novo Investigado
-		        <rich:componentControl for="modal1" attachTo="link" operation="show" event="onclick"/>
-		    </h:outputLink>
-		</h:form>
+		<h:outputLink value="#" id="link">
+	        	Cadastrar Novo Investigado
+		    <rich:componentControl for="cadastroPanel" attachTo="link" operation="show" event="onclick"/>
+		</h:outputLink>		
 		
-		<rich:modalPanel id="modal1" width="80%" height="60%">
+		<rich:modalPanel id="cadastroPanel" width="600" height="300">
 	        <f:facet name="header">
-	            <h:panelGroup><h:outputText value="Test Modal Panel"/></h:panelGroup>
+	            <h:panelGroup>
+	                <h:outputText value="Cadastro novo investigado"/>
+	            </h:panelGroup>
 	        </f:facet>
-        	<h:form id="form2">
-        		<h:commandButton value="set String value" action="#{testPopup.setMyString('foo')}" reRender="form1"/>
+        	<h:form id="cadastroInvestigadoForm">
+        		<h:outputText value="Informe o nome do investigado" /><br/>
+        		<h:inputText value="#{investigado.nome}" /><br/>
+        		<h:outputText value="Informe o cpf do investigado" /><br/>
+        		<h:inputText value="#{investigado.cpf}" /><br/>
+        		<h:outputText value="Data" /><br/>
+        		<rich:calendar/><br/>
+        		<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />
+        		<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />
         	</h:form>	        
 		</rich:modalPanel>
         
