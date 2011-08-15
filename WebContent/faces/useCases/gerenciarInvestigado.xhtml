@@ -27,5 +27,28 @@
         	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
         	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado}" value="selecionar" /></h:column>
         </h:dataTable>
+        
+        
+        <h:form id="form1">
+			<h:outputText value="The value is null." 
+						  rendered="#{investigadoManaged.statusConsulta}"/>
+			<h:outputText value="The value is Value"			 			  
+			              rendered="#{investigadoManaged.statusConsulta}"/>	
+			<br/><br/>
+			<h:outputLink value="#" id="link">
+	    		Cadastrar Novo Investigado
+		        <rich:componentControl for="modal1" attachTo="link" operation="show" event="onclick"/>
+		    </h:outputLink>
+		</h:form>
+		
+		<rich:modalPanel id="modal1" width="80%" height="60%">
+	        <f:facet name="header">
+	            <h:panelGroup><h:outputText value="Test Modal Panel"/></h:panelGroup>
+	        </f:facet>
+        	<h:form id="form2">
+        		<h:commandButton value="set String value" action="#{testPopup.setMyString('foo')}" reRender="form1"/>
+        	</h:form>	        
+		</rich:modalPanel>
+        
     </ui:define>
 </ui:composition>
