@@ -5,6 +5,7 @@
    xmlns:f="http://java.sun.com/jsf/core"
    xmlns:h="http://java.sun.com/jsf/html"
    xmlns:a="http://richfaces.org/a4j"
+   xmlns:rich="http://richfaces.org/rich"
    xmlns:s="http://jboss.com/products/seam/taglib"
    contentType="text/html">
 
@@ -16,9 +17,8 @@
 	</head>
 	<body>
 		<!-- ESPACO PARA LOGO / BANNER  E CONTEÚDOS DO LAYOUT -->
-		<ui:insert name="globalContent">
-			<div id="globalContent"></div>
-		</ui:insert>
+		<div id="globalContent"><img src="/template/images/topo.jpg" alt="logomarcaPMDF" /></div>
+		<ui:insert name="globalContent"/>
 	
 		<!-- DIV PARA MENSAGENS DO SISTEMA -->
 		<ui:insert name="globalMessages">
@@ -40,9 +40,9 @@
 		</ui:insert>
 		
 		<!-- CONTEUDO DO FOOTER -->
-		<ui:insert name="footerContent">
-			<div id="footerContent"></div>
-		</ui:insert>
+		<div id="footerContent"><img src="/template/images/rodape.jpg" alt="rodapePMDF" /></div>
+		<ui:insert name="footerContent" />	
+		
 	</body>
 </html>
 </f:view>
