@@ -5,6 +5,7 @@ import java.util.List;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
+import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.Scope;
 
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
@@ -14,10 +15,12 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
 @Name("investigadoManaged")
 @Scope(ScopeType.CONVERSATION)
 public class InvestigadoManaged  {
-		
+	
+	@Out(required=false)
 	private Investigado investigado;	
 	
-	private Boolean statusConsulta = false; 
+	@Out(required=true)
+	private Boolean statusConsulta; 
 	
 	private List<Investigado> investigadosConsultados;
 	
@@ -34,7 +37,7 @@ public class InvestigadoManaged  {
 		
 	}
 	public void cadastrarInvestigado() {
-		
+		repositorioInvestigado.armazenar(investigado);
 	}
 	
 	public void setStatusConsulta(Boolean statusConsulta) {
@@ -46,4 +49,10 @@ public class InvestigadoManaged  {
 	public List<Investigado> getInvestigadosConsultados() {
 		return investigadosConsultados;
 	}
+	public Investigado getInvestigado() {
+		return investigado;
+	}
+	public void setInvestigado(Investigado investigado) {
+		this.investigado = investigado;
+	}	
 }

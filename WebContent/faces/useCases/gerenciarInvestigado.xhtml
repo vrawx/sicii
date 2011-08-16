@@ -11,7 +11,7 @@
     <ui:define name="bodyContent">        
         <rich:panel>
             <div class="dialog">
-					<h:panelGrid columns="2">
+					<h:panelGrid  columns="2">
 						<h:outputLabel for="cpf">cpf</h:outputLabel>
 						<h:inputText id="cpf" value="#{investigado.cpf}" />
 						<h:outputLabel for="nome">nome</h:outputLabel>
@@ -29,26 +29,52 @@
         </h:dataTable>
         
         
-		<h:outputLink value="#" id="link">
-	        	Cadastrar Novo Investigado
-		    <rich:componentControl for="cadastroPanel" attachTo="link" operation="show" event="onclick"/>
-		</h:outputLink>		
-		
-		<rich:modalPanel id="cadastroPanel" width="600" height="300">
+        <h:commandButton value="Cadastrar Novo Investigado" id="cadastrarButton" >
+        	<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" operation="show" event="onclick"/>
+        </h:commandButton>
+        	
+		<rich:modalPanel id="cadastroPanel" width="600" height="600">
 	        <f:facet name="header">
 	            <h:panelGroup>
 	                <h:outputText value="Cadastro novo investigado"/>
 	            </h:panelGroup>
 	        </f:facet>
         	<h:form id="cadastroInvestigadoForm">
-        		<h:outputText value="Informe o nome do investigado" /><br/>
+        		<h:outputText value="Informe o nome do investigado" /><br/>        		
         		<h:inputText value="#{investigado.nome}" /><br/>
+        		
+        		<h:outputText value="Informe a data de nascimento" /><br/>
+        		<rich:calendar /><br/>
+        		<br/>
+        		<h:outputText value="Informe o sexo " /><br/>
+        		<h:selectOneRadio value="#{investigado.sexo}" id="sexoInvestigado">
+        			<f:selectItem id="ms" itemLabel="masculino" itemValue="masculino"/>
+        			<f:selectItem id="fm" itemLabel="feminino" itemValue="feminino"/>
+        		</h:selectOneRadio>
+        		<br/>
+        		
         		<h:outputText value="Informe o cpf do investigado" /><br/>
-        		<h:inputText value="#{investigado.cpf}" /><br/>
-        		<h:outputText value="Data" /><br/>
-        		<rich:calendar/><br/>
+        		<h:inputText value="#{investigado.cpf}" required="true" /><br/>
+        		<h:outputText value="Informe o nome do pai do investigado" /><br/>
+        		<h:inputText value="#{investigado.nomeDoPai}" /><br/>        		
+        		<h:outputText value="Informe o nome da mae do investigado" /><br/>
+        		<h:inputText value="#{investigado.nomeDaMae}" /><br/>
+        		
+        		<h:outputText value="Informe o logradouro" /><br/>
+        		<h:inputText value="#{investigado.logradouro}" /><br/>
+        		<h:outputText value="Informe o Bairro" /><br/>
+        		<h:inputText value="#{investigado.bairro}" /><br/>
+        		<h:outputText value="Informe a cidade" /><br/>
+        		<h:inputText value="#{investigado.cidade}" /><br/>
+        		<h:outputText value="Informe a Unidade Federativa ( UF )" /><br/>
+        		<h:inputText value="#{investigado.cidadeUF}" /><br/>
+        		<br/><br/><br/><br/>        		
+        		   
+        		<!-- Botoes de acao -->
         		<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />
         		<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />
+        		<h:commandButton value="Cancelar" id="cancelarButton" />
+        		<rich:componentControl for="cadastroPanel" attachTo="cancelarButton" event="onclick" operation="hide" />
         	</h:form>	        
 		</rich:modalPanel>
         
