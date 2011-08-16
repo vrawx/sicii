@@ -16,18 +16,22 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
 @Scope(ScopeType.CONVERSATION)
 public class InvestigadoManaged  {
 	
-	@In 
+	@In(create=true)
 	private Investigado investigado;	
 	
-	@DataModel
+	@DataModel("investigadosConsultados")
 	private List<Investigado> investigadosConsultados;
+	
+	private Boolean statusConsultaInvestigado = false;
 	
 	@In
 	private RepositorioInvestigado repositorioInvestigado;	
 	
 	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")
-	public void pesquisarInvestigado() {
+	public void pesquisarInvestigado() {		
 		investigadosConsultados = repositorioInvestigado.recuperarTodos();
+		System.out.println(investigado.getNome());
+		setStatusConsultaInvestigado(true);
 		//investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
 	}
 	
@@ -35,6 +39,7 @@ public class InvestigadoManaged  {
 		
 	}
 	public void cadastrarInvestigado() {
+		setStatusConsultaInvestigado(false);
 		System.out.println(investigado);
 		repositorioInvestigado.armazenar(investigado);
 	}	
@@ -47,5 +52,11 @@ public class InvestigadoManaged  {
 	}
 	public void setInvestigado(Investigado investigado) {
 		this.investigado = investigado;
-	}	
+	}
+	public Boolean getStatusConsultaInvestigado() {
+		return statusConsultaInvestigado;
+	}
+	public void setStatusConsultaInvestigado(Boolean statusConsultaInvestigado) {
+		this.statusConsultaInvestigado = statusConsultaInvestigado;
+	}
 }

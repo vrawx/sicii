@@ -4,6 +4,7 @@
     xmlns:s="http://jboss.com/products/seam/taglib"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:rich="http://richfaces.org/rich"
     template="/template/siciiLayout.xhtml">
@@ -19,16 +20,16 @@
 					</h:panelGrid>
 			</div>											
 			<div class="actionButtons">
-				<h:commandButton id="submit" value="Buscar" action="#{investigadoManaged.pesquisarInvestigado}"/>
+				<a4j:commandButton value="Buscar" id="submit" action="#{investigadoManaged.pesquisarInvestigado}" reRender="tableInvestigados" />				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<h:commandButton value="CadastrarNovo" id="cadastrarButton">
+				<h:commandButton value="Novo Investigado" id="cadastrarButton">
 					<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton"  event="onclick" operation="show"/>
 				</h:commandButton>			
 			</div>
         </rich:panel>
         
         <div id="listaInvestigados">
-	        <h:dataTable value="#{investigadoManaged.investigadosConsultados}" var="investigado" >
+	        <h:dataTable id="tableInvestigados" value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.statusConsultaInvestigado}" >
 	        	<h:column><h:outputText value="#{investigado.nome}" /></h:column>
 	        	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
 	        	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado}" value="selecionar" /></h:column>
@@ -42,9 +43,10 @@
 	                <h:outputText value="Cadastro novo investigado"/>
 	            </h:panelGroup>
 	        </f:facet>
-        	<h:form id="cadastroInvestigadoForm">
-        		<h:outputText value="Informe o nome do investigado" /><br/>        		
-        		<h:inputText value="#{investigado.nome}" /><br/>
+        	<h:form id="cadastroInvestigadoForm">        		
+        		<h:outputText value="Informe o nome do investigado" /><br/>
+        		<h:message for="nome"/><br/>        		
+        		<h:inputText id="nome" value="#{investigado.nome}" required="true" /><br/>
         		
         		<h:outputText value="Informe a data de nascimento" /><br/>
         		<rich:calendar /><br/>
@@ -57,12 +59,14 @@
         		<br/>
         		
         		<h:outputText value="Informe o cpf do investigado" /><br/>
-        		<h:inputText value="#{investigado.cpf}" required="true" /><br/>
+        		<h:message for="cpf"/><br/>
+        		<h:inputText id="cpf" value="#{investigado.cpf}" required="true" /><br/>
         		<h:outputText value="Informe o nome do pai do investigado" /><br/>
         		<h:inputText value="#{investigado.nomeDoPai}" /><br/>        		
         		<h:outputText value="Informe o nome da mae do investigado" /><br/>
         		<h:inputText value="#{investigado.nomeDaMae}" /><br/>
         		
+        		<br/><br/>
         		<h:outputText value="Informe o logradouro" /><br/>
         		<h:inputText value="#{investigado.logradouro}" /><br/>
         		<h:outputText value="Informe o Bairro" /><br/>
