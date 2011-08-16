@@ -2,7 +2,6 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -43,8 +42,8 @@ public class Assessoria extends BaseEntity {
 	
 	public Assessoria() {
 		
-	}
-
+	}	
+	
 	//get and set
 	public Long getAssCodigo() {
 		return assCodigo;
