@@ -19,19 +19,22 @@
 					</h:panelGrid>
 			</div>											
 			<div class="actionButtons">
-				<h:commandButton id="submit" value="Login" action="#{investigadoManaged.pesquisarInvestigado}"/>
+				<h:commandButton id="submit" value="Buscar" action="#{investigadoManaged.pesquisarInvestigado}"/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<h:commandButton value="CadastrarNovo" id="cadastrarButton">
+					<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton"  event="onclick" operation="show"/>
+				</h:commandButton>			
 			</div>
         </rich:panel>
-        <h:dataTable value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.statusConsulta}">
-        	<h:column><h:outputText value="#{investigado.nome}" /></h:column>
-        	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
-        	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado}" value="selecionar" /></h:column>
-        </h:dataTable>
         
+        <div id="listaInvestigados">
+	        <h:dataTable value="#{investigadoManaged.investigadosConsultados}" var="investigado" >
+	        	<h:column><h:outputText value="#{investigado.nome}" /></h:column>
+	        	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
+	        	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado}" value="selecionar" /></h:column>
+	        </h:dataTable>   
+        </div>        
         
-        <h:commandButton value="Cadastrar Novo Investigado" id="cadastrarButton" >
-        	<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" operation="show" event="onclick"/>
-        </h:commandButton>
         	
 		<rich:modalPanel id="cadastroPanel" width="600" height="600">
 	        <f:facet name="header">
