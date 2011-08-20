@@ -27,15 +27,15 @@ import org.jboss.seam.annotations.Name;
  */
 
 @Entity
+@SequenceGenerator(name="investigadoSequence", initialValue=0, sequenceName="investigadoSequencePostgres" )
 @Table(name="INVESTIGADO")
 @Name("investigado")
-@SequenceGenerator(name="INVESTIGADO_SEQ", initialValue=0, sequenceName="security.group" )
 public class Investigado extends BaseEntity {
 			
 	private static final long serialVersionUID = 1L;
 
 	@Id	
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="INVESTIGADO_SEQ")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="investigadoSequence")
 	@Column(name="invCodigo")	
 	private Long codigoInvestigado;
 	

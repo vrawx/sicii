@@ -2,6 +2,7 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
 
@@ -47,7 +47,7 @@ public class Usuario extends BaseEntity {
 	private Integer cadastradoPor;
 	private Integer alteradoPor;
 	
-	@ForeignKey(name="tipoUsuario")
+	//@ForeignKey(name="tipoUsuario")
 	private TipoUsuario tipoUsuario;
 	
 	@OneToMany

@@ -18,15 +18,15 @@ import org.hibernate.annotations.ForeignKey;
  */
 
 @Entity
+@SequenceGenerator(name="tipoUsuarioSequence", initialValue=0, sequenceName="tipoUsuarioSequencePostgres" )
 @Table(name="TIPOUSUARIO")
-@SequenceGenerator(name="TIPOUSUARIO_SEQ", initialValue=0, sequenceName="security.group" )
 public class TipoUsuario extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	//atributos do sistema
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="TIPOUSUARIO_SEQ")	
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="tipoUsuarioSequence")	
 	private Long tipCodigo;
 	
 	private String sigla;
