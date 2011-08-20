@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
 
@@ -19,14 +22,15 @@ import org.hibernate.validator.NotNull;
  */
 
 @Entity
+@SequenceGenerator(name="usuarioSequence", initialValue=0, sequenceName="usuarioSequencePostgres" )
 @Table(name="USUARIO")
 public class Usuario extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 
 	//atributos do sistema
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id	
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="usuarioSequence")
 	@Column(name="usuCodigo")
 	private Long codigoUsuario;		
 		
@@ -41,7 +45,9 @@ public class Usuario extends BaseEntity {
 	private Date cadastradoEm;
 	private Date alteradoEm;
 	private Integer cadastradoPor;
-	private Integer alteradoPor;	
+	private Integer alteradoPor;
+	
+	@ForeignKey(name="tipoUsuario")
 	private TipoUsuario tipoUsuario;
 	
 	@OneToMany

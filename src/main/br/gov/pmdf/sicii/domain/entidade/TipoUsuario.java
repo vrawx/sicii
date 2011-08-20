@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ForeignKey;
 
 /**
  * Classe TipoUsuario
@@ -14,32 +18,38 @@ import javax.persistence.Id;
  */
 
 @Entity
+@Table(name="TIPOUSUARIO")
+@SequenceGenerator(name="TIPOUSUARIO_SEQ", initialValue=0, sequenceName="security.group" )
 public class TipoUsuario extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	//atributos do sistema
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)	
-	private Integer tipCodigo;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="TIPOUSUARIO_SEQ")	
+	private Long tipCodigo;
 	
 	private String sigla;
 	private String descricao;
+	
 	private Date cadastradoEm;
+	@ForeignKey(name="cadastradoForeiginKey")	
+	private Usuario cadastradoPor;
+
 	private Date alteradoEm;
-	private Integer cadastradoPor;
-	private Integer alteradoPor;
+	@ForeignKey(name="alteradoPor")
+	private Usuario alteradoPor;
 	
 	public TipoUsuario() {
 
 	}
 
 	//get and set
-	public Integer getTipCodigo() {
+	public Long getTipCodigo() {
 		return tipCodigo;
 	}
 
-	public void setTipCodigo(Integer tipCodigo) {
+	public void setTipCodigo(Long tipCodigo) {
 		this.tipCodigo = tipCodigo;
 	}
 
@@ -75,19 +85,16 @@ public class TipoUsuario extends BaseEntity {
 		this.alteradoEm = alteradoEm;
 	}
 
-	public Integer getCadastradoPor() {
+	public Usuario getCadastradoPor() {
 		return cadastradoPor;
 	}
-
-	public void setCadastradoPor(Integer cadastradoPor) {
+	public void setCadastradoPor(Usuario cadastradoPor) {
 		this.cadastradoPor = cadastradoPor;
 	}
-
-	public Integer getAlteradoPor() {
+	public Usuario getAlteradoPor() {
 		return alteradoPor;
 	}
-
-	public void setAlteradoPor(Integer alteradoPor) {
+	public void setAlteradoPor(Usuario alteradoPor) {
 		this.alteradoPor = alteradoPor;
 	}
 }

@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
 import org.jboss.seam.annotations.Name;
@@ -27,13 +29,14 @@ import org.jboss.seam.annotations.Name;
 @Entity
 @Table(name="INVESTIGADO")
 @Name("investigado")
+@SequenceGenerator(name="INVESTIGADO_SEQ", initialValue=0, sequenceName="security.group" )
 public class Investigado extends BaseEntity {
 			
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="invCodigo")
+	@Id	
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="INVESTIGADO_SEQ")
+	@Column(name="invCodigo")	
 	private Long codigoInvestigado;
 	
 	@NotNull
@@ -59,7 +62,9 @@ public class Investigado extends BaseEntity {
 	private Date cadastradoEm;
 	private Date alteradoEm;
 	// Este objeto não tem SET, pois o registro é feito somente uma vez
+	@ForeignKey(name="cadastroPor")
 	private Usuario cadastradoPor;
+	@ForeignKey(name="alteradoPor")
 	private Usuario alteradoPor;
 	
 		
