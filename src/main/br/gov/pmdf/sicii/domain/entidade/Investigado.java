@@ -2,15 +2,16 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
-import org.hibernate.annotations.ForeignKey;
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
 import org.jboss.seam.annotations.Name;
@@ -28,7 +29,6 @@ import org.jboss.seam.annotations.Name;
 
 @Entity
 @SequenceGenerator(name="investigadoSequence", initialValue=0, sequenceName="investigadoSequencePostgres" )
-@Table(name="INVESTIGADO")
 @Name("investigado")
 public class Investigado extends BaseEntity {
 			
@@ -58,15 +58,17 @@ public class Investigado extends BaseEntity {
 	private Integer numeroTelefone;
 	@Length(max=8)
 	private Integer numeroCelular;
-	
-	private Date cadastradoEm;
-	private Date alteradoEm;
+
 	// Este objeto não tem SET, pois o registro é feito somente uma vez
-	@ForeignKey(name="cadastroPor")
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
+	@JoinColumn(name="cadastradoPor")
 	private Usuario cadastradoPor;
-	@ForeignKey(name="alteradoPor")
-	private Usuario alteradoPor;
+	private Date cadastradoEm;
 	
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
+	@JoinColumn(name="alteradoPor")
+	private Usuario alteradoPor;
+	private Date alteradoEm;
 		
 	//metodo construtor
 	public Investigado() {

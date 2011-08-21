@@ -27,11 +27,11 @@
 					<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton"  event="onclick" operation="show"/>					
 				</div>
 			</h:form>
-        </rich:panel>
-    
+        </rich:panel>    
         
         <div id="listaInvestigados">
-	        <h:dataTable id="tableInvestigados" value="#{investigadoManaged.investigadosConsultados}" var="investigado"  >
+	        <h:panelGroup rendered="#{investigadoManaged.investigadosConsultados.size eq 0}" > Nenhum usuario Listado</h:panelGroup>
+	        <h:dataTable id="tableInvestigados" value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.investigadosConsultados.size gt 0}" >
 	        	<h:column><h:outputText value="#{investigado.nome}" /></h:column>
 	        	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
 	        	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado}" value="selecionar" /></h:column>

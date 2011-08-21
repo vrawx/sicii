@@ -19,13 +19,15 @@ public class LoginManaged {
 	@In
 	private RepositorioUsuario repositorioUsuario;
 	
-	public boolean loginMethod() {
+	public String loginMethod() {
+		System.out.println("Aqui funcionou:   "+usuario.getLogin());
 		usuario = repositorioUsuario.getByCredentials(usuario.getLogin(), usuario.getSenha());
-		if(usuario != null && (! usuario.getStatusLogin()) ) {
+		System.out.println(usuario.getLogin());
+		if(usuario != null) {
 			usuario.setStatusLogin(true);
-			return true;
+			return "SUCESS";
 		}
-		return false;
+		return "FAIL";
 	}
 	public void logoutMethod() {
 		usuario.setStatusLogin(false);

@@ -12,9 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
@@ -28,7 +27,6 @@ import org.jboss.seam.annotations.Name;
 
 @Entity
 @SequenceGenerator(name="usuarioSequence", initialValue=0, sequenceName="usuarioSequencePostgres" )
-@Table(name="USUARIO")
 @Name("usuario")
 public class Usuario extends BaseEntity {
 	
@@ -36,7 +34,7 @@ public class Usuario extends BaseEntity {
 
 	//atributos do sistema
 	@Id	
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="usuarioSequence")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="usuarioSequence")	
 	@Column(name="usuCodigo", nullable=false)
 	private Long codigoUsuario;		
 		
@@ -60,11 +58,11 @@ public class Usuario extends BaseEntity {
 	@JoinColumn(name="tipoUsuario")
 	private TipoUsuario tipoUsuario;
 	
-	@OneToMany
-	private List<Assessoria> assessorias;
+	@Transient
+	private List<Assessoria> assessorias;	
 	
 	public Usuario() {
-
+		
 	}
 	public Usuario(String username, String password){
 		this.login = username;
@@ -92,6 +90,9 @@ public class Usuario extends BaseEntity {
 	}
 	
 	//get and set
+	public List<Assessoria> getAssessorias() {
+		return assessorias;
+	}
 	public Long getCodigoUsuario() {
 		return codigoUsuario;
 	}	
@@ -136,8 +137,5 @@ public class Usuario extends BaseEntity {
 	}
 	public void setAlteradoPor(Integer alteradoPor) {
 		this.alteradoPor = alteradoPor;
-	}
-	public List<Assessoria> getAssessorias() {
-		return assessorias;
-	}	
+	}		
 }

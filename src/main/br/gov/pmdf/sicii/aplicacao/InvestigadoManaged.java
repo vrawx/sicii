@@ -2,18 +2,17 @@ package br.gov.pmdf.sicii.aplicacao;
 
 import java.util.List;
 
-import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.datamodel.DataModel;
+
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
 import br.gov.pmdf.sicii.domain.service.impl.InvestigadoServiceImpl;
 
 
 @Name("investigadoManaged")
-@Scope(ScopeType.CONVERSATION)
+//@Scope(ScopeType.CONVERSATION)
 public class InvestigadoManaged  {
 	
 //	@In
@@ -30,11 +29,10 @@ public class InvestigadoManaged  {
 	
 	private InvestigadoServiceImpl investigadoService;
 	
-	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")
+	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")	
 	public void pesquisarInvestigado() {		
-		investigadosConsultados = repositorioInvestigado.recuperarTodos();
-		System.out.println(investigado.getNome());		
-		//investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
+		//investigadosConsultados = repositorioInvestigado.recuperarTodos();				
+		investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
 	}
 	
 	public void selecionarInvestigado(Investigado investigado) {
@@ -42,6 +40,7 @@ public class InvestigadoManaged  {
 	}	
 	public void cadastrarInvestigado() {		
 		investigadoService.aplicarRegradeNegocio(investigado);
+		
 		repositorioInvestigado.armazenar(investigado);
 	}	
 	
