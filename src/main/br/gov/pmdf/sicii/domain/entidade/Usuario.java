@@ -3,17 +3,22 @@ package br.gov.pmdf.sicii.domain.entidade;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe Usuario
@@ -24,6 +29,7 @@ import org.hibernate.validator.NotNull;
 @Entity
 @SequenceGenerator(name="usuarioSequence", initialValue=0, sequenceName="usuarioSequencePostgres" )
 @Table(name="USUARIO")
+@Name("usuario")
 public class Usuario extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
@@ -31,7 +37,7 @@ public class Usuario extends BaseEntity {
 	//atributos do sistema
 	@Id	
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="usuarioSequence")
-	@Column(name="usuCodigo")
+	@Column(name="usuCodigo", nullable=false)
 	private Long codigoUsuario;		
 		
 	@NotNull
@@ -47,7 +53,11 @@ public class Usuario extends BaseEntity {
 	private Integer cadastradoPor;
 	private Integer alteradoPor;
 	
-	//@ForeignKey(name="tipoUsuario")
+	private Boolean statusLogin = false;
+	
+	// ESSE MÉTODO DEVE SER SAVE_UPDATE 
+	@ManyToOne(fetch=FetchType.EAGER, cascade={CascadeType.REFRESH ,CascadeType.PERSIST})       
+	@JoinColumn(name="tipoUsuario")
 	private TipoUsuario tipoUsuario;
 	
 	@OneToMany
@@ -72,6 +82,13 @@ public class Usuario extends BaseEntity {
 				return true;			
 		}		
 		return false;		
+	}
+	
+	public void setStatusLogin(Boolean statusLogin) {
+		this.statusLogin = statusLogin;
+	}
+	public Boolean getStatusLogin() {
+		return statusLogin;
 	}
 	
 	//get and set

@@ -21,9 +21,14 @@ public class LoginManaged {
 	
 	public boolean loginMethod() {
 		usuario = repositorioUsuario.getByCredentials(usuario.getLogin(), usuario.getSenha());
-		if(usuario != null)
+		if(usuario != null && (! usuario.getStatusLogin()) ) {
+			usuario.setStatusLogin(true);
 			return true;
+		}
 		return false;
+	}
+	public void logoutMethod() {
+		usuario.setStatusLogin(false);
 	}
 	
 	

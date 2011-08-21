@@ -9,7 +9,7 @@ import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.datamodel.DataModel;
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
-import br.gov.pmdf.sicii.domain.service.impl.InvestigadoService;
+import br.gov.pmdf.sicii.domain.service.impl.InvestigadoServiceImpl;
 
 
 @Name("investigadoManaged")
@@ -28,7 +28,7 @@ public class InvestigadoManaged  {
 	@In
 	private RepositorioInvestigado repositorioInvestigado;	
 	
-	private InvestigadoService investigadoService;
+	private InvestigadoServiceImpl investigadoService;
 	
 	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")
 	public void pesquisarInvestigado() {		
