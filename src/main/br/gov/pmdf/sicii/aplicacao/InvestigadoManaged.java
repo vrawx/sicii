@@ -30,9 +30,9 @@ public class InvestigadoManaged  {
 	private InvestigadoServiceImpl investigadoService;
 	
 	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")	
-	public void pesquisarInvestigado() {		
-		investigadosConsultados = repositorioInvestigado.recuperarTodos();				
-		//investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
+	public void pesquisarInvestigado() {
+		//investigadosConsultados = repositorioInvestigado.recuperarTodos();				
+		investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
 	}
 	
 	public void selecionarInvestigado(Investigado investigado) {
