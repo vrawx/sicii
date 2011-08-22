@@ -14,12 +14,8 @@ public class InvestigadoDAO extends AbstractDAO<Investigado> implements Reposito
 
 	private static final long serialVersionUID = 1L;
 	
-	public List<Investigado> recuperarPorFragmento(Investigado investigado) {	
-		System.out.println(investigado.getNome());
-		System.out.println(investigado.getCpf());		
-		String stringQuery = "SELECT inv FROM investigado inv ";
-		//WHERE inv.cpf like :cpf";			
-		
-		return entityManager.createQuery(stringQuery, Investigado.class).getResultList();				 		
+	public List<Investigado> recuperarPorFragmento(Investigado investigado) {				
+		String stringQuery = "SELECT inv FROM investigado inv WHERE inv.cpf LIKE %:cpf%";				
+		return entityManager.createQuery(stringQuery, Investigado.class).setParameter("cpf",investigado.getCpf()).getResultList();				 		
 	}	
 }

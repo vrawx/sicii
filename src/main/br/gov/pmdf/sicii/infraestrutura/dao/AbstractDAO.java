@@ -29,12 +29,12 @@ public abstract class AbstractDAO<T extends BaseEntity> implements Repositorio<T
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<T> recuperarTodos() {
+	public List<T> recuperarTodos() {		
 		List<T> retorno = entityManager.createQuery("SELECT c FROM " + getPersistenceClass().getSimpleName() + " c").setMaxResults(50).getResultList();
 		if (retorno.size() >= 50) {
 			System.out.println(" Quantidade de registro maior que 50 Refine sua busca");
 		}
-		return retorno;
+		return retorno;		
 	}
 
 	public void remover(T persistenceEntity) {

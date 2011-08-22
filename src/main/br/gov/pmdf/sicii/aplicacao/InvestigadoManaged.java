@@ -31,8 +31,8 @@ public class InvestigadoManaged  {
 	
 	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")	
 	public void pesquisarInvestigado() {		
-		//investigadosConsultados = repositorioInvestigado.recuperarTodos();				
-		investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
+		investigadosConsultados = repositorioInvestigado.recuperarTodos();				
+		//investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
 	}
 	
 	public void selecionarInvestigado(Investigado investigado) {
