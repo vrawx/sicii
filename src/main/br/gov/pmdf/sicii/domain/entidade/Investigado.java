@@ -3,6 +3,7 @@ package br.gov.pmdf.sicii.domain.entidade;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,7 +35,8 @@ public class Investigado extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Id	
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="investigadoSequence")	
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="investigadoSequence")
+	@Column(name="invCodigo")
 	private Long codigoInvestigado;
 	
 	@NotNull
