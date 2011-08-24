@@ -1,14 +1,16 @@
-#Sat Aug 06 10:01:15 BRT 2011
+#Wed Aug 24 07:43:12 BRT 2011
 action.package=org.domain.sicii.session
 action.sources=/sicii/src/hot
 eclipse.preferences.version=1
 model.package=org.domain.sicii.entity
 model.sources=/sicii/src/main
+seam.ejb.project=sicii
 seam.project.connection.profile=New PostgreSQL
 seam.project.deployment.type=war
 seam.project.settings.version=1.1
 seam.project.web.root.folder=/sicii/WebContent
-seam.runtime.name=seam
+seam.runtime.name=jboss-seam-2.2.2.Final
+seam.settings.changed.by.user=true
 seam.test.creating=true
 seam.test.project=sicii-test
 test.package=org.domain.sicii.test

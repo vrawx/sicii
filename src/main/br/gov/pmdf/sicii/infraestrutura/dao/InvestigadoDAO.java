@@ -13,12 +13,13 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
 public class InvestigadoDAO extends AbstractDAO<Investigado> implements RepositorioInvestigado {
 
 	private static final long serialVersionUID = 1L;
-			
+	
+	
 	@SuppressWarnings("unchecked")
 	public List<Investigado> recuperarPorFragmento(Investigado investigado) {				
-		String stringQuery = "SELECT inv FROM INVESTIGADO inv";
-		return entityManager.createQuery(stringQuery).getResultList();
-		//String stringQuery = "SELECT inv FROM investigado inv WHERE inv.cpf LIKE '%:cpf%' ";				
-		//return entityManager.createQuery(stringQuery, Investigado.class).setParameter("cpf",investigado.getCpf()).getResultList();				 		
+		String stringQuery = "SELECT inv FROM Investigado inv WHERE inv.cpf LIKE '%:cpf%' ";
+		//String stringQuery = "SELECT inv FROM investigado inv";				
+		//return entityManager.createNativeQuery(stringQuery, Investigado.class).getResultList();		
+		return entityManager.createQuery(stringQuery).setParameter("cpf",investigado.getCpf()).getResultList();				 		
 	}	
 }
