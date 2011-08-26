@@ -2,47 +2,49 @@ package br.gov.pmdf.sicii.aplicacao;
 
 import java.util.List;
 
+import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.datamodel.DataModel;
 
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
-import br.gov.pmdf.sicii.domain.service.impl.InvestigadoServiceImpl;
-
 
 @Name("investigadoManaged")
-//@Scope(ScopeType.CONVERSATION)
 public class InvestigadoManaged  {
 	
-//	@In
-//	private Usuario usuarioLogado;
+	//@In(scope=ScopeType.SESSION)
+	//private Usuario usuarioLogado;
 	
 	@In(create=true)
 	private Investigado investigado;	
 	
-	@DataModel("investigadosConsultados")
-	private List<Investigado> investigadosConsultados;	
+	@DataModel
+	private List<Investigado> investigadosConsultados;
 	
 	@In
 	private RepositorioInvestigado repositorioInvestigado;	
 	
-	private InvestigadoServiceImpl investigadoService;
+	//private InvestigadoServiceImpl investigadoService;
 	
 	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")	
 	public void pesquisarInvestigado() {
-		//investigadosConsultados = repositorioInvestigado.recuperarTodos();				
+		//investigadosConsultados = repositorioInvestigado.recuperarTodos();		
 		investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
 	}
-	
-	public void selecionarInvestigado(Investigado investigado) {
+	@Factory("investigadosConsultados")
+	public void factoryInvestigadosConsultados() {
+		investigadosConsultados = repositorioInvestigado.recuperarTodos();
+	}
 		
-	}	
-	public void cadastrarInvestigado() {		
-		investigadoService.aplicarRegradeNegocio(investigado);
-		
+	public String cadastrarInvestigado() {		
+		//System.out.println(usuarioLogado.getLogin());
+		//investigadoService.aplicarRegradeNegocio(investigado);
 		repositorioInvestigado.armazenar(investigado);
+		investigado = null;
+		return "sucess";
 	}	
+	
 	
 	public List<Investigado> getInvestigadosConsultados() {
 		return investigadosConsultados;

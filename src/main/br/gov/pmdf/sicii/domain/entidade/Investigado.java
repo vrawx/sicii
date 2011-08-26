@@ -2,19 +2,16 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
-import org.hibernate.validator.Length;
-import org.hibernate.validator.NotNull;
+import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Name;
+import org.jboss.seam.annotations.Role;
 
 /**
  * Classe Investigado
@@ -28,8 +25,9 @@ import org.jboss.seam.annotations.Name;
  */
 
 @Entity
-@SequenceGenerator(name="investigadoSequence", initialValue=0, sequenceName="investigadoSequencePostgres" )
+@SequenceGenerator(name="investigadoSequence", sequenceName="investigadoSequencePostgres" )
 @Name("investigado")
+@Role(name="usuarioLogado", scope=ScopeType.SESSION)
 public class Investigado extends BaseEntity {
 			
 	private static final long serialVersionUID = 1L;
@@ -39,11 +37,11 @@ public class Investigado extends BaseEntity {
 	@Column(name="invCodigo")
 	private Long codigoInvestigado;
 	
-	@NotNull
-	@Length(min=8, max=12)
+	//@NotNull
+	//@Length(min=8, max=12)	
 	private String cpf;
 	
-	@NotNull	
+	//@NotNull	
 	private String nome;
 	private Date nascimento;
 	private String nomeDoPai;
@@ -54,21 +52,21 @@ public class Investigado extends BaseEntity {
 	private String cidade;
 	private String cidadeUF;
 	
-	@Length(max=8)
+	//@Length(max=8)
 	private Integer numeroTelefone;
-	@Length(max=8)
+	//@Length(max=8)
 	private Integer numeroCelular;
 
 	// Este objeto não tem SET, pois o registro é feito somente uma vez
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-	@JoinColumn(name="cadastradoPor")
-	private Usuario cadastradoPor;
-	private Date cadastradoEm;
-	
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-	@JoinColumn(name="alteradoPor")
-	private Usuario alteradoPor;
-	private Date alteradoEm;
+//	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
+//	@JoinColumn(name="cadastradoPor")
+//	private Usuario cadastradoPor;
+//	private Date cadastradoEm;
+//	
+//	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
+//	@JoinColumn(name="alteradoPor")
+//	private Usuario alteradoPor;
+//	private Date alteradoEm;
 		
 	//metodo construtor
 	public Investigado() {
@@ -116,6 +114,9 @@ public class Investigado extends BaseEntity {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	public void setCodigoInvestigado(Long codigoInvestigado) {
+		this.codigoInvestigado = codigoInvestigado;
+	}
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -152,25 +153,25 @@ public class Investigado extends BaseEntity {
 	public void setNumeroTelefone(Integer numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
-	public Date getCadastradoEm() {
-		return cadastradoEm;
-	}
-	public void setCadastradoEm(Date cadastradoEm) {
-		this.cadastradoEm = cadastradoEm;
-	}
-	public Date getAlteradoEm() {
-		return alteradoEm;
-	}
-	public void setAlteradoEm(Date alteradoEm) {
-		this.alteradoEm = alteradoEm;
-	}
-	public Usuario getCadastradoPor() {
-		return cadastradoPor;
-	}
-	public Usuario getAlteradoPor() {
-		return alteradoPor;
-	}
-	public void setAlteradoPor(Usuario alteradoPor) {
-		this.alteradoPor = alteradoPor;
-	}	
+//	public Date getCadastradoEm() {
+//		return cadastradoEm;
+//	}
+//	public void setCadastradoEm(Date cadastradoEm) {
+//		this.cadastradoEm = cadastradoEm;
+//	}
+//	public Date getAlteradoEm() {
+//		return alteradoEm;
+//	}
+//	public void setAlteradoEm(Date alteradoEm) {
+//		this.alteradoEm = alteradoEm;
+//	}
+//	public Usuario getCadastradoPor() {
+//		return cadastradoPor;
+//	}
+//	public Usuario getAlteradoPor() {
+//		return alteradoPor;
+//	}
+//	public void setAlteradoPor(Usuario alteradoPor) {
+//		this.alteradoPor = alteradoPor;
+//	}	
 }
