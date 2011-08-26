@@ -14,12 +14,13 @@ public class InvestigadoDAO extends AbstractDAO<Investigado> implements Reposito
 
 	private static final long serialVersionUID = 1L;
 	
+	private final String packageName = Investigado.class.getPackage().getName();
 	
 	@SuppressWarnings("unchecked")
-	public List<Investigado> recuperarPorFragmento(Investigado investigado) {				
-		String stringQuery = "SELECT inv FROM Investigado inv WHERE inv.nome LIKE '%jose%' ";
+	public List<Investigado> recuperarPorFragmento(Investigado investigado) {		
+		String stringQuery = "SELECT inv FROM "+packageName+".Investigado inv WHERE inv.cpf LIKE :cpf AND inv.nome LIKE :nome ";
 		//String stringQuery = "SELECT inv FROM investigado inv";				
 		//return entityManager.createNativeQuery(stringQuery, Investigado.class).getResultList();		
-		return entityManager.createQuery(stringQuery).getResultList();				 		
+		return entityManager.createQuery(stringQuery).setParameter("cpf","%"+investigado.getCpf()+"%").setParameter("nome","%"+investigado.getNome()+"%").getResultList();				 		
 	}	
 }

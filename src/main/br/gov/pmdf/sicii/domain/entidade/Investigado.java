@@ -41,7 +41,7 @@ public class Investigado extends BaseEntity {
 	
 	@NotNull
 	@Length(min=8, max=12)
-	private Integer cpf;
+	private String cpf;
 	
 	@NotNull	
 	private String nome;
@@ -77,15 +77,15 @@ public class Investigado extends BaseEntity {
 	
 	
 	//get and set da classe
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getCpf() {
+		return cpf;
+	}
 	public Long getCodigoInvestigado() {
 		return codigoInvestigado;
 	}	
-	public Integer getCpf() {
-		return cpf;
-	}
-	public void setCpf(Integer cpf) {
-		this.cpf = cpf;
-	}
 	public String getNome() {
 		return nome;
 	}
