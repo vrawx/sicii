@@ -1,9 +1,9 @@
 package br.gov.pmdf.sicii.aplicacao;
 
+import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
-
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioUsuario;
 
@@ -13,8 +13,8 @@ public class LoginManaged {
 	@In @Out
 	private Usuario usuario;
 	
-//	@Out(scope=ScopeType.SESSION)
-//	private Usuario usuarioLogado;
+	@Out(scope=ScopeType.SESSION)
+	private Usuario usuarioLogado;
 	
 	@In
 	private RepositorioUsuario repositorioUsuario;	
@@ -23,15 +23,22 @@ public class LoginManaged {
 		usuario = repositorioUsuario.getByCredentials(usuario.getLogin(), usuario.getSenha());		
 		if(usuario != null) {
 			usuario.setStatusLogin(true);
+			usuarioLogado = usuario;
 			return "sucess";			
-		}		
+		}	
+		
 		return "fail";
 	}	
 	public void logoutMethod() {
 
 	}
 	
-	
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
 	public Usuario getUsuario() {
 		return usuario;
 	}

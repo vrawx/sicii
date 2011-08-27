@@ -43,8 +43,8 @@
   NAME="exception:org.jboss.seam.security.NotLoggedInException"
   PATH="org.jboss.seam.security.NotLoggedInException" SHAPE="24,849,0,0"
   TYPE="exception" model-entity="SeamPagesDiagramItem">
-  <output ID="/login.xhtml" NAME="output" PATH="/login.xhtml"
-   TARGET="#xlogin.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/faces/siciiLogin.xhtml" NAME="output"
+   PATH="/faces/siciiLogin.xhtml" TARGET="#xfaces#xsiciiLogin.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
  <item ID="javax.faces.application.ViewExpiredException"
   NAME="exception:javax.faces.application.ViewExpiredException"
@@ -63,8 +63,8 @@
  </item>
  <item NAME="#xhome.xhtml" PATH="/home.xhtml" SHAPE="344,17,0,0"
   TYPE="page" model-entity="SeamPagesDiagramItem"/>
- <item NAME="#xlogin.xhtml" PATH="/login.xhtml" SHAPE="344,849,0,0"
-  TYPE="page" model-entity="SeamPagesDiagramItem"/>
  <item NAME="#xerror.xhtml" PATH="/error.xhtml" SHAPE="472,121,0,0"
   TYPE="page" model-entity="SeamPagesDiagramItem"/>
+ <item NAME="#xfaces#xsiciiLogin.xhtml" PATH="/faces/siciiLogin.xhtml"
+  SHAPE="344,849,0,0" TYPE="page" model-entity="SeamPagesDiagramItem"/>
 </diagram>

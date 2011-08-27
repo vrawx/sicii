@@ -2,7 +2,7 @@
 <pages xmlns="http://jboss.com/products/seam/pages"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd"
-
+	   login-view-id="/faces/siciiLogin.xhtml"
        no-conversation-view-id="/home.xhtml">
 
     <page view-id="*">
@@ -45,7 +45,7 @@
     </exception>
     
     <exception class="org.jboss.seam.security.NotLoggedInException">
-        <redirect view-id="/login.xhtml">
+        <redirect view-id="/faces/siciiLogin.xhtml">
             <message severity="warn">#{messages['org.jboss.seam.NotLoggedIn']}</message>
         </redirect>
     </exception>
