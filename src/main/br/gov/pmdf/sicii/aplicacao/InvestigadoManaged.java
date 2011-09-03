@@ -12,6 +12,7 @@ import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.datamodel.DataModel;
+import org.jboss.seam.annotations.datamodel.DataModelSelection;
 
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
@@ -22,8 +23,9 @@ import br.gov.pmdf.sicii.domain.service.impl.InvestigadoServiceImpl;
 public class InvestigadoManaged  {
 	
 	@In(scope=ScopeType.SESSION)
-	private Usuario usuarioLogado;
+	private Usuario usuarioLogado;	
 	
+	@DataModelSelection
 	@In(create=true) @Out(required=false)
 	private Investigado investigado;	
 		
@@ -33,31 +35,36 @@ public class InvestigadoManaged  {
 	@In
 	private RepositorioInvestigado repositorioInvestigado;	
 	
+	@In
+	private InvestigadoServiceImpl investigadoService;
 	
 	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")	
 	public void pesquisarInvestigado() {
-		//investigadosConsultados = repositorioInvestigado.recuperarTodos();		
-		investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);				
+		investigadoService.cadastrarAuditoria(investigado, "Pesquisar Investigado");
+		investigadosConsultados = repositorioInvestigado.recuperarPorFragmento(investigado);		
 	}
 	@Factory("investigadosConsultados")
 	public void factoryInvestigadosConsultados() {
 		investigadosConsultados = repositorioInvestigado.recuperarTodos();
 	}
-	public String alterarInvestigado(Investigado investigado) {
-		InvestigadoServiceImpl investigadoService = new InvestigadoServiceImpl();
+	public String alterarInvestigado(Investigado investigado) {		
 		if( investigadoService.isCandidatoValido(investigado) ) {			
 			investigado.setAlteradoPor(usuarioLogado);
-			investigado.setAlteradoEm(new Date());
-			repositorioInvestigado.armazenar(investigado);			
-			FacesContext.getCurrentInstance().addMessage("global",new FacesMessage("Investigado Alterado com Sucesso"));
-			return "sucess";					
+			investigado.setAlteradoEm(new Date());			
+			repositorioInvestigado.armazenar(investigado);
+			// Registro de Auditoria
+			investigadoService.cadastrarAuditoria(investigado, "alterarInvestigado");
+			FacesContext.getCurrentInstance().addMessage("messages",new FacesMessage("Investigado Alterado com Sucesso"));
+			return "sucess";
 		}
 		return "fail";		
 	}
 	public void excluirInvestigado(Investigado investigado) {
 		repositorioInvestigado.remover(investigado);
+		investigadoService.cadastrarAuditoria(investigado, "Excluindo Investigado");
+		System.out.println("passou aqui");
 		FacesMessage facesMessage = new FacesMessage("Investigado Removido com Sucesso");
-		FacesContext.getCurrentInstance().addMessage("global",facesMessage);		
+		FacesContext.getCurrentInstance().addMessage("messages",facesMessage);		
 	}
 	public String cadastrarInvestigado() {		
 		InvestigadoServiceImpl investigadoService = new InvestigadoServiceImpl();
@@ -67,14 +74,16 @@ public class InvestigadoManaged  {
 			investigado.setAlteradoPor(usuarioLogado);
 			investigado.setAlteradoEm(new Date());
 			repositorioInvestigado.armazenar(investigado);
+			// Registro de auditoria
+			investigadoService.cadastrarAuditoria(investigado, "Cadastrando Investigado");
 			investigado = null;
 			return "sucess";					
 		}		
 		return "fail";
 		
 	}	
+				
 	
-		
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}

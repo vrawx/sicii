@@ -19,8 +19,8 @@ public class InvestigadoDAO extends AbstractDAO<Investigado> implements Reposito
 	@SuppressWarnings("unchecked")
 	public List<Investigado> recuperarPorFragmento(Investigado investigado) {		
 		String stringQuery = "SELECT inv FROM "+packageName+".Investigado inv WHERE inv.cpf LIKE :cpf AND inv.nome LIKE :nome ";
-		//String stringQuery = "SELECT inv FROM investigado inv";				
-		//return entityManager.createNativeQuery(stringQuery, Investigado.class).getResultList();		
+		
+				
 		return entityManager.createQuery(stringQuery).setParameter("cpf","%"+investigado.getCpf()+"%").setParameter("nome","%"+investigado.getNome()+"%").getResultList();				 		
-	}	
+	}
 }

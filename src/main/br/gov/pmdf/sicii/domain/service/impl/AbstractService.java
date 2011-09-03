@@ -12,5 +12,6 @@ public abstract class AbstractService<B extends BaseEntity> implements Service<B
 	protected void generateErrorMessage(String message) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		facesContext.addMessage("global", new FacesMessage());		
-	}
+	}	
+	
 }

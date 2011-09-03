@@ -4,6 +4,10 @@
       xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
 	
        
-    
+    <navigation >   			
+      <rule if-outcome="sucess">      	 
+         <redirect view-id="/home.xhtml"/>
+      </rule>      
+   </navigation>
 </page>
 

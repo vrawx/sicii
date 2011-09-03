@@ -67,7 +67,9 @@ public class Investigado extends BaseEntity {
 //	@JoinColumn(name="alteradoPor")
 	private Usuario alteradoPor;
 	private Date alteradoEm;
-		
+	
+	private Boolean excluido;
+	
 	//metodo construtor
 	public Investigado() {
 		
@@ -80,6 +82,12 @@ public class Investigado extends BaseEntity {
 	}
 	public String getCpf() {
 		return cpf;
+	}
+	public Boolean getExcluido() {
+		return excluido;
+	}
+	public void setExcluido(Boolean excluido) {
+		this.excluido = excluido;
 	}
 	public Long getCodigoInvestigado() {
 		return codigoInvestigado;

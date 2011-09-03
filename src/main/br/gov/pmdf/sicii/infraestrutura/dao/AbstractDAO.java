@@ -28,16 +28,28 @@ public abstract class AbstractDAO<T extends BaseEntity> implements Repositorio<T
 		return entityManager.find(getPersistenceClass(),id);		
 	}
 	
+//	public void pesquisarPorFragmento(T persistenceEntity) {
+//		String nomeClasse = persistenceEntity.getClass().getSimpleName();
+//		
+//		String stringQuery = "SELECT t FROM "+nomeClasse+" t WHERE 1=1";
+//		definirParametros(persistenceEntity, stringQuery);
+//		//return entityManager.createQuery(stringQuery).setParameter("cpf","%"+investigado.getCpf()+"%").setParameter("nome","%"+investigado.getNome()+"%").getResultList();
+//		
+//	}
+//	public void definirParametros(T persistenceEntity, String query){
+//		
+//	}
+		
 	@SuppressWarnings("unchecked")
 	public List<T> recuperarTodos() {		
 		List<T> retorno = entityManager.createQuery("SELECT c FROM " + getPersistenceClass().getSimpleName() + " c").setMaxResults(50).getResultList();
-		if (retorno.size() >= 50) {
+		if (retorno.size() >= 50) {			
 			System.out.println(" Quantidade de registro maior que 50 Refine sua busca");
 		}
 		return retorno;		
 	}
 
-	public void remover(T persistenceEntity) {
+	public void remover(T persistenceEntity) {		
 		entityManager.remove(persistenceEntity);
 	}
 	

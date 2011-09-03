@@ -3,4 +3,3 @@ INSERT INTO TIPOUSUARIO(tipcodigo, sigla, descricao, cadastradoem, cadastradopor
 
 INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(0001, 'vcorrea', 'vcorrea', now(), NULL, now(), NULL );
 INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(0002, 'gerodf' , 'gerodf' , now(), NULL, now(), NULL );
-
