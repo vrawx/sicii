@@ -67,12 +67,12 @@ public class InvestigadoManaged  {
 		FacesContext.getCurrentInstance().addMessage("messages",facesMessage);		
 	}
 	public String cadastrarInvestigado() {		
-		InvestigadoServiceImpl investigadoService = new InvestigadoServiceImpl();
 		if( investigadoService.isCandidatoValido(investigado) ) {
 			investigado.setCadastradoPor(usuarioLogado);
 			investigado.setCadastradoEm(new Date());
 			investigado.setAlteradoPor(usuarioLogado);
 			investigado.setAlteradoEm(new Date());
+			investigado.setExcluido(false);
 			repositorioInvestigado.armazenar(investigado);
 			// Registro de auditoria
 			investigadoService.cadastrarAuditoria(investigado, "Cadastrando Investigado");

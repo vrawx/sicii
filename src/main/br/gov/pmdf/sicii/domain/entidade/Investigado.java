@@ -2,11 +2,14 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.jboss.seam.ScopeType;
@@ -58,13 +61,13 @@ public class Investigado extends BaseEntity {
 	private Integer numeroCelular;
 
 	// Este objeto não tem SET, pois o registro é feito somente uma vez
-//	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-//	@JoinColumn(name="cadastradoPor")
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
+	@JoinColumn(name="cadastradoPor")
 	private Usuario cadastradoPor;
 	private Date cadastradoEm;
-//	
-//	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-//	@JoinColumn(name="alteradoPor")
+	
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
+	@JoinColumn(name="alteradoPor")
 	private Usuario alteradoPor;
 	private Date alteradoEm;
 	

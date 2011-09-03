@@ -7,10 +7,7 @@
    <navigation>   			
       <rule if-outcome="sucess">      	 
          <redirect view-id="/faces/useCases/gerenciarInvestigado.xhtml"/>
-      </rule>
-      <rule if-outcome="fail">      	 
-         <redirect view-id="/faces/siciiLogin.xhtml"/>
-      </rule>
+      </rule>      
    </navigation>
    
 </page>
