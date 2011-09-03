@@ -43,19 +43,19 @@
 	        		
 	        		<br/><br/>
 	        		<h:outputText value="Informe o logradouro" /><br/>
-	        		<h:inputText value="#{investigado.logradouro}" size="50" maxlength="100" /><br/>
+	        		<h:inputText value="#{investigado.endereco.logradouro}" size="50" maxlength="100" /><br/>
 	        		<h:outputText value="Informe o Bairro" /><br/>
-	        		<h:inputText value="#{investigado.bairro}" size="50" maxlength="100" /><br/>
+	        		<h:inputText value="#{investigado.endereco.bairro}" size="50" maxlength="100" /><br/>
 	        		<h:outputText value="Informe a cidade" /><br/>
-	        		<h:inputText value="#{investigado.cidade}" size="50" maxlength="100" /><br/>
+	        		<h:inputText value="#{investigado.endereco.cidade}" size="50" maxlength="100" /><br/>
 	        		<h:outputText value="Informe a Unidade Federativa ( UF )" /><br/>
-	        		<h:inputText value="#{investigado.cidadeUF}" /><br/>
+	        		<h:inputText value="#{investigado.endereco.cidadeUF}" /><br/>
 	        		<br/><br/>        		
 	        		   
 	        		<!-- Botoes de acao -->
 	        		<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />
 	        		<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />
-	        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/gerenciarInvestigado.xhtml" />	        		
+	        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />	        		
         		</h:form>
  	</ui:define>
  </ui:composition> 

@@ -1,4 +1,4 @@
-#Wed Aug 24 07:43:12 BRT 2011
+#Sat Sep 03 20:23:34 BRT 2011
 action.package=org.domain.sicii.session
 action.sources=/sicii/src/hot
 eclipse.preferences.version=1
@@ -11,7 +11,7 @@ seam.project.settings.version=1.1
 seam.project.web.root.folder=/sicii/WebContent
 seam.runtime.name=jboss-seam-2.2.2.Final
 seam.settings.changed.by.user=true
-seam.test.creating=true
+seam.test.creating=false
 seam.test.project=sicii-test
 test.package=org.domain.sicii.test
 test.sources=/sicii-test/test-src

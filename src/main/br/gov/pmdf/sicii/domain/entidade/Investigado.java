@@ -11,10 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-
-import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Role;
 
 /**
  * Classe Investigado
@@ -30,7 +27,6 @@ import org.jboss.seam.annotations.Role;
 @Entity
 @SequenceGenerator(name="investigadoSequence", sequenceName="investigadoSequencePostgres" )
 @Name("investigado")
-@Role(name="usuarioLogado", scope=ScopeType.SESSION)
 public class Investigado extends BaseEntity {
 			
 	private static final long serialVersionUID = 1L;
@@ -49,17 +45,17 @@ public class Investigado extends BaseEntity {
 	private Date nascimento;
 	private String nomeDoPai;
 	private String nomeDaMae;
-	private String sexo;
-	private String logradouro;
-	private String bairro;
-	private String cidade;
-	private String cidadeUF;
-	
+	private String sexo;	
+			
 	//@Length(max=8)
 	private Integer numeroTelefone;
 	//@Length(max=8)
 	private Integer numeroCelular;
-
+	
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@JoinColumn
+	private Endereco endereco;
+	
 	// Este objeto não tem SET, pois o registro é feito somente uma vez
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
 	@JoinColumn(name="cadastradoPor")
@@ -80,6 +76,12 @@ public class Investigado extends BaseEntity {
 	
 	
 	//get and set da classe
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
@@ -127,31 +129,7 @@ public class Investigado extends BaseEntity {
 	}
 	public void setCodigoInvestigado(Long codigoInvestigado) {
 		this.codigoInvestigado = codigoInvestigado;
-	}
-	public String getLogradouro() {
-		return logradouro;
-	}
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
-	public String getBairro() {
-		return bairro;
-	}
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-	public String getCidadeUF() {
-		return cidadeUF;
-	}
-	public void setCidadeUF(String cidadeUF) {
-		this.cidadeUF = cidadeUF;
-	}
+	}	
 	public Integer getNumeroCelular() {
 		return numeroCelular;
 	}

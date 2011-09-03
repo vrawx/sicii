@@ -1,0 +1,40 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="/template/siciiLayout.xhtml">
+	
+   <ui:define name="bodyContent">
+    	<rich:panel>
+    		<h3> Gerenciar Evento Investigação </h3> 
+        	<h:form>	            
+					<h:panelGrid  columns="2">
+							<h:outputLabel for="codigo">Codigo</h:outputLabel>
+							<h:inputText id="codigo" value="#{investigado.cpf}" />
+							<h:outputLabel for="numero">Numero</h:outputLabel>
+							<h:inputText id="numero" value="#{investigado.nome}" />						
+							<h:outputLabel for="ano">Ano</h:outputLabel>
+							<h:inputText id="ano" value="#{investigado.nome}" />
+							<h:outputLabel for="descricao">Descrição</h:outputLabel>
+							<h:inputText id="descricao" value="#{investigado.nome}" />
+					</h:panelGrid>															
+				<div class="actionButtons">
+					<h:commandButton value="Buscar" id="buscarButton" action="#{eventoManaged.pesquisarEvento}" />					
+					<h:commandButton value="Cadastrar Investigado" id="cadastrarButton" action="/faces/useCases/investigado/cadastrarInvestigado.xhtml" />					
+					<!--  <a4j:commandButton value="Cadastrar Investigado" id="cadastrarButton" oncomplete="Richfaces.showModalPanel('cadastroPanel')" reRender="cadastroPanel"/>
+					<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton"  event="onclick" operation="show"/>
+					-->					
+				</div>
+			</h:form>
+        </rich:panel>
+    	  
+    	  
+    	  
+ 	</ui:define>
+ </ui:composition> 
+ 
