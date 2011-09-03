@@ -9,7 +9,7 @@ import br.gov.pmdf.sicii.domain.service.InvestigadoService;
 
 public class InvestigadoServiceImpl implements InvestigadoService {
 	
-	public Boolean aplicarValidacaoCadastro(Investigado investigado) {
+	public Boolean isCandidatoValido(Investigado investigado) {
 		Boolean isInvestigadoValid = true;
 		FacesContext.getCurrentInstance().addMessage("global",new FacesMessage("Usuario Cadastrado"));
 		return isInvestigadoValid;		

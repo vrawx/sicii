@@ -20,8 +20,8 @@
 
    <core:init debug="true" jndi-pattern="@jndiPattern@"/>
 
-   <core:manager concurrent-request-timeout="500"
-                 conversation-timeout="120000"
+   <core:manager concurrent-request-timeout="1000"
+                 conversation-timeout="360000"
                  conversation-id-parameter="cid"
                  parent-conversation-id-parameter="pid"/>
 
@@ -38,7 +38,7 @@
 
    <security:rule-based-permission-resolver security-rules="#{securityRules}"/>
 
-   <security:identity authenticate-method="#{authenticator.authenticate}" remember-me="true"/>
+   <security:identity authenticate-method="#{loginManaged.loginMethod()}" remember-me="true"/>
 
    <event type="org.jboss.seam.security.notLoggedIn">
       <action execute="#{redirect.captureCurrentView}"/>

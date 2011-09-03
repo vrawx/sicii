@@ -10,7 +10,7 @@
     template="/template/siciiLayout.xhtml">
 	
     <ui:define name="bodyContent">
-           
+    	       
         <rich:panel>
         	<h:form>
 	            <div class="dialog">
@@ -35,8 +35,9 @@
 	        <h:panelGroup rendered="#{investigadoManaged.investigadosConsultados.size eq 0}" > Nenhum usuario Listado</h:panelGroup>
 	        <h:dataTable id="tableInvestigados" value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.investigadosConsultados.size gt 0}" >
 	        	<h:column><h:outputText value="#{investigado.nome}" /></h:column>
-	        	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>
-	        	<h:column><h:commandButton action="#{investigadoManaged.selecionarInvestigado}" value="selecionar" /></h:column>
+	        	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>	        	
+	        	<h:column><h:commandLink action="#{investigadoManaged.excluirInvestigado(investigado)}" value="excluir" /></h:column>
+	        	<h:column><h:commandLink action="#{investigadoManaged.alterarInvestigado(investigado)}" value="alterar" /></h:column>
 	        </h:dataTable>   
         </div>
                 

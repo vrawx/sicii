@@ -20,7 +20,7 @@ public abstract class AbstractDAO<T extends BaseEntity> implements Repositorio<T
 	private Class<T> persistenceClazz = null;
 
 	
-	public void armazenar(T persistenceEntity) {
+	public void armazenar(T persistenceEntity) {		
 		entityManager.persist(persistenceEntity);		
 	}
 	
