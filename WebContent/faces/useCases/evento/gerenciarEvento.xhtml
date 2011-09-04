@@ -13,36 +13,56 @@
     	<rich:panel>
     		<h3> Gerenciar Evento Investigação </h3> 
     		<h4> Pesquisa </h4>
-        	<h:form>	            
-					<h:panelGrid  columns="2">
-							<h:outputLabel for="codigoEvento">Codigo do Evento</h:outputLabel>
-							<h:inputText id="codigoEvento" value="#{eventoInvestigacao.codigoEvento}" />
-							<h:outputLabel for="numeroEvento">Numero do Evento</h:outputLabel>
-							<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" />						
-							<h:outputLabel for="ano">Ano do Evento</h:outputLabel>
-							<h:inputText id="ano" value="#{eventoInvestigacao.ano}" />
-							<h:outputLabel for="descricao">Descrição do Evento</h:outputLabel>
-							<h:inputText id="descricao" value="#{eventoInvestigacao.descricao}" />
-					</h:panelGrid>															
-				<div class="actionButtons">
-					<h:commandButton value="Buscar" id="buscarButton" action="#{eventoManaged.pesquisarEvento}" />					
-					<h:commandButton value="Novo Evento" id="cadastrarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml" />					
-					<!--  <a4j:commandButton value="Cadastrar Investigado" id="cadastrarButton" oncomplete="Richfaces.showModalPanel('cadastroPanel')" reRender="cadastroPanel"/>
-					<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton"  event="onclick" operation="show"/>
-					-->					
+        	<h:form>
+        		<div class="panelgrid,actionButtons">	            
+						<h:panelGrid columns="2">
+								<h:outputLabel for="codigoEvento">Codigo do Evento</h:outputLabel>
+								<h:inputText id="codigoEvento" value="#{eventoInvestigacao.codigoEvento}" />
+								<h:outputLabel for="numeroEvento">Numero do Evento</h:outputLabel>
+								<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" />						
+								<h:outputLabel for="ano">Ano do Evento</h:outputLabel>
+								<h:inputText id="ano" value="#{eventoInvestigacao.ano}" />
+								<h:outputLabel for="descricao">Descrição do Evento</h:outputLabel>
+								<h:inputText id="descricao" value="#{eventoInvestigacao.descricao}" />
+						</h:panelGrid>	
+						<h:commandButton value="Buscar" id="buscarButton" action="#{eventoManaged.pesquisarEvento}" />					
+						<h:commandButton value="Novo Evento" id="cadastrarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml" />					
+						<!--  <a4j:commandButton value="Cadastrar Investigado" id="cadastrarButton" oncomplete="Richfaces.showModalPanel('cadastroPanel')" reRender="cadastroPanel"/>
+						<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton"  event="onclick" operation="show"/>
+						-->
 				</div>
 			</h:form>
         </rich:panel>
-        
- 		<div id="listaEventos">
-	        <h:panelGroup rendered="#{eventoManaged.eventosConsultados.size eq 0}" > Nenhum Evento Registrado</h:panelGroup>	        
-	        <h:dataTable id="tableEventos" value="#{eventoManaged.eventosConsultados}" var="evento" rendered="#{eventoManaged.eventosConsultados.size gt 0}" >	        
-	        	<h:column><h:outputText value="#{evento.codigoEvento}" /></h:column>
-	        	<h:column><h:outputText value="#{evento.descricao}" /></h:column>	        	
-	        	<h:column><h:commandButton id="excluirButton" action="#{eventoManaged.excluirEvento}" value="excluir" /></h:column>
-	        	<h:column><h:commandButton id="editarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml" value="editar" /></h:column>	        
-	        </h:dataTable>	           
-        </div>    	  
+        <rich:panel>
+	        <h:form>
+		 		<div id="listaEventos" class="panelgrid,actionButtons">
+			        <h:panelGroup rendered="#{eventoManaged.eventosConsultados.size eq 0}" > Nenhum Evento Registrado</h:panelGroup>	        
+			        <h:dataTable id="tableEventos" value="#{eventoManaged.eventosConsultados}" var="evento" rendered="#{eventoManaged.eventosConsultados.size gt 0}" 
+			        	styleClass="gradeLocalizados" headerClass="gradeLocalizadosHeader" rowClasses="oddRow,evenRow" captionStyle="">
+			        	
+			        	<f:facet name="header">REGISTROS LOCALIZADOS</f:facet>
+			        	<h:column>
+			        		<f:facet name="header">CÓDIGO</f:facet>
+			        		<h:outputText value="#{evento.codigoEvento}" />
+			        	</h:column>
+			        	<h:column>
+			        		<f:facet name="header">NÚMERO</f:facet>
+			        		<h:outputText value="#{evento.numeroEvento}" />
+			        	</h:column>
+			        	<h:column>
+			        		<f:facet name="header">ANO</f:facet>
+			        		<h:outputText value="#{evento.ano}" />
+			        	</h:column>	        		        	
+			        	<h:column>
+			        		<f:facet name="header">DESCRIÇÃO</f:facet>
+			        		<h:outputText value="#{evento.descricao}" />
+			        	</h:column>	        		        	
+			        	<h:column><h:commandLink id="excluir" action="#{eventoManaged.excluirEvento}"><h:graphicImage  styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Evento"/></h:commandLink></h:column>
+			        	<h:column><h:commandLink id="editar" action="/faces/useCases/evento/cadastrarEvento.xhtml"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Evento"/></h:commandLink></h:column>	        
+			        </h:dataTable>	           
+		        </div>
+	        </h:form>
+		</rich:panel>    	  
  	</ui:define>
  </ui:composition> 
  

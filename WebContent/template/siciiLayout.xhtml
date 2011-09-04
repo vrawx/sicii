@@ -8,17 +8,24 @@
    xmlns:rich="http://richfaces.org/rich"
    xmlns:s="http://jboss.com/products/seam/taglib"
    contentType="text/html">
-
 <html>
 	<head>
 		<ui:insert name="title"><title>PMDF - SICII</title></ui:insert>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<a:loadStyle src="/stylesheet/theme.css"/>
 		<ui:insert name="headerContent" />
 	</head>
 	<body>
+	<center>
+	<div id="corpo">
 		<!-- ESPACO PARA LOGO / BANNER  E CONTEÚDOS DO LAYOUT -->		
-		<div id="globalContent"><h:graphicImage value="/img/topo.jpg" alt="logomarcaPMDF"/></div>
+		<div id="globalContent"><h:graphicImage width="800px" value="/img/topo.jpg" alt="logomarcaPMDF"/></div>
 		<ui:insert name="globalContent"/>
+	
+		<!-- O CONTEUDO DO MENU SERÁ INCLUIDO -->
+		<ui:include src="/template/siciiMenu.xhtml" >
+			<ui:param name="projectName" value="sicii" />
+		</ui:include>
 	
 		<!-- DIV PARA MENSAGENS DO SISTEMA -->
 		<ui:insert name="globalMessages">
@@ -29,20 +36,16 @@
 			</div>
 		</ui:insert>
 	
-		<!-- O CONTEUDO DO MENU SERÁ INCLUIDO -->
-		<ui:include src="/template/siciiMenu.xhtml" >
-			<ui:param name="projectName" value="sicii" />
-		</ui:include>
-	
 		<!-- CONTEUDO VARIAVEL  -->
 		<ui:insert name="bodyContent">
 			<div id="bodyContent"></div>
 		</ui:insert>
 		
 		<!-- CONTEUDO DO FOOTER -->
-		<div id="footerContent"><h:graphicImage value="/img/rodape.jpg" alt="rodapePMDF" /></div>
+		<div id="footerContent"><h:graphicImage width="800px" value="/img/rodape.jpg" alt="rodapePMDF" /></div>
 		<ui:insert name="footerContent" />	
-		
+	</div>
+	</center>
 	</body>
 </html>
 </f:view>

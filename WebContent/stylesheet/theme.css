@@ -4,7 +4,23 @@ html {
 
 body {
 	font-size: 12px;
-	margin: 0px;
+	width: 800px;
+	height: 600px; 
+	position: relative;   
+	padding: 0;    
+	background: #4682B4; 
+}
+
+#globalContent{
+	color: red; 
+}
+
+#bodyContent{
+	color: red; 
+}
+
+#footerContent{
+	
 }
 
 a img {
@@ -31,6 +47,7 @@ select {
 	font-size: 13px;
 }
 
+/*
 .tableControl, .actionButtons {
 	width: 100%;
 }
@@ -42,6 +59,7 @@ select {
 .tableControl {
 	text-align: right;
 }
+*/
 
 .footer {
 	text-align: center;
@@ -49,8 +67,39 @@ select {
 	margin-bottom: 10px;
 }
 
+/*
 .rich-table {
 	width: 100%;
+}
+*/
+
+.panelGrid{
+	width: 30%;
+	background: #4682B4;
+}
+
+/*configurações de grade */
+.gradeLocalizados {
+border: thin solid black;
+}
+.gradeLocalizadosHeader {
+text-align: center;
+font-style: italic;
+color: Snow;
+background: #4682B4;
+}
+.oddColumn {
+height: 25px;
+text-align: center;
+background: MediumTurquoise;
+}
+.evenColumn {
+text-align: center;
+background: PowderBlue;
+}
+.iconesDeGrade{
+	width: 10px;
+	height: 10px;
 }
 
 .body {
