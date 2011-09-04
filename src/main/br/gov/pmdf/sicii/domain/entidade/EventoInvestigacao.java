@@ -2,7 +2,6 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,11 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.jboss.seam.annotations.Name;
 
@@ -66,7 +65,7 @@ public class EventoInvestigacao extends BaseEntity {
 	@JoinColumn
 	private Integer alteradoPor;	
 	
-	@OneToMany
+	@Transient
 	private List<Investigado> investigados;
 	
 	public EventoInvestigacao() {

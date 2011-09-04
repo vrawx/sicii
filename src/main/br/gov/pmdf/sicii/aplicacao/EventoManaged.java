@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.jboss.seam.ScopeType;
+import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
@@ -14,15 +15,12 @@ import br.gov.pmdf.sicii.domain.entidade.EventoInvestigacao;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioAuditoria;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioEventoInvestigacao;
-import br.gov.pmdf.sicii.domain.service.EventoInvestigacaoService;
 
 @Name("eventoManaged")
 public class EventoManaged {
 
 	@In(scope=ScopeType.SESSION)
-	private Usuario usuarioLogado;
-	@In
-	private EventoInvestigacaoService eventoInvestigacaoService;
+	private Usuario usuarioLogado;	
 	@In
 	private RepositorioEventoInvestigacao repositorioEventoInvestigacao;
 	@In
@@ -36,10 +34,14 @@ public class EventoManaged {
 	
 	
 	public void pesquisarEvento() {	
-		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Evento", new Date(), ""));
+		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Evento", new Date(), eventoInvestigacao.getDescricao()));
 		eventosConsultados = repositorioEventoInvestigacao.recuperarPorFragmento(eventoInvestigacao);
 	}
 	
+	@Factory("eventosConsultados")
+	private void factoryEventosConsultados() {
+		eventosConsultados = repositorioEventoInvestigacao.recuperarTodos();
+	}
 	public List<EventoInvestigacao> getEventosConsultados() {
 		return eventosConsultados;
 	}	
