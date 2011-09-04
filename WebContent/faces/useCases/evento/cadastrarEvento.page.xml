@@ -2,10 +2,10 @@
 <page xmlns="http://jboss.com/products/seam/pages"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
-	  
+
 	<navigation>
-		<rule if-outcome="foward">
-			<redirect view-id="/faces/useCases/evento/cadastrarEvento.xhtml"/>
+		<rule if-outcome="sucess">
+			<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>			
 		</rule>
 	</navigation>
    

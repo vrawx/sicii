@@ -40,7 +40,7 @@ public class EventoInvestigacao extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn
-	private Agencia agencia;
+	private Assessoria assessoria;
 	
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
 	@JoinColumn(name="parCodigo")
@@ -78,11 +78,11 @@ public class EventoInvestigacao extends BaseEntity {
 	}
 
 	//get and set da classe
-	public Agencia getAgencia() {
-		return agencia;
+	public Assessoria getAssessoria() {
+		return assessoria;
 	}
-	public void setAgencia(Agencia agencia) {
-		this.agencia = agencia;
+	public void setAssessoria(Assessoria assessoria) {
+		this.assessoria = assessoria;
 	}
 	public Long getCodigoEvento() {
 		return codigoEvento;
