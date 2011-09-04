@@ -14,11 +14,13 @@
     	<br></br><br></br><br></br><br></br>
 		<h:form id="cadastroEventoForm" >
 			<h3>Novo Evento de Investigação</h3>        	    	
-					<h:selectOneMenu id="situacaoEvento" value="#{eventoInvestigacao.situacao}">
-						<f:selectItems value="#{eventoFacade.situacoesCombo}"/>						
-					</h:selectOneMenu>
 					
-	        		<h:outputText value="Informe o Numero do Evento" /><br/>
+					<h:outputText value="Selecione a Situação: " /><br/>
+					<h:selectOneMenu value="#{eventoInvestigacao.situacao}">
+						<f:selectItems value="#{eventoFacade.situacoesCombo}"/>
+					</h:selectOneMenu>
+					<br/><br/>
+	        		<h:outputText value="Informe o Numero do Evento" />
 	        		<h:message for="numeroEvento"/><br/>        		
 	        		<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" required="true" size="50" maxlength="10"  /><br/>
 	        		
@@ -26,22 +28,12 @@
 	        		<h:inputText id="anoEvento" value="#{eventoInvestigacao.ano}" required="true" size="50" maxlength="5"  /><br/>
 	        		
 	        		<h:outputText value="Informe A Descrição do Evento" /><br/>
-	        		<h:inputText id="descricaoEvento" value="#{eventoInvestigacao.descricao}" required="true" size="50" maxlength="50"  /><br/>
+	        		<h:inputText id="descricaoEvento" value="#{eventoInvestigacao.descricao}" required="true" size="50" maxlength="50"  /><br/>        		
 	        		
 	        		
-	        		<!-- <rich:calendar value="#{investigado.nascimento}" datePattern="dd.MM.yyyy" /><br/> -->
-	        		<br/>
-	        		<h:outputText value="Informe o sexo " /><br/>
-	        		<h:selectOneRadio value="#{investigado.sexo}" id="sexoInvestigado">
-	        			<f:selectItem id="ms" itemLabel="masculino" itemValue="masculino"/>
-	        			<f:selectItem id="fm" itemLabel="feminino" itemValue="feminino"/>
-	        		</h:selectOneRadio>
-	        		<br/>	        		   		
-	        		        		
-	        		   
 	        		<!-- Botoes de acao -->
-	        		<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />
-	        		<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />
+	        		<h:commandButton value="Salvar" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton" />
+	        		<!-- <rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />  -->
 	        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />	        		
         		</h:form>
  	</ui:define>

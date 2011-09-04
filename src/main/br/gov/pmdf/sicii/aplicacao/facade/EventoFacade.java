@@ -1,7 +1,10 @@
 package br.gov.pmdf.sicii.aplicacao.facade;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.faces.model.SelectItem;
 
@@ -26,28 +29,26 @@ public class EventoFacade {
 	private RepositorioSituacao repositorioSituacao;	
 	@In
 	private RepositorioOrganizacao repositorioOrganizacao;
-	
-	@DataModel @Out(required=false)	
-	private List<SelectItem> situacoesCombo;
-	
+		
 	@DataModel @Out(required=false)
 	private List<Organizacao> organizacoesConsultadas;
+		
+	private List<SelectItem> situacoesCombo;	
 	
-	@Factory("situacoesCombo")
-	public void factorySituacoesCombo() {
-		List<Situacao> situacoesValidas = repositorioSituacao.pesquisarGrupoSituacao("EVENTO");
+	public List<SelectItem> getSituacoesCombo() {
+		List<Situacao> situacoesValidas = repositorioSituacao.recuperarTodos();
 		situacoesCombo = new ArrayList<SelectItem>();
 		for (Situacao situacao : situacoesValidas) 
-			situacoesCombo.add(new SelectItem(situacao.getSigla()));		
+			situacoesCombo.add(new SelectItem(situacao.getCodigoSituacao(), situacao.getSigla()));
+		return situacoesCombo;
 	}	
+		
 	@Factory(value="organizacoesConsultadas")
 	public void factoryOrganizacoesConsultadas() {
 		organizacoesConsultadas = repositorioOrganizacao.recuperarTodos();
 	}
 	public List<Organizacao> getOrganizacoesConsultadas() {
 		return organizacoesConsultadas;
-	}	
-	public List<SelectItem> getSituacoesCombo() {
-		return situacoesCombo;
-	}	
+	}
+		
 }

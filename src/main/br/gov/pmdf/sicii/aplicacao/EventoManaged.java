@@ -36,10 +36,7 @@ public class EventoManaged {
 	private List<EventoInvestigacao> eventosConsultados;	
 	@Out(required=false) @DataModelSelection
 	private EventoInvestigacao eventoSelecionado;
-	
-	@In(create=true)
-	private EventoFacade eventoFacade;
-	
+		
 	@Factory("eventosConsultados")
 	private void factoryEventosConsultados() {
 		eventosConsultados = repositorioEventoInvestigacao.recuperarTodos();
@@ -70,7 +67,7 @@ public class EventoManaged {
 			eventoInvestigacao.setAlteradoEm(new Date());
 			eventoInvestigacao.setParecer(null);
 			//Organizacao - assessoria - situacao
-			
+			eventoInvestigacao.setAssessoria(null);			
 			//Achando assesssoria do usuario logado			
 			eventoInvestigacao.setOrganizacao(null);
 			repositorioEventoInvestigacao.armazenar(eventoInvestigacao);
@@ -90,11 +87,5 @@ public class EventoManaged {
 	}
 	public void setEventoInvestigacao(EventoInvestigacao eventoInvestigacao) {
 		this.eventoInvestigacao = eventoInvestigacao;
-	}
-	public EventoFacade getEventoFacade() {
-		return eventoFacade;
-	}
-	public void setEventoFacade(EventoFacade eventoFacade) {
-		this.eventoFacade = eventoFacade;
-	}
+	}	
 }
