@@ -29,7 +29,7 @@ public class Situacao extends BaseEntity {
 	private Integer codigoSituacao;
 	
 	// 0 - VALIDA . 1 - INVALIDA
-	private Integer tipo;
+	private Integer grupo;
 	private String sigla;
 	private String descricao;
 
@@ -43,26 +43,22 @@ public class Situacao extends BaseEntity {
 	}
 	public void setCodigoSituacao(Integer codigoSituacao) {
 		this.codigoSituacao = codigoSituacao;
+	}	
+	public Integer getGrupo() {
+		return grupo;
 	}
-	public Integer getTipo() {
-		return tipo;
+	public void setGrupo(Integer grupo) {
+		this.grupo = grupo;
 	}
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
-	}
-
 	public String getSigla() {
 		return sigla;
 	}
-
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
 	}
-
 	public String getDescricao() {
 		return descricao;
 	}
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}

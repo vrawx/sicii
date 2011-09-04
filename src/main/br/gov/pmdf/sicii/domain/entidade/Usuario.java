@@ -59,7 +59,7 @@ public class Usuario extends BaseEntity {
 	private TipoUsuario tipoUsuario;
 	
 	@Transient
-	private List<Assessoria> assessorias;	
+	private List<Assessoria> assessorias;
 	
 	public Usuario() {
 		

@@ -22,7 +22,5 @@ public class EventoInvestigacaoDAO extends AbstractDAO<EventoInvestigacao> imple
 		String query = "SELECT evento FROM "+packageName+".EventoInvestigacao evento";
 		return entityManager.createQuery(query).getResultList();
 	}
-	
-	
-	
+		
 }

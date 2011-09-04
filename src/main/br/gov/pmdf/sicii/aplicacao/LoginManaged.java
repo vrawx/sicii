@@ -26,10 +26,10 @@ public class LoginManaged implements Serializable {
 	
 	@Out(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;
-		
+	
 	@In
 	private RepositorioAuditoria repositorioAuditoria;
-	
+		
 	@In
 	private RepositorioUsuario repositorioUsuario;	
 		
@@ -38,6 +38,9 @@ public class LoginManaged implements Serializable {
 		if(usuario != null) {			
 			usuario.setStatusLogin(true);
 			usuarioLogado = usuario;
+			
+			
+			
 			// Registrando Auditoria
 			repositorioAuditoria.armazenar(new Auditoria(usuario, "Logou no Sistema", new Date(), "sistema"));			
 			return "sucess";			

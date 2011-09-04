@@ -35,13 +35,15 @@
         </rich:panel>
         
  		<div id="listaEventos">
-	        <h:panelGroup rendered="#{eventoManaged.eventosConsultados.size eq 0}" > Nenhum Evento Registrado</h:panelGroup>	        
-	        <h:dataTable id="tableEventos" value="#{eventoManaged.eventosConsultados}" var="evento" rendered="#{eventoManaged.eventosConsultados.size gt 0}" >	        
-	        	<h:column><h:outputText value="#{evento.codigoEvento}" /></h:column>
-	        	<h:column><h:outputText value="#{evento.descricao}" /></h:column>	        	
-	        	<h:column><h:commandButton id="excluirButton" action="#{eventoManaged.excluirEvento}" value="excluir" /></h:column>
-	        	<h:column><h:commandButton id="editarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml" value="editar" /></h:column>	        
-	        </h:dataTable>	           
+	        <h:panelGroup rendered="#{eventoManaged.eventosConsultados.size eq 0}" > Nenhum Evento Registrado</h:panelGroup>
+	        <h:form>	        
+		        <h:dataTable id="tableEventos" value="#{eventoManaged.eventosConsultados}" var="evento" rendered="#{eventoManaged.eventosConsultados.size gt 0}" >	        
+		        	<h:column><h:outputText value="#{evento.codigoEvento}" /></h:column>
+		        	<h:column><h:outputText value="#{evento.descricao}" /></h:column>	        	
+		        	<h:column><h:commandButton id="excluirButton" action="#{eventoManaged.excluirEvento(evento)}" value="excluir" /></h:column>
+		        	<h:column><h:commandButton id="editarButton" action="#{eventoManaged.editarEvento(evento)}" value="editar" /></h:column>	        
+		        </h:dataTable>
+	        </h:form>	           
         </div>    	  
  	</ui:define>
  </ui:composition> 

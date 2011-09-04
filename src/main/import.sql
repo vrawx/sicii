@@ -12,9 +12,10 @@ INSERT INTO INVESTIGADO VALUES (nextval('investigadosequencepostgres'), now(), n
 INSERT INTO ORGANIZACAO VALUES (nextval('organizacaosequencepostgres'), now(), now(), 'descricao organizacao', 'detran', 0, 1, 1);
 INSERT INTO ORGANIZACAO VALUES (nextval('organizacaosequencepostgres'), now(), now(), 'descricao organizacao', '9 BPM', 0, 2, 2);
 
+INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'Descricao Situacao', 0, 'ATIVA');
 
-INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'Descricao Situacao', 'ATIVA', 0);
 INSERT INTO AGENCIA VALUES (nextval('agenciasequencepostgres'), now(), now(), true, 0, 2, 2, 1);
 
+INSERT INTO ASSESSORIA VALUES(nextval('assessoriasequencepostgres'), now(), now(), 'Descricao', 'DTEC', true, 1, 1, 1);
 
-INSERT INTO EVENTOINVESTIGACAO VALUES (nextval('eventosequencepostgres'), now(), 1988, now(), 'descricao evento', 1944, 1, 2, 2, 1, null, 1);
+INSERT INTO EVENTOINVESTIGACAO VALUES (nextval('eventosequencepostgres'), now(), 1988, now(), 'descricao evento', 1944, 1, 1, 1, 1, null, 1);

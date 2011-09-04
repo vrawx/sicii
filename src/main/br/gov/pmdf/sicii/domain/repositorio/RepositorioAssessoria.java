@@ -1,6 +1,9 @@
 package br.gov.pmdf.sicii.domain.repositorio;
 
-import br.gov.pmdf.sicii.domain.entidade.Assessoria;;
+import java.util.List;
+
+import br.gov.pmdf.sicii.domain.entidade.Assessoria;
+import br.gov.pmdf.sicii.domain.entidade.Usuario;
 
 /**
  * Interface DAO.<br>
@@ -11,4 +14,5 @@ import br.gov.pmdf.sicii.domain.entidade.Assessoria;;
 
 public interface RepositorioAssessoria extends Repositorio<Assessoria> {
 
+	List<Assessoria> recuperarAssessoriasUsuario(Usuario usuario);
 }
