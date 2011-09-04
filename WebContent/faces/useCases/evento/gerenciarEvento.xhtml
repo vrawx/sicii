@@ -12,6 +12,7 @@
    <ui:define name="bodyContent">
     	<rich:panel>
     		<h3> Gerenciar Evento Investigação </h3> 
+    		<h4> Pesquisa </h4>
         	<h:form>	            
 					<h:panelGrid  columns="2">
 							<h:outputLabel for="codigoEvento">Codigo do Evento</h:outputLabel>
@@ -25,16 +26,23 @@
 					</h:panelGrid>															
 				<div class="actionButtons">
 					<h:commandButton value="Buscar" id="buscarButton" action="#{eventoManaged.pesquisarEvento}" />					
-					<h:commandButton value="Cadastrar Evento" id="cadastrarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml" />					
+					<h:commandButton value="Novo Evento" id="cadastrarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml" />					
 					<!--  <a4j:commandButton value="Cadastrar Investigado" id="cadastrarButton" oncomplete="Richfaces.showModalPanel('cadastroPanel')" reRender="cadastroPanel"/>
 					<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton"  event="onclick" operation="show"/>
 					-->					
 				</div>
 			</h:form>
         </rich:panel>
-    	  
-    	  
-    	  
+        
+ 		<div id="listaEventos">
+	        <h:panelGroup rendered="#{eventoManaged.eventosConsultados.size eq 0}" > Nenhum Evento Registrado</h:panelGroup>	        
+	        <h:dataTable id="tableEventos" value="#{eventoManaged.eventosConsultados}" var="evento" rendered="#{eventoManaged.eventosConsultados.size gt 0}" >	        
+	        	<h:column><h:outputText value="#{evento.codigoEvento}" /></h:column>
+	        	<h:column><h:outputText value="#{evento.descricao}" /></h:column>	        	
+	        	<h:column><h:commandButton id="excluirButton" action="#{eventoManaged.excluirEvento}" value="excluir" /></h:column>
+	        	<h:column><h:commandButton id="editarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml" value="editar" /></h:column>	        
+	        </h:dataTable>	           
+        </div>    	  
  	</ui:define>
  </ui:composition> 
  

@@ -2,6 +2,7 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,14 +36,18 @@ public class EventoInvestigacao extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="eventoSequence")
 	@Column(name="eveCodigo")
-	private Integer codigoEvento;
+	private Long codigoEvento;
+	
+	@ManyToOne
+	@JoinColumn
+	private Agencia agencia;
 	
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn
+	@JoinColumn(name="parCodigo")
 	private Parecer parecer;
 	
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn
+	@JoinColumn(name="sitCodigo")
 	private Situacao situacao;
 	
 	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
@@ -56,14 +61,14 @@ public class EventoInvestigacao extends BaseEntity {
 	@Temporal(TemporalType.DATE)
 	private Date cadastradoEm;
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn
+	@JoinColumn(name="cadastradoPor")
 	private Usuario cadastradoPor;
 	
 	@Temporal(TemporalType.DATE)
 	private Date alteradoEm;	
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn
-	private Integer alteradoPor;	
+	@JoinColumn(name="alteradoPor")
+	private Usuario alteradoPor;	
 	
 	@Transient
 	private List<Investigado> investigados;
@@ -73,7 +78,13 @@ public class EventoInvestigacao extends BaseEntity {
 	}
 
 	//get and set da classe
-	public Integer getCodigoEvento() {
+	public Agencia getAgencia() {
+		return agencia;
+	}
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
+	}
+	public Long getCodigoEvento() {
 		return codigoEvento;
 	}
 	public Parecer getParecer() {
@@ -124,6 +135,9 @@ public class EventoInvestigacao extends BaseEntity {
 	public void setInvestigados(List<Investigado> investigados) {
 		this.investigados = investigados;
 	}
+	public void setCodigoEvento(Long codigoEvento) {
+		this.codigoEvento = codigoEvento;
+	}
 	public Date getCadastradoEm() {
 		return cadastradoEm;
 	}
@@ -136,10 +150,10 @@ public class EventoInvestigacao extends BaseEntity {
 	public void setAlteradoEm(Date alteradoEm) {
 		this.alteradoEm = alteradoEm;
 	}
-	public Integer getAlteradoPor() {
-		return alteradoPor;
-	}
-	public void setAlteradoPor(Integer alteradoPor) {
+	public void setAlteradoPor(Usuario alteradoPor) {
 		this.alteradoPor = alteradoPor;
+	}
+	public Usuario getAlteradoPor() {
+		return alteradoPor;
 	}
 }

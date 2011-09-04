@@ -1,5 +1,6 @@
 package br.gov.pmdf.sicii.aplicacao;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.jboss.seam.ScopeType;
@@ -16,7 +17,9 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioUsuario;
 
 @Name("loginManaged")
 @Scope(ScopeType.SESSION)
-public class LoginManaged {
+public class LoginManaged implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@In @Out
 	private Usuario usuario;

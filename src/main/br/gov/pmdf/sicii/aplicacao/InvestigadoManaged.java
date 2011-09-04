@@ -12,7 +12,6 @@ import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.datamodel.DataModel;
-import org.jboss.seam.annotations.datamodel.DataModelSelection;
 
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
@@ -24,8 +23,7 @@ public class InvestigadoManaged  {
 	
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;	
-	
-	@DataModelSelection
+		
 	@In(create=true) @Out(required=false)
 	private Investigado investigado;	
 		

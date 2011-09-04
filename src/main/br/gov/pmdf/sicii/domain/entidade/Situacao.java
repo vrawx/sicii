@@ -1,9 +1,13 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe Situacao
@@ -12,14 +16,19 @@ import javax.persistence.Id;
  */
 
 @Entity
+@SequenceGenerator(name="situacaoSequence", sequenceName="situacaoSequencePostgres")
+@Name("situacao")
 public class Situacao extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	//atributos da classe
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer orgCodigo;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="situacaoSequence")
+	@Column(name="sitCodigo")
+	private Integer codigoSituacao;
+	
+	// 0 - VALIDA . 1 - INVALIDA
 	private Integer tipo;
 	private String sigla;
 	private String descricao;
@@ -29,18 +38,15 @@ public class Situacao extends BaseEntity {
 	}
 	
 	//set and get da classe
-	public Integer getOrgCodigo() {
-		return orgCodigo;
+	public Integer getCodigoSituacao() {
+		return codigoSituacao;
 	}
-
-	public void setOrgCodigo(Integer orgCodigo) {
-		this.orgCodigo = orgCodigo;
+	public void setCodigoSituacao(Integer codigoSituacao) {
+		this.codigoSituacao = codigoSituacao;
 	}
-
 	public Integer getTipo() {
 		return tipo;
 	}
-
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}

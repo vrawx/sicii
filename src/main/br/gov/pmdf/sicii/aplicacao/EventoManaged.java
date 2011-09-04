@@ -26,16 +26,26 @@ public class EventoManaged {
 	@In
 	private RepositorioAuditoria repositorioAuditoria;
 	
-	@In @Out(required=false)
+	
+	@In(create=true) @Out(required=false)	
 	private EventoInvestigacao eventoInvestigacao;
 		
 	@DataModel
-	private List<EventoInvestigacao> eventosConsultados;	
+	private List<EventoInvestigacao> eventosConsultados;
 	
-	
+		
 	public void pesquisarEvento() {	
 		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Evento", new Date(), eventoInvestigacao.getDescricao()));
 		eventosConsultados = repositorioEventoInvestigacao.recuperarPorFragmento(eventoInvestigacao);
+	}
+	public String excluirEvento() {
+		return "sucess";
+	}
+	public String alterarEvento() {
+		return "sucess";
+	}
+	public String cadastrarEvento() {		
+		return "sucess";
 	}
 	
 	@Factory("eventosConsultados")

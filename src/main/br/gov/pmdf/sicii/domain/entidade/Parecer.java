@@ -2,10 +2,15 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe Parecer
@@ -15,80 +20,71 @@ import javax.persistence.Id;
  */
 
 @Entity
+@SequenceGenerator(name="parecerSequence", sequenceName="parecerSequencePostgres")
+@Name("parecer")
 public class Parecer extends BaseEntity {
 		
 	private static final long serialVersionUID = 1L;
 	
 	//atributos da classe
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer parCodigo;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="parecerSequence")
+	@Column(name="parCodigo")
+	private Integer codigoParecer;
 	
+	@OneToOne
 	private Situacao situacao;
-	private String parecer;
-	private Date cadastradoEm;
-	private Date alteradoEm;
-	private Integer cadastradoPor;
-	private Integer alteradoPor;	
 	
+	private String parecer;
+	
+	private Usuario cadastradoPor;
+	private Date cadastradoEm;
+	
+	private Usuario alteradoPor;
+	private Date alteradoEm;	
+			
 	public Parecer() {
 		
 	}
 
-	//get and set
-	public Integer getParCodigo() {
-		return parCodigo;
-	}
-
-	public void setParCodigo(Integer parCodigo) {
-		this.parCodigo = parCodigo;
-	}
-
+	//get and set	
+	public Integer getCodigoParecer() {
+		return codigoParecer;
+	}	
 	public Situacao getSituacao() {
 		return situacao;
 	}
-
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
 	}
-
 	public String getParecer() {
 		return parecer;
 	}
-
 	public void setParecer(String parecer) {
 		this.parecer = parecer;
 	}
-
 	public Date getCadastradoEm() {
 		return cadastradoEm;
 	}
-
 	public void setCadastradoEm(Date cadastradoEm) {
 		this.cadastradoEm = cadastradoEm;
 	}
-
 	public Date getAlteradoEm() {
 		return alteradoEm;
 	}
-
 	public void setAlteradoEm(Date alteradoEm) {
 		this.alteradoEm = alteradoEm;
 	}
-
-	public Integer getCadastradoPor() {
+	public Usuario getCadastradoPor() {
 		return cadastradoPor;
 	}
-
-	public void setCadastradoPor(Integer cadastradoPor) {
+	public void setCadastradoPor(Usuario cadastradoPor) {
 		this.cadastradoPor = cadastradoPor;
 	}
-
-	public Integer getAlteradoPor() {
+	public Usuario getAlteradoPor() {
 		return alteradoPor;
 	}
-
-	public void setAlteradoPor(Integer alteradoPor) {
+	public void setAlteradoPor(Usuario alteradoPor) {
 		this.alteradoPor = alteradoPor;
 	}
 }
