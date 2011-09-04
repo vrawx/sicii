@@ -50,7 +50,7 @@ public class EventoInvestigacao extends BaseEntity {
 	@JoinColumn
 	private Organizacao organizacao;
 	
-	private Integer numero;	
+	private Integer numeroEvento;	
 	private Integer ano;	
 	private String descricao;
 	
@@ -101,11 +101,11 @@ public class EventoInvestigacao extends BaseEntity {
 	public void setCadastradoPor(Usuario cadastradoPor) {
 		this.cadastradoPor = cadastradoPor;
 	}
-	public Integer getNumero() {
-		return numero;
+	public Integer getNumeroEvento() {
+		return numeroEvento;
 	}
-	public void setNumero(Integer numero) {
-		this.numero = numero;
+	public void setNumeroEvento(Integer numeroEvento) {
+		this.numeroEvento = numeroEvento;
 	}
 	public Integer getAno() {
 		return ano;

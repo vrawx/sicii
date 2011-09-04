@@ -28,6 +28,9 @@ public class Auditoria extends BaseEntity {
 	private Date data;	
 	private String alvo;	
 	
+	public Auditoria() {
+		// TODO Auto-generated constructor stub
+	}
 	public Auditoria(Usuario usuario, String acao, Date data, String alvo) {
 		this.usuario = usuario;
 		this.acao = acao;

@@ -1,5 +1,7 @@
 package br.gov.pmdf.sicii.domain.repositorio;
 
+import java.util.List;
+
 import br.gov.pmdf.sicii.domain.entidade.EventoInvestigacao;
 
 /**
@@ -10,5 +12,6 @@ import br.gov.pmdf.sicii.domain.entidade.EventoInvestigacao;
  */
 
 public interface RepositorioEventoInvestigacao extends Repositorio<EventoInvestigacao> {
-
+	
+	public List<EventoInvestigacao> recuperarPorFragmento(EventoInvestigacao eventoInvestigacao);
 }
