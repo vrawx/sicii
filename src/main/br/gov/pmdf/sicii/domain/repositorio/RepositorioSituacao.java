@@ -13,5 +13,5 @@ import br.gov.pmdf.sicii.domain.entidade.Situacao;
 
 public interface RepositorioSituacao extends Repositorio<Situacao> {
 	
-	List<Situacao> pesquisarGrupoSituacao(String nomeGrupo);
+	List<Situacao> recuperarGrupoSituacao(String nomeGrupo);
 }

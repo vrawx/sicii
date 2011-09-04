@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class UsuarioAssessoria extends BaseEntity {
-		
+	
 	private static final long serialVersionUID = 1L;
 
 	//atributos da classe

@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
@@ -58,9 +60,13 @@ public class Usuario extends BaseEntity {
 	@JoinColumn(name="tipoUsuario")
 	private TipoUsuario tipoUsuario;
 	
+	//@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.LAZY)
 	@Transient
 	private List<Assessoria> assessorias;
 	
+	public Assessoria getAssessoriaAtiva() {
+		return null;
+	}
 	public Usuario() {
 		
 	}
@@ -80,8 +86,7 @@ public class Usuario extends BaseEntity {
 				return true;			
 		}		
 		return false;		
-	}
-	
+	}	
 	public void setStatusLogin(Boolean statusLogin) {
 		this.statusLogin = statusLogin;
 	}

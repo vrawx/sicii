@@ -14,5 +14,5 @@ import br.gov.pmdf.sicii.domain.entidade.Usuario;
 
 public interface RepositorioAssessoria extends Repositorio<Assessoria> {
 
-	List<Assessoria> recuperarAssessoriasUsuario(Usuario usuario);
+	Assessoria recuperarAssessoriasUsuario(Usuario usuario);
 }

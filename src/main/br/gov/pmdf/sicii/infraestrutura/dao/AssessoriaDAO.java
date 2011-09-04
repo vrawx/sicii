@@ -1,7 +1,5 @@
 package br.gov.pmdf.sicii.infraestrutura.dao;
 
-import java.util.List;
-
 import org.jboss.seam.annotations.AutoCreate;
 import org.jboss.seam.annotations.Name;
 
@@ -17,10 +15,9 @@ public class AssessoriaDAO extends AbstractDAO<Assessoria> implements Repositori
 	private static final long serialVersionUID = 1L;
 	
 	private final String packageName = Investigado.class.getPackage().getName();
-	
-	@SuppressWarnings("unchecked")
-	public List<Assessoria> recuperarAssessoriasUsuario(Usuario usuario) {
-		String query = "SELECT ass FROM "+packageName+".Assessoria ass WHERE ass.usuarios.codigo =:usuario.codigo";		
-		return entityManager.createQuery(query).setParameter("usuario.codigo", usuario.getCodigoUsuario()).getResultList();		
+		
+	public Assessoria recuperarAssessoriasUsuario(Usuario usuario) {
+		String query = "SELECT ass FROM "+packageName+".Assessoria ass WHERE ass.usuarios.codigo =:usuario.codigo ";		
+		return (Assessoria) entityManager.createQuery(query).setParameter("usuario.codigo", usuario.getCodigoUsuario()).getSingleResult();		
 	}
 }

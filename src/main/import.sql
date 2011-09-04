@@ -1,8 +1,8 @@
 -- SQL statements which are executed at application startup if hibernate.hbm2ddl.auto is 'create' or 'create-drop'
 INSERT INTO TIPOUSUARIO(tipcodigo, sigla, descricao, cadastradoem, cadastradopor, alteradoem, alteradopor) VALUES(0001, 'sigla', 'descrito', now(), NULL , now(), NULL)
 
-INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(0001, 'vcorrea', 'vcorrea', now(), NULL, now(), NULL );
-INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(0002, 'gerodf' , 'gerodf' , now(), NULL, now(), NULL );
+INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(nextval('usuariosequencepostgres'), 'vcorrea', 'vcorrea', now(), NULL, now(), NULL );
+INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(nextval('usuariosequencepostgres'), 'gerodf' , 'gerodf' , now(), NULL, now(), NULL );
 
 INSERT INTO ENDERECO VALUES (nextval('enderecosequencepostgres'), 'bairro', 'cidade', 'df', 'logradouro');
 
@@ -12,8 +12,13 @@ INSERT INTO INVESTIGADO VALUES (nextval('investigadosequencepostgres'), now(), n
 INSERT INTO ORGANIZACAO VALUES (nextval('organizacaosequencepostgres'), now(), now(), 'descricao organizacao', 'detran', 0, 1, 1);
 INSERT INTO ORGANIZACAO VALUES (nextval('organizacaosequencepostgres'), now(), now(), 'descricao organizacao', '9 BPM', 0, 2, 2);
 
-INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'EVENTO', 0, 'ANDAMENTO');
-INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'QUALQUER', 0, 'ATIVA');
+INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'),'EVENTO INVESTIGACAO' , 1, 'EVENTO');
+INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'ANDAMENTO EVENTO', 1, 'ANDAMENTO');
+INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'EVENTO ENCERRADO', 1, 'CONCLUSO');
+INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'INVESTIGACAO EFETUADA', 4, 'INVESTIGACAO');
+INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'ANDAMENTO INVESTIGACAO', 4, 'ANALISE');
+INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'ANDAMENTO INVESTIGACAO', 4, 'APTO');
+INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'ANDAMENTO INVESTIGACAO', 4, 'INAPTO');
 
 INSERT INTO AGENCIA VALUES (nextval('agenciasequencepostgres'), now(), now(), true, 0, 2, 2, 1);
 

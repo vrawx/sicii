@@ -55,7 +55,8 @@ public class Assessoria extends BaseEntity {
 	private Usuario alteradoPor;
 	private Date alteradoEm;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@Transient
 	private List<UsuarioAssessoria> usuarios;
 	
 	// Uso de referencia para Listas

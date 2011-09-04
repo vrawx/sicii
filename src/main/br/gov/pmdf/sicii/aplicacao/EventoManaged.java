@@ -11,6 +11,7 @@ import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.datamodel.DataModel;
 import org.jboss.seam.annotations.datamodel.DataModelSelection;
 import br.gov.pmdf.sicii.aplicacao.facade.EventoFacade;
+import br.gov.pmdf.sicii.domain.entidade.Assessoria;
 import br.gov.pmdf.sicii.domain.entidade.Auditoria;
 import br.gov.pmdf.sicii.domain.entidade.EventoInvestigacao;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
@@ -36,7 +37,10 @@ public class EventoManaged {
 	private List<EventoInvestigacao> eventosConsultados;	
 	@Out(required=false) @DataModelSelection
 	private EventoInvestigacao eventoSelecionado;
-		
+	
+	@In
+	private EventoFacade eventoFacade;
+	
 	@Factory("eventosConsultados")
 	private void factoryEventosConsultados() {
 		eventosConsultados = repositorioEventoInvestigacao.recuperarTodos();
@@ -65,17 +69,18 @@ public class EventoManaged {
 			eventoInvestigacao.setCadastradoEm(new Date());
 			eventoInvestigacao.setAlteradoPor(usuarioLogado);
 			eventoInvestigacao.setAlteradoEm(new Date());
-			eventoInvestigacao.setParecer(null);
-			//Organizacao - assessoria - situacao
-			eventoInvestigacao.setAssessoria(null);			
-			//Achando assesssoria do usuario logado			
+			eventoInvestigacao.setParecer(null);			
+			//Assesssoria Ativa do usuario logado
+			eventoInvestigacao.setAssessoria(eventoFacade.getAssessoriaAtivaUsuario(usuarioLogado));			
+			
 			eventoInvestigacao.setOrganizacao(null);
+			
 			repositorioEventoInvestigacao.armazenar(eventoInvestigacao);
 			repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Cadastrar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
 			return "sucess";
 		}
 		return "fail";
-	}	
+	}
 	public List<EventoInvestigacao> getEventosConsultados() {
 		return eventosConsultados;
 	}	

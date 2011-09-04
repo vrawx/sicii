@@ -16,8 +16,8 @@ public class SituacaoDAO extends AbstractDAO<Situacao> implements RepositorioSit
 	private String packageName = Situacao.class.getPackage().getName();
 	
 	@SuppressWarnings("unchecked")
-	public List<Situacao> pesquisarGrupoSituacao(String nomeGrupo) {
-		String query = "SELECT situacao FROM "+packageName+".Situacao WHERE situacao.sigla ==':nomeGrupo' ";
-		return entityManager.createQuery(query).setParameter("nomeGrupo",nomeGrupo).getResultList();		
+	public List<Situacao> recuperarGrupoSituacao(String sigla) {
+		String query = "FROM "+packageName+".Situacao sit WHERE sit.grupo = (SELECT sit.grupo FROM "+packageName+".Situacao sit WHERE sit.sigla = :sigla) AND sit.sigla != :sigla ";
+		return entityManager.createQuery(query).setParameter("sigla",sigla).getResultList();		
 	}
 }
