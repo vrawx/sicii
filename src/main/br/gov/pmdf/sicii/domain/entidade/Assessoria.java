@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
 import org.jboss.seam.annotations.Name;
 
 /**
@@ -55,9 +56,9 @@ public class Assessoria extends BaseEntity {
 	private Usuario alteradoPor;
 	private Date alteradoEm;
 	
-	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@Transient
-	private List<UsuarioAssessoria> usuarios;
+	@OneToMany(fetch=FetchType.LAZY,  mappedBy="assessoria", cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+	private List<UsuarioAssessoria> usuarioAssessorias;
 	
 	// Uso de referencia para Listas
 	@Transient
@@ -122,10 +123,10 @@ public class Assessoria extends BaseEntity {
 	public Usuario getAlteradoPor() {
 		return alteradoPor;
 	}
-	public List<UsuarioAssessoria> getUsuarios() {
-		return usuarios;
+	public List<UsuarioAssessoria> getUsuarioAssessorias() {
+		return usuarioAssessorias;
 	}
 	public List<Documento> getDocumentos() {
 		return documentos;
-	}
+	}	
 }

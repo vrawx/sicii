@@ -1,5 +1,7 @@
 package br.gov.pmdf.sicii.domain.repositorio;
 
+import br.gov.pmdf.sicii.domain.entidade.Assessoria;
+import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.entidade.UsuarioAssessoria;
 
 /**
@@ -11,4 +13,6 @@ import br.gov.pmdf.sicii.domain.entidade.UsuarioAssessoria;
 
 public interface RepositorioUsuarioAssessoria extends Repositorio<UsuarioAssessoria> {
 
+	Assessoria recuperarAssessoriasUsuario(Usuario usuario);	
+	
 }

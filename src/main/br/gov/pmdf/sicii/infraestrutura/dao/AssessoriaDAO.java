@@ -16,8 +16,5 @@ public class AssessoriaDAO extends AbstractDAO<Assessoria> implements Repositori
 	
 	private final String packageName = Investigado.class.getPackage().getName();
 		
-	public Assessoria recuperarAssessoriasUsuario(Usuario usuario) {
-		String query = "SELECT ass FROM "+packageName+".Assessoria ass WHERE ass.usuarios.codigo =:usuario.codigo ";		
-		return (Assessoria) entityManager.createQuery(query).setParameter("usuario.codigo", usuario.getCodigoUsuario()).getSingleResult();		
-	}
+	
 }

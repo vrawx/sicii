@@ -11,12 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.Length;
 import org.hibernate.validator.NotNull;
 import org.jboss.seam.annotations.Name;
@@ -48,10 +48,15 @@ public class Usuario extends BaseEntity {
 	@Length(min=6, max=10)
 	private String senha;
 	
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
+	@JoinColumn(name="cadastradoPor")
+	private Usuario cadastradoPor;
 	private Date cadastradoEm;
-	private Date alteradoEm;
-	private Integer cadastradoPor;
-	private Integer alteradoPor;
+	
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
+	@JoinColumn(name="alteradoPor")
+	private Usuario alteradoPor;
+	private Date alteradoEm;		
 	
 	private Boolean statusLogin = false;
 	
@@ -60,9 +65,10 @@ public class Usuario extends BaseEntity {
 	@JoinColumn(name="tipoUsuario")
 	private TipoUsuario tipoUsuario;
 	
-	//@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.REFRESH}, fetch=FetchType.LAZY)
-	@Transient
-	private List<Assessoria> assessorias;
+	
+	@OneToMany(fetch=FetchType.LAZY,  mappedBy="usuario", cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+	private List<UsuarioAssessoria> usuarioAssessorias;
 	
 	public Assessoria getAssessoriaAtiva() {
 		return null;
@@ -95,8 +101,8 @@ public class Usuario extends BaseEntity {
 	}
 	
 	//get and set
-	public List<Assessoria> getAssessorias() {
-		return assessorias;
+	public List<UsuarioAssessoria> getUsuarioAssessorias() {
+		return usuarioAssessorias;
 	}
 	public Long getCodigoUsuario() {
 		return codigoUsuario;
@@ -131,16 +137,16 @@ public class Usuario extends BaseEntity {
 	public void setAlteradoEm(Date alteradoEm) {
 		this.alteradoEm = alteradoEm;
 	}
-	public Integer getCadastradoPor() {
+	public Usuario getCadastradoPor() {
 		return cadastradoPor;
 	}
-	public void setCadastradoPor(Integer cadastradoPor) {
+	public void setCadastradoPor(Usuario cadastradoPor) {
 		this.cadastradoPor = cadastradoPor;
 	}
-	public Integer getAlteradoPor() {
+	public Usuario getAlteradoPor() {
 		return alteradoPor;
 	}
-	public void setAlteradoPor(Integer alteradoPor) {
+	public void setAlteradoPor(Usuario alteradoPor) {
 		this.alteradoPor = alteradoPor;
-	}		
+	}
 }

@@ -10,8 +10,8 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.datamodel.DataModel;
 import org.jboss.seam.annotations.datamodel.DataModelSelection;
+
 import br.gov.pmdf.sicii.aplicacao.facade.EventoFacade;
-import br.gov.pmdf.sicii.domain.entidade.Assessoria;
 import br.gov.pmdf.sicii.domain.entidade.Auditoria;
 import br.gov.pmdf.sicii.domain.entidade.EventoInvestigacao;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;

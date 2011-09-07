@@ -18,12 +18,13 @@ import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioAssessoria;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioOrganizacao;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioSituacao;
+import br.gov.pmdf.sicii.domain.repositorio.RepositorioUsuarioAssessoria;
 
 @Name("eventoFacade")
 public class EventoFacade {
 
 	@In
-	private RepositorioAssessoria repositorioAssessoria;	
+	private RepositorioUsuarioAssessoria repositorioUsuarioAssessoria;	
 	@In
 	private RepositorioSituacao repositorioSituacao;	
 	@In
@@ -35,7 +36,7 @@ public class EventoFacade {
 	private List<SelectItem> situacoesCombo;	
 	
 	public Assessoria getAssessoriaAtivaUsuario(Usuario usuario) {		
-		return repositorioAssessoria.recuperarAssessoriasUsuario(usuario);		
+		return repositorioUsuarioAssessoria.recuperarAssessoriasUsuario(usuario);
 	}	
 	public List<SelectItem> getSituacoesCombo() {
 		List<Situacao> situacoesValidas = repositorioSituacao.recuperarGrupoSituacao("EVENTO");
