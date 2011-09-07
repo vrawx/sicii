@@ -32,9 +32,9 @@
 	        		
 	        		
 	        		<!-- Botoes de acao -->
-	        		<h:commandButton value="Salvar" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton" />
-	        		<!-- <rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />  -->
-	        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />	        		
+	        		<h:commandButton value="Salvar" immediate="true" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton" />
+	        		<!-- <rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />  -->	        		
+	        		<h:commandButton value="Cancelar" immediate="true" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml" />	        		
         		</h:form>
  	</ui:define>
  </ui:composition> 

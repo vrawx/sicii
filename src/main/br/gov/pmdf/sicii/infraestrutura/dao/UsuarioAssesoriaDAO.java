@@ -16,8 +16,9 @@ public class UsuarioAssesoriaDAO extends AbstractDAO<UsuarioAssessoria> implemen
 	private String packageName = UsuarioAssessoria.class.getPackage().getName();
 	
 	public Assessoria recuperarAssessoriasUsuario(Usuario usuario) {
+		System.out.println("passando por aqui");
 		String query = "SELECT usuarioAssessoria.assessoria FROM "+packageName+".UsuarioAssessoria usuarioAssessoria "+
-				" WHERE usuarioAssessoria.usuario.codigo =:usuario.codigo AND usuarioAssessoria.status =:true";		
-		return (Assessoria) entityManager.createQuery(query).setParameter("usuario.codigo", usuario.getCodigoUsuario()).getSingleResult();		
+				" WHERE usuarioAssessoria.usuario.codigoUsuario =:codigoUsuario AND usuarioAssessoria.status = true";		
+		return (Assessoria) entityManager.createQuery(query).setParameter("codigoUsuario", usuario.getCodigoUsuario()).getSingleResult();		
 	}	
 }

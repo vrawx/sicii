@@ -70,7 +70,7 @@ public class EventoManaged {
 			eventoInvestigacao.setAlteradoPor(usuarioLogado);
 			eventoInvestigacao.setAlteradoEm(new Date());
 			eventoInvestigacao.setParecer(null);			
-			//Assesssoria Ativa do usuario logado
+			//Assesssoria Ativa do usuario logado			
 			eventoInvestigacao.setAssessoria(eventoFacade.getAssessoriaAtivaUsuario(usuarioLogado));			
 			eventoInvestigacao.setOrganizacao(null);			
 			repositorioEventoInvestigacao.armazenar(eventoInvestigacao);
