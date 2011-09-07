@@ -39,12 +39,14 @@ public class UsuarioAssessoria extends BaseEntity {
 	@Column(name="uasCodigo")
 	private Long codigoUsuarioAssseoria;
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional=false)
+	@ManyToOne(fetch=FetchType.LAZY, optional=false, cascade=CascadeType.ALL)
 	private Usuario usuario;
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional=false)
+	@ManyToOne(fetch=FetchType.LAZY, optional=false, cascade=CascadeType.ALL)
 	private Assessoria assessoria;
 	
+	@ManyToOne
+	@JoinColumn
 	private FuncaoUsuario funcaoUsuario;	
 	private Boolean status;
 	

@@ -26,6 +26,9 @@ INSERT INTO ASSESSORIA VALUES(nextval('assessoriasequencepostgres'), now(), now(
 INSERT INTO ASSESSORIA VALUES(nextval('assessoriasequencepostgres'), now(), now(), 'Divisao de Controle de Armas', 'DCAM', true, 1, 1, 1);
 INSERT INTO ASSESSORIA VALUES(nextval('assessoriasequencepostgres'), now(), now(), 'Divisao de Tecnologia', 'DTEC', true, 1, 1, 1);
 
+INSERT INTO FUNCAOUSUARIO VALUES (nextval('funcaosequencepostgres'), now(), now(), 'Chefe', 'CHEFE', 1, 1);
+
+INSERT INTO USUARIOASSESSORIA VALUES (nextval('usuarioassessoriapostgres'), now(), now(), true, 1, 1, 1, 1, 1);
 
 
 INSERT INTO EVENTOINVESTIGACAO VALUES (nextval('eventosequencepostgres'), now(), 1988, now(), 'descricao evento', 1944, 1, 1, 1, 1, null, 1);

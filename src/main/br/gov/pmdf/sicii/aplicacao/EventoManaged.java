@@ -38,7 +38,7 @@ public class EventoManaged {
 	@Out(required=false) @DataModelSelection
 	private EventoInvestigacao eventoSelecionado;
 	
-	@In
+	@In(create=true)
 	private EventoFacade eventoFacade;
 	
 	@Factory("eventosConsultados")
