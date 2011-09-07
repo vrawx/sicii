@@ -13,10 +13,11 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioUsuarioAssessoria;
 public class UsuarioAssesoriaDAO extends AbstractDAO<UsuarioAssessoria> implements RepositorioUsuarioAssessoria {
 
 	private static final long serialVersionUID = 1L;
-
 	private String packageName = UsuarioAssessoria.class.getPackage().getName();
+	
 	public Assessoria recuperarAssessoriasUsuario(Usuario usuario) {
-		String query = "SELECT ass FROM "+packageName+".UsuarioAssessoria ass WHERE ass.usuarios.codigo =:usuario.codigo ";		
+		String query = "SELECT usuarioAssessoria.assessoria FROM "+packageName+".UsuarioAssessoria usuarioAssessoria "+
+				" WHERE usuarioAssessoria.usuario.codigo =:usuario.codigo AND usuarioAssessoria.status =:true";		
 		return (Assessoria) entityManager.createQuery(query).setParameter("usuario.codigo", usuario.getCodigoUsuario()).getSingleResult();		
 	}	
 }

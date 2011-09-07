@@ -22,6 +22,10 @@ INSERT INTO SITUACAO VALUES (nextval('situacaosequencepostgres'), 'ANDAMENTO INV
 
 INSERT INTO AGENCIA VALUES (nextval('agenciasequencepostgres'), now(), now(), true, 0, 2, 2, 1);
 
-INSERT INTO ASSESSORIA VALUES(nextval('assessoriasequencepostgres'), now(), now(), 'Descricao', 'DTEC', true, 1, 1, 1);
+INSERT INTO ASSESSORIA VALUES(nextval('assessoriasequencepostgres'), now(), now(), 'Divisao de Operacoes', 'DOP', true, 1, 1, 1);
+INSERT INTO ASSESSORIA VALUES(nextval('assessoriasequencepostgres'), now(), now(), 'Divisao de Controle de Armas', 'DCAM', true, 1, 1, 1);
+INSERT INTO ASSESSORIA VALUES(nextval('assessoriasequencepostgres'), now(), now(), 'Divisao de Tecnologia', 'DTEC', true, 1, 1, 1);
+
+
 
 INSERT INTO EVENTOINVESTIGACAO VALUES (nextval('eventosequencepostgres'), now(), 1988, now(), 'descricao evento', 1944, 1, 1, 1, 1, null, 1);

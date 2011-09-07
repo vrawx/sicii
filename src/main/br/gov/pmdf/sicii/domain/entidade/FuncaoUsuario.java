@@ -2,10 +2,14 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe FuncaoUsuario
@@ -14,14 +18,17 @@ import javax.persistence.Id;
  */
 
 @Entity
+@SequenceGenerator(name="funcaoSequence", initialValue=0, sequenceName="funcaoSequencePostgres" )
+@Name("funcaoUsuario")
 public class FuncaoUsuario extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 
 	//atributos da classe
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer funCodigo;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="funcaoSequence")
+	@Column(name="funcodigo")
+	private Long codigoFuncao;
 	
 	private String sigla;
 	private String descricao;
@@ -35,12 +42,12 @@ public class FuncaoUsuario extends BaseEntity {
 	}
 
 	//get and set da classe
-	public Integer getFunCodigo() {
-		return funCodigo;
+	public Long getCodigoFuncao() {
+		return codigoFuncao;
 	}
 
-	public void setFunCodigo(Integer funCodigo) {
-		this.funCodigo = funCodigo;
+	public void setCodigoFuncao(Long codigoFuncao) {
+		this.codigoFuncao = codigoFuncao;
 	}
 
 	public String getSigla() {

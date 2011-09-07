@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 /**
  * Classe UsuarioAssessoria
@@ -27,18 +28,20 @@ import javax.persistence.OneToOne;
 
 @AssociationOverrides({ @AssociationOverride(name = "pk.usuario", joinColumns = @JoinColumn(name = "codigoUsuario")),		
 						@AssociationOverride(name = "pk.assessoria", joinColumns = @JoinColumn(name = "codigoAssessoria")) })
+@SequenceGenerator(name="usuarioAssessoriaSequence", sequenceName="usuarioAssessoriaPostgres")						
 public class UsuarioAssessoria extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 
 	//atributos da classe
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="usuarioAssessoriaSequence")
 	@Column(name="uasCodigo")
 	private Long codigoUsuarioAssseoria;
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	private Usuario usuario;
+	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	private Assessoria assessoria;
 	
