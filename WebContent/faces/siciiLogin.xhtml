@@ -9,8 +9,8 @@
 	template="/template.xhtml">
 
 	<ui:define name="body">
-		<h:form id="loginForm">			
-			<rich:panel>
+		<rich:panel>
+			<h:form id="loginForm">			
 				<f:facet name="header">Login</f:facet>
 				<p>Please login here</p>
 				<div class="dialog">
@@ -25,12 +25,10 @@
 							value="#{rememberMe.enabled}" />
 					</h:panelGrid>
 				</div>
-			</rich:panel>
-								
-			<div class="actionButtons">
-				<h:commandButton id="submit" value="Login"
-					action="#{loginManaged.logarSistema}"/>
-			</div>
-		</h:form>
+				<div class="actionButtons">
+					<h:commandButton id="submit" value="Login"	action="#{loginManaged.logarSistema}"/>
+				</div>						
+			</h:form>
+		</rich:panel>
 	</ui:define>
 </ui:composition>

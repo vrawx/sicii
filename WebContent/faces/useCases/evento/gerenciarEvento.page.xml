@@ -3,10 +3,10 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
 	  
-	<navigation>
+	<navigation>		
 		<rule if-outcome="foward">
 			<redirect view-id="/faces/useCases/evento/cadastrarEvento.xhtml"/>
 		</rule>
-	</navigation>
-   
+		<end-conversation/>
+	</navigation>   
 </page>

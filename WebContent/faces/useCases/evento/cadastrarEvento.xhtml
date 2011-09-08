@@ -12,6 +12,7 @@
    <ui:define name="bodyContent">
     	
     	<br></br><br></br><br></br><br></br>
+    	<rich:panel>
 		<h:form id="cadastroEventoForm" >
 			<h3>Novo Evento de Investigação</h3>        	    	
 					
@@ -35,7 +36,8 @@
 	        		<h:commandButton value="Salvar" immediate="true" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton" />
 	        		<!-- <rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />  -->	        		
 	        		<h:commandButton value="Cancelar" immediate="true" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml" />	        		
-        		</h:form>
+        </h:form>
+        </rich:panel>
  	</ui:define>
  </ui:composition> 
  

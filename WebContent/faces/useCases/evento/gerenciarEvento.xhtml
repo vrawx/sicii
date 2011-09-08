@@ -34,34 +34,33 @@
 			</h:form>
         </rich:panel>
         <rich:panel>
-	        <h:form>
+	        <a4j:form>	        
 		 		<div id="listaEventos" class="panelgrid,actionButtons">
 			        <h:panelGroup rendered="#{eventoManaged.eventosConsultados.size eq 0}" > Nenhum Evento Registrado</h:panelGroup>	        
-			        <h:dataTable id="tableEventos" value="#{eventoManaged.eventosConsultados}" var="evento" rendered="#{eventoManaged.eventosConsultados.size gt 0}" 
-			        	styleClass="gradeLocalizados" headerClass="gradeLocalizadosHeader" rowClasses="oddRow,evenRow" captionStyle="">
-			        	
+			        <rich:dataTable id="tableEventos" value="#{eventoManaged.eventosConsultados}" var="evento" rendered="#{eventoManaged.eventosConsultados.size gt 0}" 
+			        				styleClass="gradeLocalizados" headerClass="gradeLocalizadosHeader" rowClasses="oddRow,evenRow" captionStyle="">
 			        	<f:facet name="header">REGISTROS LOCALIZADOS</f:facet>
-			        	<h:column>
+			        	<rich:column>
 			        		<f:facet name="header">CÓDIGO</f:facet>
 			        		<h:outputText value="#{evento.codigoEvento}" />
-			        	</h:column>
-			        	<h:column>
+			        	</rich:column>			        	
+			        	<rich:column>
 			        		<f:facet name="header">NÚMERO</f:facet>
 			        		<h:outputText value="#{evento.numeroEvento}" />
-			        	</h:column>
-			        	<h:column>
+			        	</rich:column>
+			        	<rich:column>
 			        		<f:facet name="header">ANO</f:facet>
 			        		<h:outputText value="#{evento.ano}" />
-			        	</h:column>	        		        	
-			        	<h:column>
+			        	</rich:column>	        		        	
+			        	<rich:column>
 			        		<f:facet name="header">DESCRIÇÃO</f:facet>
 			        		<h:outputText value="#{evento.descricao}" />
-			        	</h:column>	        		        	
-			        	<h:column><h:commandLink id="excluir" action="#{eventoManaged.excluirEvento}"><h:graphicImage  styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Evento"/></h:commandLink></h:column>
-			        	<h:column><h:commandLink id="editar" action="/faces/useCases/evento/cadastrarEvento.xhtml"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Evento"/></h:commandLink></h:column>	        
-			        </h:dataTable>	           
+			        	</rich:column>	        		        	
+			        	<rich:column><a4j:commandLink id="excluir" action="#{eventoManaged.excluirEvento(evento)}">excluir</a4j:commandLink></rich:column>
+			        	<rich:column><a4j:commandLink id="editar" action="/faces/useCases/evento/cadastrarEvento.xhtml"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Evento"/></a4j:commandLink></rich:column>
+			        </rich:dataTable>		        	           
 		        </div>
-	        </h:form>
+	        </a4j:form>
 		</rich:panel>    	  
  	</ui:define>
  </ui:composition> 

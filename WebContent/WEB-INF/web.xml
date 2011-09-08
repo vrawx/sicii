@@ -16,10 +16,10 @@
   </context-param>
   
   <context-param>  
-    <param-name>org.rechfaces.SKIN</param-name>  
+    <param-name>org.richfaces.SKIN</param-name>  
     <!-- <param-value>emeraldTown</param-value>-->           
-    <param-value>classic</param-value>   
-    <!-- <param-value>blueSky</param-value> -->  
+    <!-- <param-value>classic</param-value>  -->   
+    <param-value>blueSky</param-value>   
     <!-- <param-value>ruby</param-value> -->  
      <!-- <param-value>wine</param-value> -->   
     <!-- <param-value>deepMarine</param-value> -->  
