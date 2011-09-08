@@ -19,9 +19,7 @@
 		   	<rule if-outcome="evento">
 		      	<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>
 		   	</rule>            
-        </navigation>            
-        </navigation>            
-        </navigation>
+        </navigation>       
     </page>
 
     <exception class="org.jboss.seam.framework.EntityNotFoundException">

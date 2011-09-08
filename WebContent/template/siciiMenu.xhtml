@@ -1,24 +1,4 @@
-<<<<<<< HEAD
-<rich:toolBar
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:rich="http://richfaces.org/rich">
-    <rich:toolBarGroup>
-        <h:outputText value="#{projectName}:"/>
-        <s:link id="menuHomeId" view="/home.xhtml" value="Home" propagation="none"/>
-    </rich:toolBarGroup>
-    <!-- @newMenuItem@ -->
-    <rich:toolBarGroup location="right">
-        <h:outputText id="menuWelcomeId" value="signed in as: #{usuarioLogado.login}" rendered="#{usuarioLogado.statusLogin}"/>
-        <s:link id="menuLoginId" view="/faces/siciiLog in.xhtml" value="Login" rendered="#{not usuarioLogado.statusLogin}" propagation="none"/>
-        <s:link id="menuLogoutId" view="/faces/siciiLogin.xhtml" action="#{loginManaged.logoutMethod}" value="Logout" rendered="#{usuarioLogado.statusLogin}" propagation="none"/>
-    </rich:toolBarGroup>
-</rich:toolBar>
-=======
-	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	    xmlns:ui="http://java.sun.com/jsf/facelets"
 	    xmlns:h="http://java.sun.com/jsf/html"
 	    xmlns:f="http://java.sun.com/jsf/core"
@@ -55,11 +35,11 @@
 	                </f:facet>
 	               
 	                <rich:menuItem submitMode="ajax" value="Evento Investigação"
-	                    action="#{menuManaged.eventoInvestigacao}" icon="/img/icones/evento.png"/>
+	                    action="/faces/useCases/evento/gerenciarEvento.xhtml" icon="/img/icones/evento.png"/>
 	                <rich:menuItem submitMode="ajax" value="Investigado"
-	                    action="#{menuManaged.investigado}" icon="/img/icones/investigado.png" />
+	                    action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" icon="/img/icones/investigado.png" />
 	                <rich:menuItem submitMode="ajax" value="Documento"
-	                    action="#{menuManaged.documento}" icon="/img/icones/doc2.png" />
+	                    action="/faces/useCases/documento/gerenciarDocumento.xhtml" icon="/img/icones/doc2.png" />
 
 	                <rich:menuSeparator id="menuSeparator1" />
 
@@ -139,4 +119,3 @@
 	    </rich:toolBarGroup>
 	</rich:toolBar>
 	-->
->>>>>>> 7935afbf3b54a1d411ba2a633e72c19644d03dec
