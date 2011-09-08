@@ -17,9 +17,9 @@
   
   <context-param>  
     <param-name>org.richfaces.SKIN</param-name>  
-    <!-- <param-value>emeraldTown</param-value>-->           
-    <!-- <param-value>classic</param-value>  -->   
-    <param-value>blueSky</param-value>   
+    <!-- <param-value>emeraldTown</param-value>-->
+    <!-- <param-value>classic</param-value> -->   
+	<param-value>Default</param-value>
     <!-- <param-value>ruby</param-value> -->  
      <!-- <param-value>wine</param-value> -->   
     <!-- <param-value>deepMarine</param-value> -->  
@@ -84,6 +84,6 @@
   </security-constraint>
   
   <session-config>
-  		<session-timeout>25</session-timeout>		
+  		<session-timeout>15</session-timeout>		
   </session-config>
 </web-app>

@@ -5,7 +5,6 @@ import org.jboss.seam.annotations.Name;
 
 import br.gov.pmdf.sicii.domain.entidade.Assessoria;
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
-import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioAssessoria;
 
 @Name("repositorioAssessoria")
