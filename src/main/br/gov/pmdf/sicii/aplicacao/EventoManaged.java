@@ -28,12 +28,6 @@ public class EventoManaged {
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;
 	
-	@In
-	private RepositorioEventoInvestigacao repositorioEventoInvestigacao;
-	
-	@In
-	private RepositorioAuditoria repositorioAuditoria;	
-	
 	@In(scope=ScopeType.CONVERSATION) @Out(scope=ScopeType.CONVERSATION, required=false)	
 	private EventoInvestigacao eventoInvestigacao;	
 	
@@ -45,6 +39,12 @@ public class EventoManaged {
 	
 	@In(create=true) 
 	private EventoInvestigacaoService eventoInvestigacaoService;
+	
+	@In
+	private RepositorioEventoInvestigacao repositorioEventoInvestigacao;
+	
+	@In
+	private RepositorioAuditoria repositorioAuditoria;
 	
 	@SuppressWarnings("unused")
 	@Factory("eventosConsultados")

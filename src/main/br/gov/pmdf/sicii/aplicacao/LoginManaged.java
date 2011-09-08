@@ -41,7 +41,7 @@ public class LoginManaged implements Serializable {
 			// Registrando Auditoria
 			repositorioAuditoria.armazenar(new Auditoria(usuario, "Logou no Sistema", new Date(), "sistema"));			
 			return "sucess";			
-		}			
+		}		
 		return "fail";
 	}	
 	
