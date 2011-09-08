@@ -21,7 +21,7 @@ public class LoginManaged implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@In @Out
+	@In @Out(required=false)
 	private Usuario usuario;
 	
 	@Out(scope=ScopeType.SESSION, required=false)

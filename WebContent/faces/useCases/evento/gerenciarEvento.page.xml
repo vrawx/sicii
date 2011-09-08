@@ -4,9 +4,12 @@
       xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
 	  
 	<navigation>		
+		
+		<rule if-outcome="sucess">
+			<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>				
+		</rule>		
 		<rule if-outcome="foward">
-			<redirect view-id="/faces/useCases/evento/cadastrarEvento.xhtml"/>
-		</rule>
-		<end-conversation/>
-	</navigation>   
+			<redirect view-id="/faces/useCases/evento/cadastrarEvento.xhtml"/>			
+		</rule>						  
+	</navigation>	
 </page>

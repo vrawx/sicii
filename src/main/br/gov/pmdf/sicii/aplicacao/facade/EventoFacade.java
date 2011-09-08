@@ -36,7 +36,6 @@ public class EventoFacade {
 	private List<SelectItem> situacoesCombo;	
 	
 	public Assessoria getAssessoriaAtivaUsuario(Usuario usuario) {		
-		System.out.println("preparando Facade");
 		return repositorioUsuarioAssessoria.recuperarAssessoriasUsuario(usuario);
 	}	
 	public List<SelectItem> getSituacoesCombo() {

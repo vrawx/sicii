@@ -12,7 +12,6 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.datamodel.DataModel;
-import org.jboss.seam.annotations.datamodel.DataModelSelection;
 
 import br.gov.pmdf.sicii.aplicacao.facade.EventoFacade;
 import br.gov.pmdf.sicii.domain.entidade.Auditoria;
@@ -33,22 +32,19 @@ public class EventoManaged {
 	private RepositorioEventoInvestigacao repositorioEventoInvestigacao;
 	
 	@In
-	private RepositorioAuditoria repositorioAuditoria;
+	private RepositorioAuditoria repositorioAuditoria;	
 	
-	@In(create=true) 
-	private EventoInvestigacaoService eventoInvestigacaoService;		
-	
-	@In(scope=ScopeType.CONVERSATION, required=false) @Out(required=false)	
+	@In(scope=ScopeType.CONVERSATION) @Out(scope=ScopeType.CONVERSATION, required=false)	
 	private EventoInvestigacao eventoInvestigacao;	
 	
-	@DataModel @Out(scope=ScopeType.CONVERSATION, required=false)
+	@DataModel
 	private List<EventoInvestigacao> eventosConsultados;	
-	
-	@DataModelSelection @Out(required=false) 
-	private EventoInvestigacao eventoSelecionado;
-	
+		
 	@In(create=true)
 	private EventoFacade eventoFacade;
+	
+	@In(create=true) 
+	private EventoInvestigacaoService eventoInvestigacaoService;
 	
 	@SuppressWarnings("unused")
 	@Factory("eventosConsultados")
@@ -61,20 +57,21 @@ public class EventoManaged {
 		eventosConsultados = repositorioEventoInvestigacao.recuperarPorFragmento(eventoInvestigacao);
 	}
 	@Begin(flushMode=FlushModeType.AUTO, join=true)
-	public String editarEvento(EventoInvestigacao eventoInvestigacao) {
-		System.out.println(eventoInvestigacao);
-		eventoSelecionado = eventoInvestigacao;
+	public String editarEvento(EventoInvestigacao eventoInvestigacao) {		
+		this.eventoInvestigacao = eventoInvestigacao;
 		return "foward";
 	}
 	@Begin(flushMode=FlushModeType.AUTO, join=true)
-	public String excluirEvento(EventoInvestigacao eventoInvestigacaoSelecionado) throws Exception{
-		repositorioEventoInvestigacao.remover(eventoInvestigacaoSelecionado);
-		//eventoSelecionado = eventoInvestigacao;
+	public String excluirEvento(EventoInvestigacao eventoInvestigacao) throws Exception{
+		repositorioEventoInvestigacao.remover(eventoInvestigacao);
+		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Excluir Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
+		this.eventoInvestigacao = eventoInvestigacao;
 		return "sucess";
 	}
 	@Begin(flushMode=FlushModeType.AUTO, join=true)
 	public String alterarEvento(EventoInvestigacao eventoInvestigacao) {
-		eventoSelecionado = eventoInvestigacao;
+		this.eventoInvestigacao = eventoInvestigacao;
+		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Alterar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
 		return "sucess";
 	}
 	@Begin(flushMode=FlushModeType.AUTO, join=true)
@@ -106,11 +103,5 @@ public class EventoManaged {
 	}
 	public void setEventoInvestigacao(EventoInvestigacao eventoInvestigacao) {
 		this.eventoInvestigacao = eventoInvestigacao;
-	}
-	public EventoInvestigacao getEventoSelecionado() {
-		return eventoSelecionado;
-	}
-	public void setEventoSelecionado(EventoInvestigacao eventoSelecionado) {
-		this.eventoSelecionado = eventoSelecionado;
-	}
+	}	
 }
