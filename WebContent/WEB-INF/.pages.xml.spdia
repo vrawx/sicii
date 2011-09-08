@@ -3,6 +3,9 @@
  <item ID="*" NAME="*" PATH="*" SHAPE="24,17,0,0" TYPE="page" model-entity="SeamPagesDiagramItem">
   <output ID="/home.xhtml" NAME="output" PATH="/home.xhtml"
    TARGET="#xhome.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/faces/useCases/evento/gerenciarEvento.xhtml"
+   NAME="output1" PATH="/faces/useCases/evento/gerenciarEvento.xhtml"
+   TARGET="#xfaces#xuseCases#xevento#xgerenciarEvento.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
  <item ID="org.jboss.seam.framework.EntityNotFoundException"
   NAME="exception:org.jboss.seam.framework.EntityNotFoundException"
@@ -67,4 +70,7 @@
   TYPE="page" model-entity="SeamPagesDiagramItem"/>
  <item NAME="#xfaces#xsiciiLogin.xhtml" PATH="/faces/siciiLogin.xhtml"
   SHAPE="344,849,0,0" TYPE="page" model-entity="SeamPagesDiagramItem"/>
+ <item NAME="#xfaces#xuseCases#xevento#xgerenciarEvento.xhtml"
+  PATH="/faces/useCases/evento/gerenciarEvento.xhtml"
+  SHAPE="376,249,0,0" TYPE="page" model-entity="SeamPagesDiagramItem"/>
 </diagram>

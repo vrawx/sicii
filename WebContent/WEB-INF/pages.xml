@@ -10,6 +10,17 @@
             <rule if-outcome="home">
                 <redirect view-id="/home.xhtml"/>
             </rule>
+		   	<rule if-outcome="investigado">
+		      	<redirect view-id="/faces/useCases/investigado/gerenciarInvestigado.xhtml"/>
+		   	</rule>
+		   	<rule if-outcome="evento">
+		      	<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>
+		   	</rule>
+		   	<rule if-outcome="evento">
+		      	<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>
+		   	</rule>            
+        </navigation>            
+        </navigation>            
         </navigation>
     </page>
 
