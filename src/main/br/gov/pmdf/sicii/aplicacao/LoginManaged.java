@@ -24,7 +24,7 @@ public class LoginManaged implements Serializable {
 	@In @Out
 	private Usuario usuario;
 	
-	@Out(scope=ScopeType.SESSION)
+	@Out(scope=ScopeType.SESSION, required=false)
 	private Usuario usuarioLogado;
 	
 	@In

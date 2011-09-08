@@ -4,19 +4,28 @@ html {
 
 body {
 	font-size: 12px;
-	width: 800px;
-	height: 600px; 
+	width: 794px;
+	height: 594px; 
 	position: relative;   
 	padding: 0;    
-	background: #4682B4; 
+	background: #36648B; 
 }
+Menu {
+	background-color: black;	
+}
+
+.iconeGerencia {
+	width: 15px; 
+	height: 15px;
+}
+
 
 #globalContent{
 	color: red; 
 }
 
 #bodyContent{
-	color: red; 
+	width: 100%; 
 }
 
 #footerContent{
@@ -67,15 +76,16 @@ select {
 	margin-bottom: 10px;
 }
 
-/*
-.rich-table {
-	width: 100%;
+
+.panel {
+	height: 550px; 
+	background:#009ACD;
 }
-*/
+
 
 .panelGrid{
 	width: 30%;
-	background: #4682B4;
+	background: #1C1C1C;
 }
 
 /*configurações de grade */
@@ -90,17 +100,18 @@ background: #4682B4;
 }
 .oddColumn {
 height: 25px;
-text-align: center;
+text-align: center;=""
 background: MediumTurquoise;
 }
-.evenColumn {
+.evenColumn {=""
 text-align: center;
 background: PowderBlue;
 }
 .iconesDeGrade{
-	width: 10px;
-	height: 10px;
+	width: 15px;
+	height: 15px;
 }
+
 
 .body {
 	padding: 30px;
@@ -230,6 +241,8 @@ img.errors {
 .rich-list-item {
 	padding-bottom: 4px;
 }
+
+
 
 div.info {
 	font-size: 1.2em;

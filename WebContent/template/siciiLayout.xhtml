@@ -17,19 +17,21 @@
 	</head>
 	<body>
 	<center>
-	<div id="corpo">
+	<div id="corpo" style="width: 100%; height: 100%">
 		<!-- ESPACO PARA LOGO / BANNER  E CONTEÚDOS DO LAYOUT -->		
-		<div id="globalContent"><h:graphicImage width="800px" value="/img/topo.jpg" alt="logomarcaPMDF"/></div>
+		<div id="globalContent" style="width: 100%; height: 10%"><h:graphicImage width="100%" height="100%" value="/img/topo.jpg" alt="logomarcaPMDF"/></div>
 		<ui:insert name="globalContent"/>
 	
 		<!-- O CONTEUDO DO MENU SERÁ INCLUIDO -->
-		<ui:include src="/template/siciiMenu.xhtml" >
-			<ui:param name="projectName" value="sicii" />
-		</ui:include>
+		<div id="globalMenu" style="width: 100%; height: 3%">
+			<ui:include src="/template/siciiMenu.xhtml" >
+				<ui:param name="projectName" value="sicii" />
+			</ui:include>
+		</div>
 	
 		<!-- DIV PARA MENSAGENS DO SISTEMA -->
 		<ui:insert name="globalMessages">
-			<div id="globalMessages">
+			<div id="globalMessages" style="width: 100%; height: 3%">
 				<h:messages id="messages" globalOnly="true" styleClass="message"
 					errorClass="errormsg" infoClass="infomsg" warnClass="warnmsg"
 					rendered="#{showGlobalMessages != 'false'}" />
@@ -37,12 +39,13 @@
 		</ui:insert>
 	
 		<!-- CONTEUDO VARIAVEL  -->
-		<ui:insert name="bodyContent">
-			<div id="bodyContent"></div>
-		</ui:insert>
-		
+		<div  style="width: 100%; height: 81%">
+			<ui:insert name="bodyContent">
+
+			</ui:insert>
+		</div>
 		<!-- CONTEUDO DO FOOTER -->
-		<div id="footerContent"><h:graphicImage width="800px" value="/img/rodape.jpg" alt="rodapePMDF" /></div>
+		<div id="footerContent" style="width: 100%; height: 3%"><h:graphicImage width="100%" height="100%" value="/img/rodape.jpg" alt="rodapePMDF" /></div>
 		<ui:insert name="footerContent" />	
 	</div>
 	</center>

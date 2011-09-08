@@ -1,18 +1,120 @@
-<rich:toolBar
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:rich="http://richfaces.org/rich">
-    <rich:toolBarGroup>
-        <h:outputText value="#{projectName}:"/>
-        <s:link id="menuHomeId" view="/home.xhtml" value="Home" propagation="none"/>
-    </rich:toolBarGroup>
-    <!-- @newMenuItem@ -->
-    <rich:toolBarGroup location="right">
-        <h:outputText id="menuWelcomeId" value="signed in as: #{usuario.login}" rendered="#{usuario.statusLogin}"/>
-        <s:link id="menuLoginId" view="/faces/siciiLog in.xhtml" value="Login" rendered="#{not usuario.statusLogin}" propagation="none"/>
-        <s:link id="menuLogoutId" view="/faces/siciiLogin.xhtml" action="#{loginManaged.logoutMethod}" value="Logout" rendered="#{usuario.statusLogin}" propagation="none"/>
-    </rich:toolBarGroup>
-</rich:toolBar>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	    xmlns:ui="http://java.sun.com/jsf/facelets"
+	    xmlns:h="http://java.sun.com/jsf/html"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:s="http://jboss.com/products/seam/taglib"
+	    xmlns:a4j="http://richfaces.org/a4j"
+	    xmlns:rich="http://richfaces.org/rich">
+
+	    <style>
+	    .pic {
+	        margin-bottom: -4px;
+	        margin-right: 2px;
+	        width: 18px;
+	        height: 18px;
+	    }
+	    .search .rich-menu-item-hover{
+	        background-color: transparent;
+	        border-color: transparent;
+	    }
+	    </style>
+	    
+	    <h:form>
+	
+	        <rich:toolBar>
+				<s:link id="menuHome" view="/home.xhtml" value="Home" propagation="none">
+					<h:graphicImage value="/img/icones/home.png" styleClass="pic"/>
+				</s:link>
+	            <rich:dropDownMenu>
+	                <f:facet name="label"> 
+	                    <h:panelGroup>
+	                        <h:graphicImage value="/img/icones/gerenciar.png" styleClass="pic"/>
+					        <h:outputText value="Gerência"/>	                    
+	                    </h:panelGroup>
+	                </f:facet>
+	               
+	                <rich:menuItem submitMode="ajax" value="Evento Investigação"
+	                    action="#{menuManaged.eventoInvestigacao}" icon="/img/icones/evento.png"/>
+	                <rich:menuItem submitMode="ajax" value="Investigado"
+	                    action="#{ddmenu.doOpen}" icon="/img/icones/investigado.png" />
+	                <rich:menuItem submitMode="ajax" value="Documento"
+	                    action="#{ddmenu.doOpen}" icon="/img/icones/doc2.png" />
+
+	                <rich:menuSeparator id="menuSeparator1" />
+
+	                <rich:menuItem submitMode="ajax" value="Assessoria"
+	                    action="#{ddmenu.doOpen}" icon="/img/icones/assessoria.png" />
+	                <rich:menuItem submitMode="ajax" value="Parecer de Pesquisa"
+	                    action="#{ddmenu.doExit}" icon="/img/icones/parecer.png"/>
+	                
+	                <rich:menuSeparator id="menuSeparator2" />
+
+	                <rich:menuItem submitMode="ajax" value="Agência"
+	                    action="#{ddmenu.doOpen}" icon="/img/icones/agencia.png" />
+	                <rich:menuItem submitMode="ajax" value="Usuários"
+	                    action="#{ddmenu.doExit}" icon="/img/icones/user.png"/>
+	
+	            </rich:dropDownMenu>
+	
+	            <rich:dropDownMenu>
+	
+	                <f:facet name="label">
+	                    <h:panelGrid cellpadding="0" cellspacing="0" columns="2"
+	                        style="vertical-align:middle">
+	                        <h:outputText value="Links" />
+	                    </h:panelGrid>
+	                </f:facet>
+	
+	                <rich:menuItem submitMode="none"
+	                    onclick="document.location.href='http://labs.jboss.com/jbossrichfaces/'">
+	                    <h:outputLink value="http://labs.jboss.com/jbossrichfaces/">
+	                        <h:outputText value="RichFaces Home Page"></h:outputText>
+	                    </h:outputLink>
+	                </rich:menuItem>
+	
+	                <rich:menuItem submitMode="none" onclick="document.location.href='http://jboss.com/index.html?module=bb&amp;op=viewforum&amp;f=261'">
+	                    <h:outputLink value="http://jboss.com/index.html?module=bb&amp;op=viewforum&amp;f=261">
+	                        <h:outputText value="RichFaces Forum"></h:outputText>
+	                    </h:outputLink>
+	                </rich:menuItem>
+	            </rich:dropDownMenu>
+	            
+			    <rich:toolBarGroup location="right">
+			        <h:outputText id="logadoPor" value="Logado por: #{usuarioLogado.login} (#{usuarioLogado.tipoUsuario.sigla})" rendered="#{usuarioLogado.statusLogin}"/>
+			        <h:outputLink value="/faces/useCases/siciiLogin.xhtml" rendered="#{not usuarioLogado.statusLogin}">
+			        	<h:outputText value="Login"></h:outputText>
+			        </h:outputLink>
+			        <h:outputLink value="/faces/useCases/siciiLogin.xhtml"  rendered="#{usuarioLogado.statusLogin}">
+			        	<h:outputText value="Logout"></h:outputText>
+			        </h:outputLink>
+			    </rich:toolBarGroup>
+	        </rich:toolBar>
+	    </h:form>
+	</ui:composition>
+	
+	<!--     
+	<rich:toolBar styleClass="Menu">
+	    
+	    <rich:dropDownMenu>
+			<f:facet name="label"> 
+			    <h:panelGroup>
+			        <h:graphicImage styleClass="iconeGerencia" value="/img/icones/gerencia.png"/>
+			        <h:outputText value="Gerência"/>
+			    </h:panelGroup>
+			</f:facet>
+	     	
+	     </rich:dropDownMenu>
+	    
+	    <rich:toolBarGroup>
+	        <h:outputText value="#{projectName}:"/>
+	        <s:link id="menuHomeId" view="/home.xhtml" value="Home" propagation="none"/>
+	    </rich:toolBarGroup>
+	    -->
+	    <!-- @newMenuItem@ 
+	    <rich:toolBarGroup location="right">
+	        <h:outputText id="menuWelcomeId" value="Logado por: #{usuario.login}" rendered="#{usuario.statusLogin}"/>
+	        <s:link id="menuLoginId" view="/faces/siciiLogin.xhtml" value="Login" rendered="#{not usuario.statusLogin}" propagation="none"/>
+	        <s:link id="menuLogoutId" view="/faces/siciiLogin.xhtml" action="#{loginManaged.logoutMethod}" value="Logout" rendered="#{usuario.statusLogin}" propagation="none"/>
+	    </rich:toolBarGroup>
+	</rich:toolBar>
+	-->
