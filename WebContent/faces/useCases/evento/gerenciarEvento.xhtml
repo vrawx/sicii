@@ -32,10 +32,8 @@
 						-->
 				</div>
 			</h:form>
-        </rich:panel>
-        <rich:panel>
+			<br/>
 	        <a4j:form>	        
-
 		 		<div id="listaEventos" class="panelgrid,actionButtons">
 			        <h:panelGroup rendered="#{eventoManaged.eventosConsultados.size eq 0}" > Nenhum Evento Registrado</h:panelGroup>	        
 			        <rich:dataTable id="tableEventos" value="#{eventoManaged.eventosConsultados}" var="evento" rendered="#{eventoManaged.eventosConsultados.size gt 0}" 
@@ -57,12 +55,12 @@
 			        		<f:facet name="header">DESCRIÇÃO</f:facet>
 			        		<h:outputText value="#{evento.descricao}" />
 			        	</rich:column>	        		        	
-			        	<rich:column><a4j:commandLink id="excluir" action="#{eventoManaged.excluirEvento(evento)}">excluir</a4j:commandLink></rich:column>
+			        	<rich:column><a4j:commandLink id="excluir" action="#{eventoManaged.excluirEvento(evento)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Evento"/></a4j:commandLink></rich:column>
 			        	<rich:column><a4j:commandLink id="editar" action="/faces/useCases/evento/cadastrarEvento.xhtml"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Evento"/></a4j:commandLink></rich:column>
 			        </rich:dataTable>		        	           
 		        </div>
-	        </a4j:form>
-		</rich:panel>
+	        </a4j:form>			
+        </rich:panel>
  	</ui:define>
  </ui:composition> 
  

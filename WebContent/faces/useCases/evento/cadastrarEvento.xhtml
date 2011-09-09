@@ -9,34 +9,36 @@
     xmlns:rich="http://richfaces.org/rich"
     template="/template/siciiLayout.xhtml">
 	
-   <ui:define name="bodyContent">
-    	
-    	<br></br><br></br><br></br><br></br>
-    	<rich:panel>
-		<h:form id="cadastroEventoForm" >
-			<h3>Novo Evento de Investigação</h3>        	    	
+   	<ui:define name="bodyContent">
+    	<rich:panel styleClass="panel">		
+   			<h3> Gerenciar Evento Investigação </h3> 
+			<h4> Novo Evento de Investigação </h4>        	    	
+			
+			<br/><br/>
+    		<h:form id="cadastroEventoForm" >
+        		<div class="panelgrid,actionButtons">	            
+					<h:panelGrid columns="2">    	
 					
-					<h:outputText value="Selecione a Situação: " /><br/>
-					<h:selectOneMenu value="#{eventoInvestigacao.situacao}">
-						<f:selectItems value="#{eventoFacade.situacoesCombo}"/>
-					</h:selectOneMenu>
-					<br/><br/>
-	        		<h:outputText value="Informe o Numero do Evento" />
-	        		<h:message for="numeroEvento"/><br/>        		
-	        		<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" required="true" size="50" maxlength="10"  /><br/>
-	        		
-	        		<h:outputText value="Informe o Ano" /><br/>
-	        		<h:inputText id="anoEvento" value="#{eventoInvestigacao.ano}" required="true" size="50" maxlength="5"  /><br/>
-	        		
-	        		<h:outputText value="Informe A Descrição do Evento" /><br/>
-	        		<h:inputText id="descricaoEvento" value="#{eventoInvestigacao.descricao}" required="true" size="50" maxlength="50"  /><br/>        		
-	        		
-	        		
-	        		<!-- Botoes de acao -->
-	        		<h:commandButton value="Salvar" immediate="true" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton" />
-	        		<!-- <rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />  -->	        		
-	        		<h:commandButton value="Cancelar" immediate="true" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml" />	        		
-        </h:form>
+						<h:outputText value="Selecione a Situação: " />
+						<h:selectOneMenu value="#{eventoInvestigacao.situacao}">
+							<f:selectItems value="#{eventoFacade.situacoesCombo}"/>
+						</h:selectOneMenu>
+						
+		        		<h:outputText value="Informe o Numero do Evento" />
+		        		<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" required="true" size="50" maxlength="10"  />
+		        		
+		        		<h:outputText value="Informe o Ano" />
+		        		<h:inputText id="anoEvento" value="#{eventoInvestigacao.ano}" required="true" size="50" maxlength="5"  />
+		        		
+		        		<h:outputText value="Informe A Descrição do Evento" />
+		        		<h:inputText id="descricaoEvento" value="#{eventoInvestigacao.descricao}" required="true" size="50" maxlength="50"  />
+					</h:panelGrid>
+					<h:panelGrid columns="2">
+		        		<h:commandButton value="Salvar" immediate="true" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton" />
+		        		<h:commandButton value="Cancelar" immediate="true" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml" />	        		
+					</h:panelGrid>
+				</div>
+        	</h:form>
         </rich:panel>
  	</ui:define>
  </ui:composition> 

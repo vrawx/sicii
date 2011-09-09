@@ -20,12 +20,10 @@
 	    </style>
 	    
 	    <h:form>
-	
-	        <rich:toolBar>
-		        <h:outputLink value="/home.xhtml">
-					<h:graphicImage value="/img/icones/home.png" styleClass="pic"/>
-		        	<h:outputText value="Home"></h:outputText>
-		        </h:outputLink>	        
+	        <rich:toolBar rendered="#{usuarioLogado != null}">
+		        <rich:menuItem submitMode="ajax" value="Home"
+	            	action="/home.xhtml" icon="/img/icones/home.png"/>
+	        
 	            <rich:dropDownMenu>
 	                <f:facet name="label"> 
 	                    <h:panelGroup>
@@ -82,12 +80,9 @@
 	            
 			    <rich:toolBarGroup location="right">
 			        <h:outputText id="logadoPor" value="Logado por: #{usuarioLogado.login} (#{usuarioLogado.tipoUsuario.sigla})" rendered="#{usuarioLogado.statusLogin}"/>
-			        <h:outputLink value="/faces/useCases/siciiLogin.xhtml" rendered="#{not usuarioLogado.statusLogin}">
-			        	<h:outputText value="Login"></h:outputText>
-			        </h:outputLink>
-			        <h:outputLink value="/faces/useCases/siciiLogin.xhtml"  rendered="#{usuarioLogado.statusLogin}">
-			        	<h:outputText value="Logout"></h:outputText>
-			        </h:outputLink>
+					
+					<rich:menuItem submitMode="ajax" value="Sair"
+	                    action="#{loginManaged.logoutMethod}" icon="/img/icones/evento.png"/>
 			    </rich:toolBarGroup>
 	        </rich:toolBar>
 	    </h:form>

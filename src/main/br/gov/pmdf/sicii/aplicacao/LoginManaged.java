@@ -46,7 +46,8 @@ public class LoginManaged implements Serializable {
 	}	
 	
 	public String logoutMethod() {
-		return "sucess";
+		setUsuarioLogado(null);
+		return "logout";
 	}
 	
 	public Usuario getUsuarioLogado() {
