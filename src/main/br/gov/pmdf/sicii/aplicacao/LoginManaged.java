@@ -3,6 +3,9 @@ package br.gov.pmdf.sicii.aplicacao;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
@@ -42,13 +45,12 @@ public class LoginManaged implements Serializable {
 			repositorioAuditoria.armazenar(new Auditoria(usuario, "Logou no Sistema", new Date(), "sistema"));			
 			return "sucess";			
 		}		
+		FacesContext.getCurrentInstance().addMessage("loginMessage", new FacesMessage("Usuario ou Senha invalido"));		
 		return "fail";
-	}	
-	
+	}		
 	public String logoutMethod() {
 		return "sucess";
-	}
-	
+	}	
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}

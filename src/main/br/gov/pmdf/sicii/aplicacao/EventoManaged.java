@@ -1,5 +1,6 @@
 package br.gov.pmdf.sicii.aplicacao;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,9 @@ import br.gov.pmdf.sicii.domain.service.EventoInvestigacaoService;
 
 @Name("eventoManaged")
 @Scope(ScopeType.CONVERSATION)
-public class EventoManaged {
+public class EventoManaged implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;
@@ -74,7 +77,7 @@ public class EventoManaged {
 		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Alterar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
 		return "sucess";
 	}
-	@Begin(flushMode=FlushModeType.AUTO, join=true)
+	@Begin(flushMode=FlushModeType.COMMIT)
 	public String cadastrarEvento() throws Exception {
 		if(eventoInvestigacaoService.isEventoInvestigacaoValid(eventoInvestigacao)) {
 			eventoInvestigacao.setCadastradoPor(usuarioLogado);
