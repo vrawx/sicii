@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,7 +53,7 @@ public class Investigado extends BaseEntity {
 	//@Length(max=8)
 	private Integer numeroCelular;
 	
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE}, fetch=FetchType.EAGER)
 	@JoinColumn
 	private Endereco endereco;
 	
@@ -77,8 +78,6 @@ public class Investigado extends BaseEntity {
 	
 	//get and set da classe
 	public Endereco getEndereco() {
-		if(endereco == null)
-			setEndereco(new Endereco());
 		return endereco;
 	}
 	public void setEndereco(Endereco endereco) {

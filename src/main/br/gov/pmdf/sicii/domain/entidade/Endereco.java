@@ -24,6 +24,8 @@ public class Endereco extends BaseEntity {
 	private String cidade;
 	private String cidadeUF;
 	
+	public Endereco() {		
+	}
 	
 	public String getLogradouro() {
 		return logradouro;

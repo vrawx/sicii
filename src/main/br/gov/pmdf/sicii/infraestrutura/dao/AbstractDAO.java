@@ -21,7 +21,8 @@ public abstract class AbstractDAO<T extends BaseEntity> implements Repositorio<T
 
 	
 	public void armazenar(T persistenceEntity) {		
-		entityManager.persist(persistenceEntity);		
+		entityManager.persist(persistenceEntity);	
+		entityManager.flush();
 	}
 	
 	public T recuperarPorId(Long id) {
@@ -51,6 +52,7 @@ public abstract class AbstractDAO<T extends BaseEntity> implements Repositorio<T
 
 	public void remover(T persistenceEntity) {		
 		entityManager.remove(persistenceEntity);
+		entityManager.flush();
 	}
 	
 	@SuppressWarnings("unchecked")

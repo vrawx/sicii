@@ -72,7 +72,8 @@
 			        		<h:message for="uf"/>
 			        		   
 						</h:panelGrid>
-		        		<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />
+						
+						<s:button value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" propagation="begin" />		        		
 		        		<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />
 		        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />	        		
 					</div>

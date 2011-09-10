@@ -10,9 +10,8 @@
   <output ID="/faces/useCases/evento/gerenciarEvento.xhtml"
    NAME="output2" PATH="/faces/useCases/evento/gerenciarEvento.xhtml"
    TARGET="#xfaces#xuseCases#xevento#xgerenciarEvento.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
-  <output ID="/faces/useCases/siciiLogin.xhtml" NAME="output3"
-   PATH="/faces/useCases/siciiLogin.xhtml"
-   TARGET="#xfaces#xuseCases#xsiciiLogin.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/faces/siciiLogin.xhtml" NAME="output3"
+   PATH="/faces/siciiLogin.xhtml" TARGET="#xfaces#xsiciiLogin.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
  <item ID="org.jboss.seam.framework.EntityNotFoundException"
   NAME="exception:org.jboss.seam.framework.EntityNotFoundException"
@@ -83,7 +82,4 @@
  <item NAME="#xfaces#xuseCases#xinvestigado#xgerenciarInvestigado.xhtml"
   PATH="/faces/useCases/investigado/gerenciarInvestigado.xhtml"
   SHAPE="408,377,0,0" TYPE="page" model-entity="SeamPagesDiagramItem"/>
- <item NAME="#xfaces#xuseCases#xsiciiLogin.xhtml"
-  PATH="/faces/useCases/siciiLogin.xhtml" SHAPE="440,505,0,0"
-  TYPE="page" model-entity="SeamPagesDiagramItem"/>
 </diagram>

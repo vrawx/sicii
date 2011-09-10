@@ -7,10 +7,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.jboss.seam.ScopeType;
+import org.jboss.seam.annotations.End;
 import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
+import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.datamodel.DataModel;
 
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
@@ -19,12 +21,13 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
 import br.gov.pmdf.sicii.domain.service.impl.InvestigadoServiceImpl;
 
 @Name("investigadoManaged")
-public class InvestigadoManaged  {
-	
+@Scope(ScopeType.CONVERSATION)
+public class InvestigadoManaged {	
+
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;	
 		
-	@In(create=true) @Out(required=false)
+	@In @Out(required=false)
 	private Investigado investigado;	
 		
 	@DataModel
@@ -33,8 +36,10 @@ public class InvestigadoManaged  {
 	@In
 	private RepositorioInvestigado repositorioInvestigado;	
 	
+		
 	@In
-	private InvestigadoServiceImpl investigadoService;
+	private InvestigadoServiceImpl investigadoService;	
+	
 	
 	//@Restrict("#{s:hasRole('ADMINISTRADOR')}")	
 	public void pesquisarInvestigado() {
@@ -64,21 +69,22 @@ public class InvestigadoManaged  {
 		FacesMessage facesMessage = new FacesMessage("Investigado Removido com Sucesso");
 		FacesContext.getCurrentInstance().addMessage("messages",facesMessage);		
 	}
+	@End
 	public String cadastrarInvestigado() {		
 		if( investigadoService.isCandidatoValido(investigado) ) {
 			investigado.setCadastradoPor(usuarioLogado);
 			investigado.setCadastradoEm(new Date());
 			investigado.setAlteradoPor(usuarioLogado);
 			investigado.setAlteradoEm(new Date());
-			investigado.setExcluido(false);
+			investigado.setExcluido(false);			
+			//repositorioEndereco.armazenar(endereco);	
+			//investigado.setEndereco(endereco);
 			repositorioInvestigado.armazenar(investigado);
 			// Registro de auditoria
 			investigadoService.cadastrarAuditoria(investigado, "Cadastrando Investigado");
-			investigado = null;
 			return "sucess";					
 		}		
-		return "fail";
-		
+		return "fail";		
 	}	
 				
 	
@@ -96,5 +102,5 @@ public class InvestigadoManaged  {
 	}
 	public void setInvestigado(Investigado investigado) {
 		this.investigado = investigado;
-	}	
+	}
 }
