@@ -9,11 +9,12 @@
     xmlns:rich="http://richfaces.org/rich"
     template="/template/siciiLayout.xhtml">
 	
-    <ui:define name="bodyContent">
-    	       
-        <rich:panel>
+	<ui:define name="bodyContent">
+    	<rich:panel styleClass="panel">
+    		<h2> Gerenciar Investigado </h2> 
+    		<h3> Pesquisa </h3>
         	<h:form>
-	            <div class="dialog">
+        		<div class="panelgrid,actionButtons">	            
 						<h:panelGrid  columns="2">
 							<h:outputLabel for="cpf">cpf</h:outputLabel>
 							<h:inputText id="cpf" value="#{investigado.cpf}" />
@@ -29,17 +30,28 @@
 					-->					
 				</div>
 			</h:form>
-        </rich:panel>    
-        
-        <div id="listaInvestigados">
-	        <h:panelGroup rendered="#{investigadoManaged.investigadosConsultados.size eq 0}" > Nenhum usuario Listado</h:panelGroup>	        
-	        <h:dataTable id="tableInvestigados" value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.investigadosConsultados.size gt 0}" >	        
-	        	<h:column><h:outputText value="#{investigado.nome}" /></h:column>
-	        	<h:column><h:outputText value="#{investigado.cpf}" /></h:column>	        	
-	        	<h:column><h:commandButton id="excluirButton" action="#{investigadoManaged.excluirInvestigado}" value="excluir" /></h:column>
-	        	<h:column><h:commandButton id="editarButton" action="/faces/useCases/investigado/cadastrarInvestigado.xhtml" value="editar" /></h:column>	        
-	        </h:dataTable>	           
-        </div>
-                
+			<br/><br/>
+	        <div id="listaInvestigados" class="panelgrid,actionButtons">
+		        <h:panelGroup rendered="#{investigadoManaged.investigadosConsultados.size eq 0}" > <h3>Nenhum usuario Listado</h3> </h:panelGroup>
+		        <rich:dataTable id="tableInvestigados" value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.investigadosConsultados.size gt 0}" 
+		           styleClass="gradeLocalizados" headerClass="gradeLocalizadosHeader" rowClasses="oddRow,evenRow" captionStyle="">	        
+					<f:facet name="header">REGISTROS LOCALIZADOS</f:facet>
+					<rich:column>
+						<f:facet name="header">CPF</f:facet>
+		        		<h:outputText value="#{investigado.cpf}" />
+		        	</rich:column>
+	        		<rich:column>
+			        	<f:facet name="header">NOME</f:facet>
+			        	<h:outputText value="#{investigado.nome}" />
+		        	</rich:column>
+	        		<rich:column>
+			        	<f:facet name="header">CIDADE</f:facet>
+			        	<h:column><h:outputText value="#{investigado.endereco.cidade}" /></h:column>
+					</rich:column>		        	
+		        	<rich:column><a4j:commandLink id="excluirButton" action="#{investigadoManaged.excluirInvestigado}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Investigado"/></a4j:commandLink></rich:column>
+		        	<rich:column><a4j:commandLink id="editarButton" action="/faces/useCases/investigado/cadastrarInvestigado.xhtml"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Investigado"/></a4j:commandLink></rich:column>	        		        
+		        </rich:dataTable>	           
+	        </div>			
+        </rich:panel>                
     </ui:define>
 </ui:composition>

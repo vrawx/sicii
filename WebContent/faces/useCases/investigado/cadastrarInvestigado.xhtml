@@ -10,53 +10,74 @@
     template="/template/siciiLayout.xhtml">
 	
    <ui:define name="bodyContent">
+    	<rich:panel styleClass="panel">
+    		<h2> Gerenciar Investigado </h2> 
+    		<h3> Novo Investigado </h3>
     	
-    	<br></br><br></br><br></br><br></br>
-		<h:form id="cadastroInvestigadoForm" >        	    	
-	        		<h:outputText value="Informe o nome do investigado" /><br/>
-	        		<h:message for="nome"/><br/>        		
-	        		<h:inputText id="nome" value="#{investigado.nome}" required="true" size="50" maxlength="100"  /><br/>
-	        		
-	        		<h:outputText value="Informe a data de nascimento" /><br/>
-	        		<rich:calendar value="#{investigado.nascimento}" datePattern="dd.MM.yyyy" /><br/>
-	        		<br/>
-	        		<h:outputText value="Informe o sexo " /><br/>
-	        		<h:selectOneRadio value="#{investigado.sexo}" id="sexoInvestigado">
-	        			<f:selectItem id="ms" itemLabel="masculino" itemValue="masculino"/>
-	        			<f:selectItem id="fm" itemLabel="feminino" itemValue="feminino"/>
-	        		</h:selectOneRadio>
-	        		<br/>
-	        		
-	        		<h:outputText value="Informe o telefone do investigado" /><br/>
-	        		<h:inputText id="numeroTelefone" value="#{investigado.numeroTelefone}" required="true" size="50" maxlength="12" /><br/>	        		
-	        		<h:outputText value="Informe o celular do investigado" /><br/>
-	        		<h:inputText id="numeroCelular" value="#{investigado.numeroCelular}" required="true" size="50" maxlength="12" /><br/>
-	        		<br/>
-	        		
-	        		<h:outputText value="Informe o cpf do investigado" /><br/>
-	        		<h:message for="cpf"/><br/>
-	        		<h:inputText id="cpf" value="#{investigado.cpf}" required="true" size="50" maxlength="12" /><br/>
-	        		<h:outputText value="Informe o nome do pai do investigado" /><br/>
-	        		<h:inputText value="#{investigado.nomeDoPai}" size="50" maxlength="100"/><br/>        		
-	        		<h:outputText value="Informe o nome da mae do investigado"  /><br/>
-	        		<h:inputText value="#{investigado.nomeDaMae}" size="50" maxlength="100" /><br/>
-	        		
-	        		<br/><br/>
-	        		<h:outputText value="Informe o logradouro" /><br/>
-	        		<h:inputText value="#{investigado.endereco.logradouro}" size="50" maxlength="100" /><br/>
-	        		<h:outputText value="Informe o Bairro" /><br/>
-	        		<h:inputText value="#{investigado.endereco.bairro}" size="50" maxlength="100" /><br/>
-	        		<h:outputText value="Informe a cidade" /><br/>
-	        		<h:inputText value="#{investigado.endereco.cidade}" size="50" maxlength="100" /><br/>
-	        		<h:outputText value="Informe a Unidade Federativa ( UF )" /><br/>
-	        		<h:inputText value="#{investigado.endereco.cidadeUF}" /><br/>
-	        		<br/><br/>        		
-	        		   
-	        		<!-- Botoes de acao -->
-	        		<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />
-	        		<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />
-	        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />	        		
-        		</h:form>
+	    	<br></br>
+	        <h3><h:outputText style="align:left" value="Informe os dados do Investigado a Cadastrar:" /></h3>
+			<h:form id="cadastroInvestigadoForm" >        	    	
+	        		<div class="panelgrid,actionButtons">	            
+	        			
+						<h:panelGrid columns="3">    	
+			        		<h:outputText value="Nome:" />
+			        		<h:inputText id="nome" value="#{investigado.nome}" required="true" size="40" maxlength="255"  />
+							<h:message for="nome"/>
+			        		
+			        		<h:outputText value="Data de nascimento:" />
+			        		<rich:calendar id="nascimento" value="#{investigado.nascimento}" datePattern="dd/MM/yyyy" />
+							<h:message for="nascimento"/>
+							
+			        		<h:outputText value="Sexo:" />
+			        		<h:selectOneRadio value="#{investigado.sexo}" id="sexoInvestigado">
+			        			<f:selectItem id="ms" itemLabel="masculino" itemValue="masculino"/>
+			        			<f:selectItem id="fm" itemLabel="feminino" itemValue="feminino"/>
+			        		</h:selectOneRadio>
+			        		<h:message for="sexoInvestigado"/>
+			        		
+			        		<h:outputText value="Telefone:" />
+			        		<h:inputText id="numeroTelefone" value="#{investigado.numeroTelefone}" required="true" size="13" maxlength="12" />	        		
+			        		<h:message for="numeroTelefone"/>
+			        		
+			        		<h:outputText value="Celular" />
+			        		<h:inputText id="numeroCelular" value="#{investigado.numeroCelular}" required="true" size="13" maxlength="12" />
+			        		<h:message for="numeroCelular"/>
+			        		
+			        		<h:outputText value="Cpf:" />
+			        		<h:inputText id="cpf" value="#{investigado.cpf}" required="true" size="13" maxlength="12" />
+			        		<h:message for="cpf"/>
+			        		
+			        		<h:outputText value="Nome do Pai:" />
+			        		<h:inputText id="nomePai" value="#{investigado.nomeDoPai}" size="40" maxlength="255"/>
+			        		<h:message for="nomePai"/>
+			        		        		
+			        		<h:outputText value="Nome da Mãe:"  />
+			        		<h:inputText id="nomeMae" value="#{investigado.nomeDaMae}" size="40" maxlength="255" />
+			        		<h:message for="nomeMae"/>
+			        		
+			        		<h:outputText value="Logradouro:" />
+			        		<h:inputText id="logradouro" value="#{investigado.endereco.logradouro}" size="30" maxlength="255" />
+			        		<h:message for="logradouro"/>
+			        		
+			        		<h:outputText value="Bairro:" />
+			        		<h:inputText id="bairro" value="#{investigado.endereco.bairro}" size="25" maxlength="100" />
+			        		<h:message for="bairro"/>
+			        		
+			        		<h:outputText value="Cidade:" />
+			        		<h:inputText id="cidade" value="#{investigado.endereco.cidade}" size="25" maxlength="100" />
+			        		<h:message for="cidade"/>
+			        		
+			        		<h:outputText value="UF" />
+			        		<h:inputText id="uf" value="#{investigado.endereco.cidadeUF}" size="2" maxlength="2"/>
+			        		<h:message for="uf"/>
+			        		   
+						</h:panelGrid>
+		        		<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />
+		        		<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />
+		        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />	        		
+					</div>
+				</h:form>
+			</rich:panel>
  	</ui:define>
  </ui:composition> 
  

@@ -12,6 +12,7 @@
 	        margin-right: 2px;
 	        width: 18px;
 	        height: 18px;
+	        color: white;
 	    }
 	    .search .rich-menu-item-hover{
 	        background-color: transparent;
@@ -22,7 +23,7 @@
 	    <h:form>
 	        <rich:toolBar rendered="#{usuarioLogado != null}">
 		        <rich:menuItem submitMode="ajax" value="Home"
-	            	action="/home.xhtml" icon="/img/icones/home.png"/>
+	            	action="/home.xhtml" icon="/img/icones/home.png" styleClass="pic"/>
 	        
 	            <rich:dropDownMenu>
 	                <f:facet name="label"> 
@@ -55,34 +56,11 @@
 	
 	            </rich:dropDownMenu>
 	
-	            <rich:dropDownMenu>
-	
-	                <f:facet name="label">
-	                    <h:panelGrid cellpadding="0" cellspacing="0" columns="2"
-	                        style="vertical-align:middle">
-	                        <h:outputText value="Links" />
-	                    </h:panelGrid>
-	                </f:facet>
-	
-	                <rich:menuItem submitMode="none"
-	                    onclick="document.location.href='http://labs.jboss.com/jbossrichfaces/'">
-	                    <h:outputLink value="http://labs.jboss.com/jbossrichfaces/">
-	                        <h:outputText value="RichFaces Home Page"></h:outputText>
-	                    </h:outputLink>
-	                </rich:menuItem>
-	
-	                <rich:menuItem submitMode="none" onclick="document.location.href='http://jboss.com/index.html?module=bb&amp;op=viewforum&amp;f=261'">
-	                    <h:outputLink value="http://jboss.com/index.html?module=bb&amp;op=viewforum&amp;f=261">
-	                        <h:outputText value="RichFaces Forum"></h:outputText>
-	                    </h:outputLink>
-	                </rich:menuItem>
-	            </rich:dropDownMenu>
-	            
 			    <rich:toolBarGroup location="right">
 			        <h:outputText id="logadoPor" value="Logado por: #{usuarioLogado.login} (#{usuarioLogado.tipoUsuario.sigla})" rendered="#{usuarioLogado.statusLogin}"/>
 					
 					<rich:menuItem submitMode="ajax" value="Sair"
-	                    action="#{loginManaged.logoutMethod}" icon="/img/icones/evento.png"/>
+	                    action="#{loginManaged.logoutMethod}" icon="/img/icones/sair.png" styleClass="pic"/>
 			    </rich:toolBarGroup>
 	        </rich:toolBar>
 	    </h:form>

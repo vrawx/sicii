@@ -77,6 +77,8 @@ public class Investigado extends BaseEntity {
 	
 	//get and set da classe
 	public Endereco getEndereco() {
+		if(endereco == null)
+			setEndereco(new Endereco());
 		return endereco;
 	}
 	public void setEndereco(Endereco endereco) {

@@ -11,27 +11,28 @@
 	
    	<ui:define name="bodyContent">
     	<rich:panel styleClass="panel">		
-   			<h3> Gerenciar Evento Investigação </h3> 
-			<h4> Novo Evento de Investigação </h4>        	    	
+   			<h2> Gerenciar Evento Investigação </h2> 
+			<h3> Novo Evento de Investigação </h3>        	    	
 			
 			<br/><br/>
+			<h3><h:outputText style="align:left" value="Informe os dados do Evento a Cadastrar:" /></h3>
     		<h:form id="cadastroEventoForm" >
         		<div class="panelgrid,actionButtons">	            
 					<h:panelGrid columns="2">    	
 					
-						<h:outputText value="Selecione a Situação: " />
+						<h:outputText value="Situação do Evento: " />
 						<h:selectOneMenu value="#{eventoInvestigacao.situacao}">
 							<f:selectItems value="#{eventoFacade.situacoesCombo}"/>
 						</h:selectOneMenu>
 						
-		        		<h:outputText value="Informe o Numero do Evento" />
-		        		<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" required="true" size="50" maxlength="10"  />
+		        		<h:outputText value="Número do Evento:" />
+		        		<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" required="true" size="10" maxlength="10"  />
 		        		
-		        		<h:outputText value="Informe o Ano" />
-		        		<h:inputText id="anoEvento" value="#{eventoInvestigacao.ano}" required="true" size="50" maxlength="5"  />
+		        		<h:outputText value="Ano do Evento:" />
+		        		<h:inputText id="anoEvento" value="#{eventoInvestigacao.ano}" required="true" size="10" maxlength="4"  />
 		        		
-		        		<h:outputText value="Informe A Descrição do Evento" />
-		        		<h:inputText id="descricaoEvento" value="#{eventoInvestigacao.descricao}" required="true" size="50" maxlength="50"  />
+		        		<h:outputText value="Descrição do Evento:" />
+		        		<h:inputText id="descricaoEvento" value="#{eventoInvestigacao.descricao}" required="true" size="50" maxlength="255"  />
 					</h:panelGrid>
 					<h:panelGrid columns="2">
 		        		<h:commandButton value="Salvar" immediate="true" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton" />
