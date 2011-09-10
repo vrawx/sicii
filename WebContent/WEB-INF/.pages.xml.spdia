@@ -10,6 +10,8 @@
   <output ID="/faces/useCases/evento/gerenciarEvento.xhtml"
    NAME="output2" PATH="/faces/useCases/evento/gerenciarEvento.xhtml"
    TARGET="#xfaces#xuseCases#xevento#xgerenciarEvento.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
+  <output ID="/faces/siciiLogin.xhtml" NAME="output3"
+   PATH="/faces/siciiLogin.xhtml" TARGET="#xfaces#xsiciiLogin.xhtml" model-entity="SeamPagesDiagramItemOutput"/>
  </item>
  <item ID="org.jboss.seam.framework.EntityNotFoundException"
   NAME="exception:org.jboss.seam.framework.EntityNotFoundException"

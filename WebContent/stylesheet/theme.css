@@ -8,7 +8,7 @@ body {
 	height: 594px; 
 	position: relative;   
 	padding: 0;    
-	background: #36648B; 
+	background: #009ACD; 
 }
 Menu {
 	background-color: black;	
@@ -79,7 +79,7 @@ select {
 
 .panel {
 	height: 550px; 
-	background:#009ACD;
+	background:#36648B;
 }
 
 

@@ -48,9 +48,11 @@ public class LoginManaged implements Serializable {
 		FacesContext.getCurrentInstance().addMessage("loginMessage", new FacesMessage("Usuario ou Senha invalido"));		
 		return "fail";
 	}		
-	public String logoutMethod() {
-		return "sucess";
-	}	
+	public String logoutMethod() {		
+		getUsuarioLogado().setStatusLogin(false);
+		return "fail";
+	}
+
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}

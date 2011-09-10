@@ -5,21 +5,20 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:rich="http://richfaces.org/rich">	
-	
-<html>
+	xmlns:rich="http://richfaces.org/rich"		
+    template="/template/siciiLayout.xhtml">
 
-		<rich:panel>
-			<h:message for="loginForm" id="loginMessage"/>			
+    <ui:define name="bodyContent">
+		<rich:panel styleClass="panel">
 			<h:form id="loginForm">			
-				<f:facet name="header">Login</f:facet>				
-				<p>Login</p>
+	    		<h3> Acesso de Usuário </h3> 
+	    		<h4> Login </h4>
 				<div class="dialog">
 					<h:panelGrid columns="2" rowClasses="prop"
 						columnClasses="name,value">
-						<h:outputLabel for="username">Username</h:outputLabel>
+						<h:outputLabel for="username">usuário</h:outputLabel>
 						<h:inputText id="username" value="#{usuario.login}" />
-						<h:outputLabel for="password">Password</h:outputLabel>
+						<h:outputLabel for="password">Senha</h:outputLabel>
 						<h:inputSecret id="password" value="#{usuario.senha}" />
 						<h:outputLabel for="rememberMe">Lembrar-me</h:outputLabel>
 						<h:selectBooleanCheckbox id="rememberMe"
@@ -31,5 +30,5 @@
 				</div>						
 			</h:form>
 		</rich:panel>
-</html>	
+	</ui:define>	
 </ui:composition>

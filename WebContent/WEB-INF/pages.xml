@@ -16,9 +16,9 @@
 		   	<rule if-outcome="evento">
 		      	<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>
 		   	</rule>
-		   	<rule if-outcome="evento">
-		      	<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>
-		   	</rule>            
+		   	<rule if-outcome="fail">      	 
+		   		<redirect view-id="/faces/siciiLogin.xhtml"/>        		
+      		</rule>		   	            
         </navigation>       
     </page>
 
