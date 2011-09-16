@@ -6,8 +6,7 @@
 	<navigation>
 		<rule if-outcome="sucess">
 			<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>			
-		</rule>
-		<end-conversation />
+		</rule>		
 	</navigation>
    
 </page>

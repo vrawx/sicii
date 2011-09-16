@@ -2,15 +2,12 @@ package br.gov.pmdf.sicii.aplicacao.facade;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.model.SelectItem;
-
 import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.datamodel.DataModel;
-
 import br.gov.pmdf.sicii.domain.entidade.Assessoria;
 import br.gov.pmdf.sicii.domain.entidade.Organizacao;
 import br.gov.pmdf.sicii.domain.entidade.Situacao;
