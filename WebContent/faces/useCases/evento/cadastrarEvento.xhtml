@@ -35,8 +35,8 @@
 		        		<h:inputText id="descricaoEvento" value="#{eventoInvestigacao.descricao}" required="true" size="50" maxlength="255"  />
 					</h:panelGrid>
 					<h:panelGrid columns="2">
-		        		<h:commandButton value="Salvar" immediate="true" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton" />
-		        		<h:commandButton value="Cancelar" immediate="true" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml" />	        		
+		        		<s:button value="Salvar" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton"/>
+		        		<s:button value="Cancelar" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml"/>	        		
 					</h:panelGrid>
 				</div>
         	</h:form>

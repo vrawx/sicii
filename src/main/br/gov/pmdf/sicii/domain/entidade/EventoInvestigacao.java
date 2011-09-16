@@ -28,6 +28,7 @@ import org.jboss.seam.annotations.Name;
 @Entity
 @SequenceGenerator(name="eventoSequence", sequenceName="eventoSequencePostgres")
 @Name("eventoInvestigacao")
+//@Scope(ScopeType.CONVERSATION)
 public class EventoInvestigacao extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;

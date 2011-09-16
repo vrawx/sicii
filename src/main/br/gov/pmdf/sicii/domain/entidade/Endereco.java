@@ -24,9 +24,12 @@ public class Endereco extends BaseEntity {
 	private String cidade;
 	private String cidadeUF;
 	
-	public Endereco() {		
-	}
+	public Endereco() { 	}
 	
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getLogradouro() {
 		return logradouro;
 	}

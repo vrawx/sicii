@@ -2,41 +2,34 @@ package br.gov.pmdf.sicii.aplicacao;
 
 import java.util.Date;
 import java.util.List;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.End;
 import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
-import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.datamodel.DataModel;
-
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigado;
 import br.gov.pmdf.sicii.domain.service.impl.InvestigadoServiceImpl;
 
 @Name("investigadoManaged")
-@Scope(ScopeType.CONVERSATION)
 public class InvestigadoManaged {	
+
+	private static final long serialVersionUID = 1L;
 
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;	
 		
-	@In @Out(required=false)
+	@In(required=false) @Out(required=false)
 	private Investigado investigado;	
 		
 	@DataModel
 	private List<Investigado> investigadosConsultados;
 		
 	@In
-	private RepositorioInvestigado repositorioInvestigado;	
-	
-		
+	private RepositorioInvestigado repositorioInvestigado;
+			
 	@In
 	private InvestigadoServiceImpl investigadoService;	
 	
@@ -56,8 +49,7 @@ public class InvestigadoManaged {
 			investigado.setAlteradoEm(new Date());			
 			repositorioInvestigado.armazenar(investigado);
 			// Registro de Auditoria
-			investigadoService.cadastrarAuditoria(investigado, "alterarInvestigado");
-			FacesContext.getCurrentInstance().addMessage("messages",new FacesMessage("Investigado Alterado com Sucesso"));
+			investigadoService.cadastrarAuditoria(investigado, "alterarInvestigado");			
 			return "sucess";
 		}
 		return "fail";		
@@ -65,20 +57,17 @@ public class InvestigadoManaged {
 	public void excluirInvestigado(Investigado investigado) {
 		repositorioInvestigado.remover(investigado);
 		investigadoService.cadastrarAuditoria(investigado, "Excluindo Investigado");
-		System.out.println("passou aqui");
-		FacesMessage facesMessage = new FacesMessage("Investigado Removido com Sucesso");
-		FacesContext.getCurrentInstance().addMessage("messages",facesMessage);		
+		System.out.println("passou aqui");				
 	}
-	@End
+	//@End
 	public String cadastrarInvestigado() {		
+		System.out.println(investigado);
 		if( investigadoService.isCandidatoValido(investigado) ) {
 			investigado.setCadastradoPor(usuarioLogado);
 			investigado.setCadastradoEm(new Date());
 			investigado.setAlteradoPor(usuarioLogado);
 			investigado.setAlteradoEm(new Date());
 			investigado.setExcluido(false);			
-			//repositorioEndereco.armazenar(endereco);	
-			//investigado.setEndereco(endereco);
 			repositorioInvestigado.armazenar(investigado);
 			// Registro de auditoria
 			investigadoService.cadastrarAuditoria(investigado, "Cadastrando Investigado");

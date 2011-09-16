@@ -12,6 +12,6 @@ public class EnderecoDAO extends AbstractDAO<Endereco> implements RepositorioEnd
 	private static final long serialVersionUID = 1L;
 
 	public Endereco recuperarPorFragmento(Endereco endereco) {
-		return entityManager.createQuery("", Endereco.class).getSingleResult();		
+		return (Endereco) entityManager.createQuery("").getSingleResult();		
 	}
 }

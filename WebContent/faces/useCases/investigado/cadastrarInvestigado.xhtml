@@ -54,7 +54,7 @@
 			        		<h:outputText value="Nome da Mãe:"  />
 			        		<h:inputText id="nomeMae" value="#{investigado.nomeDaMae}" size="40" maxlength="255" />
 			        		<h:message for="nomeMae"/>
-			        		
+
 			        		<h:outputText value="Logradouro:" />
 			        		<h:inputText id="logradouro" value="#{investigado.endereco.logradouro}" size="30" maxlength="255" />
 			        		<h:message for="logradouro"/>
@@ -73,7 +73,7 @@
 			        		   
 						</h:panelGrid>
 						
-						<s:button value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" propagation="begin" />		        		
+						<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />		        		
 		        		<rich:componentControl for="cadastroPanel" attachTo="cadastrarButton" event="onclick" operation="hide" />
 		        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />	        		
 					</div>

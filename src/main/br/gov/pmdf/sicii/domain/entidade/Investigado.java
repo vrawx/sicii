@@ -53,7 +53,7 @@ public class Investigado extends BaseEntity {
 	//@Length(max=8)
 	private Integer numeroCelular;
 	
-	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn
 	private Endereco endereco;
 	
@@ -78,6 +78,9 @@ public class Investigado extends BaseEntity {
 	
 	//get and set da classe
 	public Endereco getEndereco() {
+		if (endereco == null) {
+			endereco = new Endereco();			
+		}		
 		return endereco;
 	}
 	public void setEndereco(Endereco endereco) {

@@ -5,13 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.Begin;
+import org.jboss.seam.annotations.End;
 import org.jboss.seam.annotations.Factory;
-import org.jboss.seam.annotations.FlushModeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
-import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.datamodel.DataModel;
 
 import br.gov.pmdf.sicii.aplicacao.facade.EventoFacade;
@@ -23,7 +21,6 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioEventoInvestigacao;
 import br.gov.pmdf.sicii.domain.service.EventoInvestigacaoService;
 
 @Name("eventoManaged")
-@Scope(ScopeType.CONVERSATION)
 public class EventoManaged implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,8 +28,8 @@ public class EventoManaged implements Serializable {
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;
 	
-	@In(scope=ScopeType.CONVERSATION) @Out(scope=ScopeType.CONVERSATION, required=false)	
-	private EventoInvestigacao eventoInvestigacao;	
+	@In	
+	private EventoInvestigacao eventoInvestigacao;
 	
 	@DataModel
 	private List<EventoInvestigacao> eventosConsultados;	
@@ -54,31 +51,32 @@ public class EventoManaged implements Serializable {
 	private void factoryEventosConsultados() {
 		eventosConsultados = repositorioEventoInvestigacao.recuperarTodos();
 	}
-	@Begin(flushMode=FlushModeType.AUTO, join=true)
+	@End
 	public void pesquisarEvento() {	
 		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Evento", new Date(), eventoInvestigacao.getDescricao()));
 		eventosConsultados = repositorioEventoInvestigacao.recuperarPorFragmento(eventoInvestigacao);
 	}
-	@Begin(flushMode=FlushModeType.AUTO, join=true)
+	//@End
 	public String editarEvento(EventoInvestigacao eventoInvestigacao) {		
 		this.eventoInvestigacao = eventoInvestigacao;
 		return "foward";
 	}
-	@Begin(flushMode=FlushModeType.AUTO, join=true)
+	//@End
 	public String excluirEvento(EventoInvestigacao eventoInvestigacao) throws Exception{
 		repositorioEventoInvestigacao.remover(eventoInvestigacao);
 		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Excluir Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
 		this.eventoInvestigacao = eventoInvestigacao;
 		return "sucess";
 	}
-	@Begin(flushMode=FlushModeType.AUTO, join=true)
+	//@End
 	public String alterarEvento(EventoInvestigacao eventoInvestigacao) {
 		this.eventoInvestigacao = eventoInvestigacao;
 		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Alterar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
 		return "sucess";
 	}
-	@Begin(flushMode=FlushModeType.COMMIT)
+	//@End
 	public String cadastrarEvento() throws Exception {
+		System.out.println(eventoInvestigacao);
 		if(eventoInvestigacaoService.isEventoInvestigacaoValid(eventoInvestigacao)) {
 			eventoInvestigacao.setCadastradoPor(usuarioLogado);
 			eventoInvestigacao.setCadastradoEm(new Date());
@@ -89,8 +87,7 @@ public class EventoManaged implements Serializable {
 			eventoInvestigacao.setAssessoria(eventoFacade.getAssessoriaAtivaUsuario(usuarioLogado));			
 			eventoInvestigacao.setOrganizacao(null);			
 			repositorioEventoInvestigacao.armazenar(eventoInvestigacao);
-			repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Cadastrar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
-			eventoInvestigacao = null;
+			repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Cadastrar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));			
 			return "sucess";
 		}
 		return "fail";
@@ -100,10 +97,10 @@ public class EventoManaged implements Serializable {
 	}	
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
-	}
+	}	
 	public EventoInvestigacao getEventoInvestigacao() {
 		return eventoInvestigacao;
-	}
+	}	
 	public void setEventoInvestigacao(EventoInvestigacao eventoInvestigacao) {
 		this.eventoInvestigacao = eventoInvestigacao;
 	}	
