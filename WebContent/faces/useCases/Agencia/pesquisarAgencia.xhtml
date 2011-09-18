@@ -1,0 +1,49 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="/template/siciiLayout.xhtml">
+	
+   <ui:define name="bodyContent">
+    	<rich:panel styleClass="panel">
+    		<h2> Cadastro de Agências </h2> 
+    		<h3> Consulta </h3>
+
+	        <a4j:form>	        
+		 		<div id="listaAgencias" class="panelgrid,actionButtons">
+			        <h:panelGroup rendered="#{agenciaManaged.agenciaConsultadas.size() eq 0}" > Nenhuma Agência Cadastrada</h:panelGroup>	        
+			        <rich:dataTable id="tableAgencia" value="#{agenciaManaged.agenciaConsultadas}" var="agencia" rendered="#{agenciaManaged.agenciaConsultadas.size gt 0}" 
+			        				styleClass="gradeLocalizados" headerClass="gradeLocalizadosHeader" rowClasses="oddRow,evenRow" captionStyle="">
+			        	<f:facet name="header">AGÊNCIAS CADASTRADAS</f:facet>
+			        	<rich:column>
+			        		<f:facet name="header">AGẼNCIA</f:facet>
+			        		<h:outputText value="#{agencia.organizacao.sigla}" />
+			        	</rich:column>			        	
+			        	<rich:column>
+			        		<f:facet name="header">TIPO</f:facet>
+			        		<h:outputText value="CENTRAL" rendered="#{agencia.tipo eq 0}"/>
+			        		<h:outputText value="LOCAL" rendered="#{agencia.tipo eq 1}"/>
+			        	</rich:column>
+			        	<rich:column>
+			        		<f:facet name="header">DATA</f:facet>
+			        		<h:outputText value="#{agencia.cadastradoEm}" />
+			        	</rich:column>	        		        	
+			        	<rich:column>
+			        		<f:facet name="header">STATUS</f:facet>
+			        		<h:outputText value="ATIVADA" rendered="#{agencia.status eq 1}"/>
+			        		<h:outputText value="DESATIVADA" rendered="#{agencia.status eq 0}"/>
+			        	</rich:column>	        		        	
+			        	<rich:column><a4j:commandLink id="editar" action="/faces/useCases/agencia/cadastrarAgencia.xhtml"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Agencia"/></a4j:commandLink></rich:column>
+			        	<rich:column><a4j:commandLink id="excluir" action="#{agenciaManaged.excluirAgencia(agencia)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Agência"/></a4j:commandLink></rich:column>
+			        </rich:dataTable>		        	           
+		        </div>
+	        </a4j:form>			
+        </rich:panel>
+ 	</ui:define>
+ </ui:composition> 
+ 
