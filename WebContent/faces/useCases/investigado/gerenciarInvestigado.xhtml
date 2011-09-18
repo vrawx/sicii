@@ -48,8 +48,8 @@
 			        	<f:facet name="header">CIDADE</f:facet>
 			        	<h:column><h:outputText value="#{investigado.endereco.cidade}" /></h:column>
 					</rich:column>		        	
-		        	<rich:column><a4j:commandLink id="excluirButton" action="#{investigadoManaged.excluirInvestigado}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Investigado"/></a4j:commandLink></rich:column>
-		        	<rich:column><a4j:commandLink id="editarButton" action="/faces/useCases/investigado/cadastrarInvestigado.xhtml"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Investigado"/></a4j:commandLink></rich:column>	        		        
+		        	<rich:column><s:link id="excluirButton" action="#{investigadoManaged.excluirInvestigado(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Investigado"/></s:link></rich:column>
+		        	<rich:column><s:link id="editarButton" action="#{investigadoManaged.selecionarInvestigado(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Investigado"/></s:link></rich:column>	        		        
 		        </rich:dataTable>	           
 	        </div>			
         </rich:panel>                

@@ -43,6 +43,10 @@ public class InvestigadoManaged {
 	public void factoryInvestigadosConsultados() {
 		investigadosConsultados = repositorioInvestigado.recuperarTodos();
 	}
+	public String selecionarInvestigado(Investigado investigado) {
+		this.investigado = investigado;
+		return "select";
+	}
 	public String alterarInvestigado(Investigado investigado) {		
 		if( investigadoService.isCandidatoValido(investigado) ) {			
 			investigado.setAlteradoPor(usuarioLogado);
@@ -56,8 +60,7 @@ public class InvestigadoManaged {
 	}
 	public void excluirInvestigado(Investigado investigado) {
 		repositorioInvestigado.remover(investigado);
-		investigadoService.cadastrarAuditoria(investigado, "Excluindo Investigado");
-		System.out.println("passou aqui");				
+		investigadoService.cadastrarAuditoria(investigado, "Excluindo Investigado");						
 	}
 	//@End
 	public String cadastrarInvestigado() {		
@@ -70,7 +73,8 @@ public class InvestigadoManaged {
 			investigado.setExcluido(false);			
 			repositorioInvestigado.armazenar(investigado);
 			// Registro de auditoria
-			investigadoService.cadastrarAuditoria(investigado, "Cadastrando Investigado");			
+			investigadoService.cadastrarAuditoria(investigado, "Cadastrando Investigado");
+			investigado = null;
 			return "sucess";					
 		}		
 		return "fail";		
