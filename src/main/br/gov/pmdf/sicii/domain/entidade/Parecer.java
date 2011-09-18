@@ -2,13 +2,17 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.jboss.seam.annotations.Name;
 
@@ -37,11 +41,17 @@ public class Parecer extends BaseEntity {
 	
 	private String parecer;
 	
-	private Usuario cadastradoPor;
+	@Temporal(TemporalType.DATE)
 	private Date cadastradoEm;
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@JoinColumn(name="cadastradoPor")
+	private Usuario cadastradoPor;
 	
-	private Usuario alteradoPor;
+	@Temporal(TemporalType.DATE)
 	private Date alteradoEm;	
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@JoinColumn(name="alteradoPor")
+	private Usuario alteradoPor;	
 			
 	public Parecer() {
 		

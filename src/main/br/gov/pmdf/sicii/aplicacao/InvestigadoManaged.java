@@ -70,7 +70,7 @@ public class InvestigadoManaged {
 			investigado.setExcluido(false);			
 			repositorioInvestigado.armazenar(investigado);
 			// Registro de auditoria
-			investigadoService.cadastrarAuditoria(investigado, "Cadastrando Investigado");
+			investigadoService.cadastrarAuditoria(investigado, "Cadastrando Investigado");			
 			return "sucess";					
 		}		
 		return "fail";		

@@ -1,5 +1,6 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,6 @@ import org.jboss.seam.annotations.Name;
 @Entity
 @SequenceGenerator(name="eventoSequence", sequenceName="eventoSequencePostgres")
 @Name("eventoInvestigacao")
-//@Scope(ScopeType.CONVERSATION)
 public class EventoInvestigacao extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
@@ -74,43 +74,50 @@ public class EventoInvestigacao extends BaseEntity {
 	@Transient
 	private List<Investigado> investigados;
 	
-	public EventoInvestigacao() {
-
-	}
 
 	//get and set da classe
+	public Long getCodigoEvento() {
+		return codigoEvento;
+	}
 	public Assessoria getAssessoria() {
+		if (assessoria == null) 
+			assessoria = new Assessoria();
 		return assessoria;
 	}
 	public void setAssessoria(Assessoria assessoria) {
 		this.assessoria = assessoria;
-	}
-	public Long getCodigoEvento() {
-		return codigoEvento;
-	}
+	}	
 	public Parecer getParecer() {
+		if (parecer == null) 
+			parecer = new Parecer();
 		return parecer;
 	}
 	public void setParecer(Parecer parecer) {
 		this.parecer = parecer;
 	}
-	public Situacao getSituacao() {
-		return situacao;
+	public List<Investigado> getInvestigados() {
+		if(investigados == null)
+			investigados = new ArrayList<Investigado>();
+		return investigados;
 	}
-	public void setSituacao(Situacao situacao) {
-		this.situacao = situacao;
+	public void setInvestigados(List<Investigado> investigados) {
+		this.investigados = investigados;
 	}
 	public Organizacao getOrganizacao() {
+		if(organizacao == null)
+			organizacao = new Organizacao();
 		return organizacao;
 	}
 	public void setOrganizacao(Organizacao organizacao) {
 		this.organizacao = organizacao;
 	}
-	public Usuario getCadastradoPor() {
-		return cadastradoPor;
+	public Situacao getSituacao() {
+		if(situacao == null)
+			situacao = new Situacao();
+		return situacao;
 	}
-	public void setCadastradoPor(Usuario cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
 	}
 	public Integer getNumeroEvento() {
 		return numeroEvento;
@@ -130,14 +137,14 @@ public class EventoInvestigacao extends BaseEntity {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public List<Investigado> getInvestigados() {
-		return investigados;
-	}
-	public void setInvestigados(List<Investigado> investigados) {
-		this.investigados = investigados;
-	}
 	public void setCodigoEvento(Long codigoEvento) {
 		this.codigoEvento = codigoEvento;
+	}
+	public Usuario getCadastradoPor() {
+		return cadastradoPor;
+	}
+	public void setCadastradoPor(Usuario cadastradoPor) {
+		this.cadastradoPor = cadastradoPor;
 	}
 	public Date getCadastradoEm() {
 		return cadastradoEm;

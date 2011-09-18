@@ -15,6 +15,8 @@ import org.jboss.seam.annotations.datamodel.DataModel;
 import br.gov.pmdf.sicii.aplicacao.facade.EventoFacade;
 import br.gov.pmdf.sicii.domain.entidade.Auditoria;
 import br.gov.pmdf.sicii.domain.entidade.EventoInvestigacao;
+import br.gov.pmdf.sicii.domain.entidade.Organizacao;
+import br.gov.pmdf.sicii.domain.entidade.Parecer;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioAuditoria;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioEventoInvestigacao;
@@ -28,7 +30,7 @@ public class EventoManaged implements Serializable {
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;
 	
-	@In	
+	@In(required=false)	@Out(required=false)
 	private EventoInvestigacao eventoInvestigacao;
 	
 	@DataModel
@@ -53,7 +55,7 @@ public class EventoManaged implements Serializable {
 	}
 	@End
 	public void pesquisarEvento() {	
-		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Evento", new Date(), eventoInvestigacao.getDescricao()));
+		//repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Evento", new Date(), eventoInvestigacao.getDescricao()));
 		eventosConsultados = repositorioEventoInvestigacao.recuperarPorFragmento(eventoInvestigacao);
 	}
 	//@End
@@ -75,17 +77,17 @@ public class EventoManaged implements Serializable {
 		return "sucess";
 	}
 	//@End
-	public String cadastrarEvento() throws Exception {
+	public String cadastrarEvento() throws Exception {		
 		System.out.println(eventoInvestigacao);
-		if(eventoInvestigacaoService.isEventoInvestigacaoValid(eventoInvestigacao)) {
+		if(eventoInvestigacaoService.isEventoInvestigacaoValid(eventoInvestigacao)) {			
 			eventoInvestigacao.setCadastradoPor(usuarioLogado);
 			eventoInvestigacao.setCadastradoEm(new Date());
 			eventoInvestigacao.setAlteradoPor(usuarioLogado);
 			eventoInvestigacao.setAlteradoEm(new Date());
-			eventoInvestigacao.setParecer(null);			
 			//Assesssoria Ativa do usuario logado			
-			eventoInvestigacao.setAssessoria(eventoFacade.getAssessoriaAtivaUsuario(usuarioLogado));			
-			eventoInvestigacao.setOrganizacao(null);			
+			eventoInvestigacao.setAssessoria(eventoFacade.getAssessoriaAtivaUsuario(usuarioLogado));
+			eventoInvestigacao.setParecer(new Parecer());			
+			eventoInvestigacao.setOrganizacao(new Organizacao());			
 			repositorioEventoInvestigacao.armazenar(eventoInvestigacao);
 			repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Cadastrar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));			
 			return "sucess";

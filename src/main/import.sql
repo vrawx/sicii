@@ -1,8 +1,8 @@
 -- SQL statements which are executed at application startup if hibernate.hbm2ddl.auto is 'create' or 'create-drop'
 INSERT INTO TIPOUSUARIO(tipcodigo, sigla, descricao, cadastradoem, cadastradopor, alteradoem, alteradopor) VALUES(0001, 'sigla', 'descrito', now(), NULL , now(), NULL)
 
-INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(nextval('usuariosequencepostgres'), 'vcorrea', 'vcorrea', now(), NULL, now(), NULL );
-INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(nextval('usuariosequencepostgres'), 'gerodf' , 'gerodf' , now(), NULL, now(), NULL );
+INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(nextval('usuariosequencepostgres'), 'vcorrea', 'vcorrea', now(), NULL, now(), NULL);
+INSERT INTO USUARIO(usucodigo, login, senha, alteradoem, alteradopor, cadastradoem, cadastradopor) VALUES(nextval('usuariosequencepostgres'), 'gerodf' , 'gerodf', now(), 1, now(), 1);
 
 INSERT INTO ENDERECO VALUES (nextval('enderecosequencepostgres'), 'bairro', 'cidade', 'df', 'logradouro');
 
@@ -30,5 +30,6 @@ INSERT INTO FUNCAOUSUARIO VALUES (nextval('funcaosequencepostgres'), now(), now(
 
 INSERT INTO USUARIOASSESSORIA VALUES (nextval('usuarioassessoriapostgres'), now(), now(), true, 1, 1, 1, 1, 1);
 
+INSERT INTO PARECER VALUES (nextval('parecerSequencePostgres'), now(), now(),'parecer nao sei do que', 1, 1, 1);
 
-INSERT INTO EVENTOINVESTIGACAO VALUES (nextval('eventosequencepostgres'), now(), 1988, now(), 'descricao evento', 1944, 1, 1, 1, 1, null, 1);
+
