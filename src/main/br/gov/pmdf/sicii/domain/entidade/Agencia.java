@@ -1,7 +1,6 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Transient;
 
 import org.jboss.seam.annotations.Name;
 
@@ -52,12 +50,16 @@ public class Agencia extends BaseEntity {
 	private Usuario alteradoPor;
 	private Date alteradoEm;
 			
-	@Transient
-	private List<Assessoria> assessorias;
-	
+		
 	public Agencia() {}
 
 	//get and set da classe	
+	public Organizacao getOrganizacao() {
+		return organizacao;
+	}
+	public void setOrganizacao(Organizacao organizacao) {
+		this.organizacao = organizacao;
+	}
 	public Usuario getAlteradoPor() {
 		return alteradoPor;
 	}
@@ -72,12 +74,6 @@ public class Agencia extends BaseEntity {
 	}
 	public Long getCodigoAgencia() {
 		return codigoAgencia;
-	}
-	public Organizacao getOrganizacao() {
-		return organizacao;
-	}
-	public void setOrganizacao(Organizacao organizacao) {
-		this.organizacao = organizacao;
 	}
 	public Integer getTipo() {
 		return tipo;
@@ -102,11 +98,5 @@ public class Agencia extends BaseEntity {
 	}
 	public void setAlteradoEm(Date alteradoEm) {
 		this.alteradoEm = alteradoEm;
-	}
-	public List<Assessoria> getAssessorias() {
-		return assessorias;
-	}
-	public void setAssessorias(List<Assessoria> assessorias) {
-		this.assessorias = assessorias;
 	}
 }

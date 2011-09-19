@@ -19,12 +19,7 @@
     		<h:form id="cadastroEventoForm" >
         		<div class="panelgrid,actionButtons">	            
 					<h:panelGrid columns="2">	
-					 
-						<h:outputText value="Situação do Evento: " />
-						<h:selectOneMenu value="#{eventoInvestigacao.situacao}">
-							<f:selectItems value="#{eventoFacade.situacoesCombo}"/>
-						</h:selectOneMenu>
-											 	
+					 	
 		        		<h:outputText value="Número do Evento:" />
 		        		<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" required="true" size="10" maxlength="10"  />
 		        		
@@ -35,8 +30,8 @@
 		        		<h:inputText id="descricaoEvento" value="#{eventoInvestigacao.descricao}" required="true" size="50" maxlength="255"  />
 					</h:panelGrid>
 					<h:panelGrid columns="2">
-		        		<s:button value="Salvar" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton"/>
-		        		<s:button value="Cancelar" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml"/>	        		
+		        		<h:commandButton value="Salvar" action="#{eventoManaged.cadastrarEvento}" id="cadastrarButton"/>
+		        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml"/>	        		
 					</h:panelGrid>
 				</div>
         	</h:form>

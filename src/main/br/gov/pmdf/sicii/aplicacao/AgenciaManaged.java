@@ -5,9 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.jboss.seam.ScopeType;
-import org.jboss.seam.annotations.Begin;
 import org.jboss.seam.annotations.Factory;
-import org.jboss.seam.annotations.FlushModeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
@@ -30,7 +28,7 @@ public class AgenciaManaged implements Serializable {
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;
 	
-	@In(scope=ScopeType.CONVERSATION) @Out(scope=ScopeType.CONVERSATION, required=false)	
+	@In(required=false) @Out( required=false)	
 	private Agencia agencia;	
 	
 	@DataModel
@@ -48,22 +46,20 @@ public class AgenciaManaged implements Serializable {
 	@SuppressWarnings("unused")
 	@Factory("agenciaConsultadas")
 	private void factoryAgenciaConsultadas() {
-		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Agencia", new Date(), agencia.getOrganizacao().getDescricao()));
+		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Agencia", new Date(), "agencia"));
 		agenciaConsultadas = repositorioAgencia.recuperarTodos();
-	}
-	
-	@Begin(flushMode=FlushModeType.AUTO, join=true)
+	}	
 	public void pesquisarAgencia() {			
 		agenciaConsultadas = repositorioAgencia.recuperarTodos();
-	}
-	
-	public String cadastrarAgencia(Agencia agencia){
+	}	
+	public String cadastrarAgencia(){
 		if(agenciaService.isAgenciaValid(agencia)) {
 			agencia.setCadastradoPor(usuarioLogado);
 			agencia.setCadastradoEm(new Date());
 			agencia.setAlteradoPor(usuarioLogado);
 			agencia.setAlteradoEm(new Date());
-
+			agencia.setStatus(true);
+			agencia.setOrganizacao(null);
 			repositorioAgencia.armazenar(agencia);
 			repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Cadastrar Agência", new Date(), agencia.getOrganizacao().getSigla()+"-"+agencia.getCodigoAgencia()));
 			agencia = null;
