@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -33,17 +34,17 @@ public class EventoInvestigacao extends BaseEntity {
 	@Column(name="eveCodigo")
 	private Long codigoEvento;
 	
-//	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-//	@JoinColumn
-//	private Assessoria assessoria;
+	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@JoinColumn
+	private Assessoria assessoria;
 	
 //	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
 //	@JoinColumn(name="parCodigo")	
 //	private Parecer parecer;
 	
-//	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-//	@JoinColumn(name="sitCodigo")	
-//	private Situacao situacao;
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@JoinColumn(name="sitCodigo")	
+	private Situacao situacao;
 	
 //	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
 //	@JoinColumn	
@@ -77,14 +78,12 @@ public class EventoInvestigacao extends BaseEntity {
 	public Long getCodigoEvento() {
 		return codigoEvento;
 	}
-//	public Assessoria getAssessoria() {
-//		if (assessoria == null) 
-//			assessoria = new Assessoria();
-//		return assessoria;
-//	}
-//	public void setAssessoria(Assessoria assessoria) {
-//		this.assessoria = assessoria;
-//	}	
+	public Assessoria getAssessoria() {		
+		return assessoria;
+	}
+	public void setAssessoria(Assessoria assessoria) {
+		this.assessoria = assessoria;
+	}	
 //	public Parecer getParecer() {
 //		if (parecer == null) 
 //			parecer = new Parecer();
@@ -109,14 +108,12 @@ public class EventoInvestigacao extends BaseEntity {
 //	public void setOrganizacao(Organizacao organizacao) {
 //		this.organizacao = organizacao;
 //	}
-//	public Situacao getSituacao() {
-//		if(situacao == null)
-//			situacao = new Situacao();
-//		return situacao;
-//	}
-//	public void setSituacao(Situacao situacao) {
-//		this.situacao = situacao;
-//	}
+	public Situacao getSituacao() {	
+		return situacao;
+	}
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
+	}
 	public Integer getNumeroEvento() {
 		return numeroEvento;
 	}

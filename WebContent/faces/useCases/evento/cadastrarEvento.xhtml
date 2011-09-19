@@ -19,7 +19,13 @@
     		<h:form id="cadastroEventoForm" >
         		<div class="panelgrid,actionButtons">	            
 					<h:panelGrid columns="2">	
-					 	
+					 
+						<h:outputText value="Situação do Evento: " />
+						<h:selectOneMenu value="#{eventoInvestigacao.situacao}" required="true">
+							<s:selectItems value="#{eventoFacade.situacoesCombo}" var="situacao" label="#{situacao.descricao}"/>
+							<s:convertEntity />
+						</h:selectOneMenu>
+									 	
 		        		<h:outputText value="Número do Evento:" />
 		        		<h:inputText id="numeroEvento" value="#{eventoInvestigacao.numeroEvento}" required="true" size="10" maxlength="10"  />
 		        		

@@ -2,7 +2,6 @@ package br.gov.pmdf.sicii.infraestrutura.dao;
 
 import org.jboss.seam.annotations.AutoCreate;
 import org.jboss.seam.annotations.Name;
-
 import br.gov.pmdf.sicii.domain.entidade.Assessoria;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.entidade.UsuarioAssessoria;
@@ -19,6 +18,6 @@ public class UsuarioAssesoriaDAO extends AbstractDAO<UsuarioAssessoria> implemen
 		System.out.println("passando por aqui");
 		String query = "SELECT usuarioAssessoria.assessoria FROM "+packageName+".UsuarioAssessoria usuarioAssessoria "+
 				" WHERE usuarioAssessoria.usuario.codigoUsuario =:codigoUsuario AND usuarioAssessoria.status = true";		
-		return (Assessoria) entityManager.createQuery(query).setParameter("codigoUsuario", usuario.getCodigoUsuario()).getSingleResult();		
+		return (Assessoria) entityManager.createQuery(query).setParameter("codigoUsuario", usuario.getCodigoUsuario()).getSingleResult();		 
 	}	
 }

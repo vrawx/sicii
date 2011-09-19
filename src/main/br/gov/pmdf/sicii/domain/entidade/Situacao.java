@@ -26,7 +26,7 @@ public class Situacao extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="situacaoSequence")
 	@Column(name="sitCodigo")
-	private Integer codigoSituacao;
+	private Long codigoSituacao;
 	
 	// 0 - VALIDA . 1 - INVALIDA
 	private Integer grupo;
@@ -38,12 +38,12 @@ public class Situacao extends BaseEntity {
 	}
 	
 	//set and get da classe
-	public Integer getCodigoSituacao() {
+	public Long getCodigoSituacao() {
 		return codigoSituacao;
 	}
-	public void setCodigoSituacao(Integer codigoSituacao) {
+	public void setCodigoSituacao(Long codigoSituacao) {
 		this.codigoSituacao = codigoSituacao;
-	}	
+	}
 	public Integer getGrupo() {
 		return grupo;
 	}
