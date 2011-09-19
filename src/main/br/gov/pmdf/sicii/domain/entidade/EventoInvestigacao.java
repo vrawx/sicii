@@ -1,6 +1,7 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 
 import org.jboss.seam.annotations.Name;
 
@@ -38,17 +40,17 @@ public class EventoInvestigacao extends BaseEntity {
 	@JoinColumn
 	private Assessoria assessoria;
 	
-//	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-//	@JoinColumn(name="parCodigo")	
-//	private Parecer parecer;
+	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@JoinColumn(name="parCodigo")	
+	private Parecer parecer;
 	
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
 	@JoinColumn(name="sitCodigo")	
 	private Situacao situacao;
 	
-//	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-//	@JoinColumn	
-//	private Organizacao organizacao;
+	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@JoinColumn	
+	private Organizacao organizacao;
 	
 	private Integer numeroEvento;	
 	private Integer ano;	
@@ -63,13 +65,11 @@ public class EventoInvestigacao extends BaseEntity {
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
 	@JoinColumn(name="alteradoPor")
 	private Usuario alteradoPor;
-	private Date alteradoEm;
-		
+	private Date alteradoEm;		
 	
-//	@Transient
-//	private List<Investigado> investigados;
+	@Transient
+	private List<Investigado> investigados;
 	
-
 	public EventoInvestigacao() {
 	
 	}
@@ -84,30 +84,28 @@ public class EventoInvestigacao extends BaseEntity {
 	public void setAssessoria(Assessoria assessoria) {
 		this.assessoria = assessoria;
 	}	
-//	public Parecer getParecer() {
-//		if (parecer == null) 
-//			parecer = new Parecer();
-//		return parecer;
-//	}
-//	public void setParecer(Parecer parecer) {
-//		this.parecer = parecer;
-//	}
-//	public List<Investigado> getInvestigados() {
-//		if(investigados == null)
-//			investigados = new ArrayList<Investigado>();
-//		return investigados;
-//	}
-//	public void setInvestigados(List<Investigado> investigados) {
-//		this.investigados = investigados;
-//	}
-//	public Organizacao getOrganizacao() {
-//		if(organizacao == null)
-//			organizacao = new Organizacao();
-//		return organizacao;
-//	}
-//	public void setOrganizacao(Organizacao organizacao) {
-//		this.organizacao = organizacao;
-//	}
+	public Parecer getParecer() {
+		if (parecer == null) 
+			parecer = new Parecer();
+		return parecer;
+	}
+	public void setParecer(Parecer parecer) {
+		this.parecer = parecer;
+	}
+	public List<Investigado> getInvestigados() {		
+		return investigados;
+	}
+	public void setInvestigados(List<Investigado> investigados) {
+		this.investigados = investigados;
+	}
+	public Organizacao getOrganizacao() {
+		if(organizacao == null)
+			organizacao = new Organizacao();
+		return organizacao;
+	}
+	public void setOrganizacao(Organizacao organizacao) {
+		this.organizacao = organizacao;
+	}
 	public Situacao getSituacao() {	
 		return situacao;
 	}

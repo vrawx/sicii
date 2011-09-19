@@ -8,9 +8,7 @@ import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.datamodel.DataModel;
-
 import br.gov.pmdf.sicii.aplicacao.facade.EventoFacade;
-import br.gov.pmdf.sicii.domain.entidade.Assessoria;
 import br.gov.pmdf.sicii.domain.entidade.Auditoria;
 import br.gov.pmdf.sicii.domain.entidade.EventoInvestigacao;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
@@ -57,14 +55,15 @@ public class EventoManaged {
 	public String editarEvento(EventoInvestigacao eventoInvestigacao) {		
 		this.eventoInvestigacao = eventoInvestigacao;
 		return "foward";
-	}	
+	}
+	
 	public String excluirEvento(EventoInvestigacao eventoInvestigacao) throws Exception{
 		repositorioEventoInvestigacao.remover(eventoInvestigacao);
 		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Excluir Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
 		this.eventoInvestigacao = eventoInvestigacao;
 		return "sucess";
 	}
-	//@End
+	
 	public String alterarEvento(EventoInvestigacao eventoInvestigacao) {
 		this.eventoInvestigacao = eventoInvestigacao;
 		repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Alterar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));
@@ -78,8 +77,10 @@ public class EventoManaged {
 			eventoInvestigacao.setAlteradoEm(new Date());
 			//Assesssoria Ativa do usuario logado			
 			eventoInvestigacao.setAssessoria(eventoFacade.getAssessoriaAtivaUsuario(usuarioLogado));
+			//eventoInvestigacao.setOrganizacao(null);
 			repositorioEventoInvestigacao.armazenar(eventoInvestigacao);
-			repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Cadastrar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));			
+			repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Cadastrar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));	
+			eventoInvestigacao = null;
 			return "sucess";
 		}
 		return "fail";		
