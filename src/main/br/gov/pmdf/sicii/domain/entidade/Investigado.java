@@ -69,13 +69,7 @@ public class Investigado extends BaseEntity {
 	private Date alteradoEm;
 	
 	private Boolean excluido;
-	
-	//metodo construtor
-	public Investigado() {
 		
-	}
-	
-	
 	//get and set da classe
 	public Endereco getEndereco() {
 		if (endereco == null) {
