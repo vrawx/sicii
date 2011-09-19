@@ -33,9 +33,6 @@ public class Situacao extends BaseEntity {
 	private String sigla;
 	private String descricao;
 
-	public Situacao() {
-
-	}
 	
 	//set and get da classe
 	public Long getCodigoSituacao() {

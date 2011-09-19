@@ -1,6 +1,5 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.Cascade;
@@ -46,18 +44,8 @@ public class Usuario extends BaseEntity {
 	
 	@NotNull
 	@Length(min=6, max=10)
-	private String senha;
-	
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-	@JoinColumn(name="cadastradoPor")
-	private Usuario cadastradoPor;
-	private Date cadastradoEm;
-	
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-	@JoinColumn(name="alteradoPor")
-	private Usuario alteradoPor;
-	private Date alteradoEm;		
-	
+	private String senha;	
+		
 	private Boolean statusLogin = false;
 	
 	// ESSE MÉTODO DEVE SER SAVE_UPDATE 
@@ -124,29 +112,5 @@ public class Usuario extends BaseEntity {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	public Date getCadastradoEm() {
-		return cadastradoEm;
-	}
-	public void setCadastradoEm(Date cadastradoEm) {
-		this.cadastradoEm = cadastradoEm;
-	}
-	public Date getAlteradoEm() {
-		return alteradoEm;
-	}
-	public void setAlteradoEm(Date alteradoEm) {
-		this.alteradoEm = alteradoEm;
-	}
-	public Usuario getCadastradoPor() {
-		return cadastradoPor;
-	}
-	public void setCadastradoPor(Usuario cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
-	}
-	public Usuario getAlteradoPor() {
-		return alteradoPor;
-	}
-	public void setAlteradoPor(Usuario alteradoPor) {
-		this.alteradoPor = alteradoPor;
-	}
+	}	
 }

@@ -11,8 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.jboss.seam.annotations.Name;
+
 @Entity
 @SequenceGenerator(name="auditoriaSequence", initialValue=0, sequenceName="auditoriaSequencePostgres" )
+@Name("auditoria")
 public class Auditoria extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;

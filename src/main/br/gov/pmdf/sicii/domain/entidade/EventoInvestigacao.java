@@ -1,6 +1,5 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -54,18 +53,7 @@ public class EventoInvestigacao extends BaseEntity {
 	
 	private Integer numeroEvento;	
 	private Integer ano;	
-	private String descricao;	
-	
-	
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn(name="cadastradoPor")
-	private Usuario cadastradoPor;
-	private Date cadastradoEm;
-			
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn(name="alteradoPor")
-	private Usuario alteradoPor;
-	private Date alteradoEm;		
+	private String descricao;				
 	
 	@Transient
 	private List<Investigado> investigados;
@@ -132,29 +120,5 @@ public class EventoInvestigacao extends BaseEntity {
 	}
 	public void setCodigoEvento(Long codigoEvento) {
 		this.codigoEvento = codigoEvento;
-	}
-	public Usuario getCadastradoPor() {
-		return cadastradoPor;
-	}
-	public void setCadastradoPor(Usuario cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
-	}
-	public Date getCadastradoEm() {
-		return cadastradoEm;
-	}
-	public void setCadastradoEm(Date cadastradoEm) {
-		this.cadastradoEm = cadastradoEm;
-	}
-	public Date getAlteradoEm() {
-		return alteradoEm;
-	}
-	public void setAlteradoEm(Date alteradoEm) {
-		this.alteradoEm = alteradoEm;
-	}
-	public void setAlteradoPor(Usuario alteradoPor) {
-		this.alteradoPor = alteradoPor;
-	}
-	public Usuario getAlteradoPor() {
-		return alteradoPor;
-	}
+	}	
 }

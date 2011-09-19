@@ -1,6 +1,5 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -35,11 +34,7 @@ public class Investigacao extends BaseEntity {
 	private Parecer parecer;
 	private Situacao situacao;
 	private EventoInvestigacao eventoInvestigacao;
-	private Investigado investigado;
-	private Date cadastradoEm;
-	private Date alteradoEm;
-	private Integer cadastradoPor;
-	private Integer alteradoPor;
+	private Investigado investigado;	
 	
 	@OneToMany
 	private List<Investigado> investigados;
@@ -78,31 +73,7 @@ public class Investigacao extends BaseEntity {
 	}
 	public void setInvestigado(Investigado investigado) {
 		this.investigado = investigado;
-	}
-	public Date getCadastradoEm() {
-		return cadastradoEm;
-	}
-	public void setCadastradoEm(Date cadastradoEm) {
-		this.cadastradoEm = cadastradoEm;
-	}
-	public Date getAlteradoEm() {
-		return alteradoEm;
-	}
-	public void setAlteradoEm(Date alteradoEm) {
-		this.alteradoEm = alteradoEm;
-	}
-	public Integer getCadastradoPor() {
-		return cadastradoPor;
-	}
-	public void setCadastradoPor(Integer cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
-	}
-	public Integer getAlteradoPor() {
-		return alteradoPor;
-	}
-	public void setAlteradoPor(Integer alteradoPor) {
-		this.alteradoPor = alteradoPor;
-	}
+	}	
 	public List<Investigado> getInvestigados() {
 		return investigados;
 	}

@@ -37,11 +37,7 @@ public class Pesquisa extends BaseEntity {
 	private String bairro;
 	private String cidade;
 	private String cidadeUF;
-	private String dadosAdicionais;
-	private Date cadastradoEm;
-	private Date alteradoEm;
-	private Integer cadastradoPor;
-	private Integer alteradoPor;
+	private String dadosAdicionais;	
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Embasamento> embasamentos;
@@ -126,63 +122,24 @@ public class Pesquisa extends BaseEntity {
 	public String getCidade() {
 		return cidade;
 	}
-
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-
 	public String getCidadeUF() {
 		return cidadeUF;
 	}
-
 	public void setCidadeUF(String cidadeUF) {
 		this.cidadeUF = cidadeUF;
 	}
-
 	public String getDadosAdicionais() {
 		return dadosAdicionais;
 	}
-
 	public void setDadosAdicionais(String dadosAdicionais) {
 		this.dadosAdicionais = dadosAdicionais;
 	}
-
-	public Date getCadastradoEm() {
-		return cadastradoEm;
-	}
-
-	public void setCadastradoEm(Date cadastradoEm) {
-		this.cadastradoEm = cadastradoEm;
-	}
-
-	public Date getAlteradoEm() {
-		return alteradoEm;
-	}
-
-	public void setAlteradoEm(Date alteradoEm) {
-		this.alteradoEm = alteradoEm;
-	}
-
-	public Integer getCadastradoPor() {
-		return cadastradoPor;
-	}
-
-	public void setCadastradoPor(Integer cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
-	}
-
-	public Integer getAlteradoPor() {
-		return alteradoPor;
-	}
-
-	public void setAlteradoPor(Integer alteradoPor) {
-		this.alteradoPor = alteradoPor;
-	}
-
 	public List<Embasamento> getEmbasamentos() {
 		return embasamentos;
 	}
-
 	public void setEmbasamentos(List<Embasamento> embasamentos) {
 		this.embasamentos = embasamentos;
 	}
