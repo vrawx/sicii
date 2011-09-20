@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
+
+	<navigation>
+		<rule if-outcome="sucess">
+			<end-conversation/>
+			<redirect view-id="/faces/useCases/investigacao/gerenciarInvestigacao.xhtml"/>						
+		</rule>		
+		<rule if-outcome="novo">
+			<begin-conversation flush-mode="manual" join="false" />
+			<redirect view-id="/faces/useCases/investigacao/cadastrarInvestigacao.xhtml"/>			
+		</rule>
+		<rule if-outcome="select">
+			<begin-conversation flush-mode="manual" join="false" />
+			<redirect view-id="/faces/useCases/investigacao/cadastrarInvestigacao.xhtml"/>			
+		</rule>
+	</navigation>
+   
+</page>
