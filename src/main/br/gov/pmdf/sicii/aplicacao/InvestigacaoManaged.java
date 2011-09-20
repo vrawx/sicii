@@ -61,7 +61,7 @@ public class InvestigacaoManaged {
 	public String excluirInvestigacao() {
 		return "sucess";
 	}
-	private void gerarRis() {
+	public void gerarRis() {
 		// TODO Auto-generated method stub
 	}	
 	
