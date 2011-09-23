@@ -7,7 +7,7 @@ import org.jboss.seam.annotations.Name;
 @Name("menuManaged")
 public class MenuManaged implements Serializable{
 
-	private static final long serialVersionUID = 1L;
+	private static final long sconsorcioerialVersionUID = 1L;
 
 	public String eventoInvestigacao(){
 		return "evento";
