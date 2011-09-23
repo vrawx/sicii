@@ -57,25 +57,8 @@ public class Investigado extends BaseEntity {
 	@JoinColumn
 	private Endereco endereco;
 	
-	// Este objeto não tem SET, pois o registro é feito somente uma vez
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-	@JoinColumn(name="cadastradoPor")
-	private Usuario cadastradoPor;
-	private Date cadastradoEm;
-	
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-	@JoinColumn(name="alteradoPor")
-	private Usuario alteradoPor;
-	private Date alteradoEm;
-	
 	private Boolean excluido;
-	
-	//metodo construtor
-	public Investigado() {
 		
-	}
-	
-	
 	//get and set da classe
 	public Endereco getEndereco() {
 		if (endereco == null) {
@@ -145,29 +128,5 @@ public class Investigado extends BaseEntity {
 	}
 	public void setNumeroTelefone(Integer numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
-	}
-	public Date getCadastradoEm() {
-		return cadastradoEm;
-	}
-	public void setCadastradoEm(Date cadastradoEm) {
-		this.cadastradoEm = cadastradoEm;
-	}
-	public Date getAlteradoEm() {
-		return alteradoEm;
-	}
-	public void setAlteradoEm(Date alteradoEm) {
-		this.alteradoEm = alteradoEm;
-	}
-	public Usuario getCadastradoPor() {
-		return cadastradoPor;
-	}
-	public Usuario getAlteradoPor() {
-		return alteradoPor;
-	}
-	public void setAlteradoPor(Usuario alteradoPor) {
-		this.alteradoPor = alteradoPor;
-	}
-	public void setCadastradoPor(Usuario cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
-	}
+	}	
 }

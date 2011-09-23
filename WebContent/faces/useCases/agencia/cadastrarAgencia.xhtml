@@ -1,0 +1,36 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="/template/siciiLayout.xhtml">
+	
+   	<ui:define name="bodyContent">
+    	<rich:panel styleClass="panel">		
+   			<h2> Cadastrar Agência </h2> 
+			<h3> Nova </h3>        	    	
+			
+			<br/><br/>
+			<h3><h:outputText style="align:left" value="Informe os dados da Agência para Cadastro:" /></h3>
+    		<h:form id="cadastroEventoForm" >
+        		<div class="panelgrid,actionButtons">	            
+					<h:panelGrid columns="2">											
+						
+		        		<h:outputText value="Tipo: " />
+		        		<h:inputText id="tipoAgencia" value="#{agencia.tipo}" size="10" maxlength="10"  />
+		        				        		
+					</h:panelGrid>
+					<h:panelGrid columns="2">
+		        		<h:commandButton value="Salvar" action="#{agenciaManaged.cadastrarAgencia}" id="cadastrarButton" />
+		        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/evento/gerenciarEvento.xhtml" />	        		
+					</h:panelGrid>
+				</div>
+        	</h:form>
+        </rich:panel>
+ 	</ui:define>
+ </ui:composition> 
+ 

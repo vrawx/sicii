@@ -1,6 +1,9 @@
 package br.gov.pmdf.sicii.domain.repositorio;
 
+import java.util.List;
+
 import br.gov.pmdf.sicii.domain.entidade.Investigacao;
+import br.gov.pmdf.sicii.domain.entidade.Investigado;
 
 /**
  * Interface DAO.<br>
@@ -10,5 +13,5 @@ import br.gov.pmdf.sicii.domain.entidade.Investigacao;
  */
 
 public interface RepositorioInvestigacao extends Repositorio<Investigacao> {
-
+	List<Investigacao> recuperarInvestigacoesInvestigado(Investigado investigado);
 }

@@ -1,18 +1,12 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.util.Date;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.jboss.seam.annotations.Name;
 
@@ -39,23 +33,7 @@ public class Parecer extends BaseEntity {
 	@OneToOne
 	private Situacao situacao;
 	
-	private String parecer;
-	
-	@Temporal(TemporalType.DATE)
-	private Date cadastradoEm;
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn(name="cadastradoPor")
-	private Usuario cadastradoPor;
-	
-	@Temporal(TemporalType.DATE)
-	private Date alteradoEm;	
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn(name="alteradoPor")
-	private Usuario alteradoPor;	
-			
-	public Parecer() {
-		
-	}
+	private String parecer;		
 
 	//get and set	
 	public Integer getCodigoParecer() {
@@ -72,29 +50,5 @@ public class Parecer extends BaseEntity {
 	}
 	public void setParecer(String parecer) {
 		this.parecer = parecer;
-	}
-	public Date getCadastradoEm() {
-		return cadastradoEm;
-	}
-	public void setCadastradoEm(Date cadastradoEm) {
-		this.cadastradoEm = cadastradoEm;
-	}
-	public Date getAlteradoEm() {
-		return alteradoEm;
-	}
-	public void setAlteradoEm(Date alteradoEm) {
-		this.alteradoEm = alteradoEm;
-	}
-	public Usuario getCadastradoPor() {
-		return cadastradoPor;
-	}
-	public void setCadastradoPor(Usuario cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
-	}
-	public Usuario getAlteradoPor() {
-		return alteradoPor;
-	}
-	public void setAlteradoPor(Usuario alteradoPor) {
-		this.alteradoPor = alteradoPor;
-	}
+	}	
 }

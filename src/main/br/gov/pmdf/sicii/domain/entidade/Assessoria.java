@@ -1,6 +1,5 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
@@ -46,16 +44,6 @@ public class Assessoria extends BaseEntity {
 	private String descricao;
 	private Boolean status;
 		
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-	@JoinColumn(name="cadastradoPor")
-	private Usuario cadastradoPor;
-	private Date cadastradoEm;
-	
-	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE} )
-	@JoinColumn(name="alteradoPor")
-	private Usuario alteradoPor;
-	private Date alteradoEm;
-	
 	@OneToMany(fetch=FetchType.LAZY,  mappedBy="assessoria", cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	private List<UsuarioAssessoria> usuarioAssessorias;
@@ -98,31 +86,7 @@ public class Assessoria extends BaseEntity {
 	}
 	public void setStatus(Boolean status) {
 		this.status = status;
-	}
-	public Date getCadastradoEm() {
-		return cadastradoEm;
-	}
-	public void setCadastradoEm(Date cadastradoEm) {
-		this.cadastradoEm = cadastradoEm;
-	}
-	public Date getAlteradoEm() {
-		return alteradoEm;
-	}
-	public void setAlteradoEm(Date alteradoEm) {
-		this.alteradoEm = alteradoEm;
-	}
-	public void setCadastradoPor(Usuario cadastradoPor) {
-		this.cadastradoPor = cadastradoPor;
-	}
-	public Usuario getCadastradoPor() {
-		return cadastradoPor;
-	}
-	public void setAlteradoPor(Usuario alteradoPor) {
-		this.alteradoPor = alteradoPor;
-	}
-	public Usuario getAlteradoPor() {
-		return alteradoPor;
-	}
+	}	
 	public List<UsuarioAssessoria> getUsuarioAssessorias() {
 		return usuarioAssessorias;
 	}
