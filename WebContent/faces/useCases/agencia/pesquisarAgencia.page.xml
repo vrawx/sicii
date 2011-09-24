@@ -5,7 +5,7 @@
 
 	<navigation>
 		<rule if-outcome="novo">
-			<redirect view-id="/faces/useCases/agencia/cadastraAgencia.xhtml"/>			
+			<redirect view-id="/faces/useCases/agencia/cadastrarAgencia.xhtml"/>			
 		</rule>
 		<end-conversation />
 	</navigation>
