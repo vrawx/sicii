@@ -29,7 +29,7 @@ public class InvestigacaoManaged {
 	@In(scope=ScopeType.SESSION) 
 	private Usuario usuarioLogado;
 	
-	@In(scope=ScopeType.CONVERSATION, required=false) @Out(scope=ScopeType.CONVERSATION, required=false)
+	@In(required=false) @Out(required=false)
 	private Investigacao investigacao;	
 	
 	@DataModel
@@ -47,24 +47,25 @@ public class InvestigacaoManaged {
 	
 	/*
 	 * 	Métodos de açoes do caso de uso
-	 */
-	public String novaInvestigacao(){
-		return "nova";
-	}
-	public String selecionarInvestigacao() {		
+	 */	
+	public String selecionarInvestigacao(Investigacao investigacao) {
+		this.investigacao = investigacao;
 		return "select";
 	}
 	public String cadastrarInvestigacao() {		
 		repositorioInvestigacao.armazenar(investigacao);
 		return "sucess";
 	}
-	public String excluirInvestigacao() {
+	public String excluirInvestigacao(Investigacao investigacao) {
+		repositorioInvestigacao.remover(investigacao);
 		return "sucess";
 	}
 	public void gerarRis() {
 		// TODO Auto-generated method stub
 	}	
-	
+	public void cadastrarParecer() {
+		// TODO Auto-generated method stub
+	}
 	
 	/*
 	 *  Método Acessório 

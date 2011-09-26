@@ -28,25 +28,27 @@
 				</div>
 			</h:form>
 			<br/><br/>
-	        <div id="listaInvestigados" class="panelgrid,actionButtons">
-		        <h:panelGroup rendered="#{investigadoManaged.investigadosConsultados.size eq 0}" > <h3>Nenhum usuario Listado</h3> </h:panelGroup>
-		        <rich:dataTable id="tableInvestigados" value="#{investigadoManaged.investigadosConsultados}" var="investigado" rendered="#{investigadoManaged.investigadosConsultados.size gt 0}" 
+	        <div id="listaInvestigacoes" class="panelgrid,actionButtons">
+		        <h:panelGroup rendered="#{investigacaoManaged.investigacoes.size eq 0}" > <h3>Nenhuma investigacao</h3> </h:panelGroup>
+		        <rich:dataTable id="tableInvestigacao" value="#{investigacaoManaged.investigacoes}" var="investigacao" rendered="#{investigacaoManaged.investigacoes.size gt 0}" 
 		           styleClass="gradeLocalizados" headerClass="gradeLocalizadosHeader" rowClasses="oddRow,evenRow" captionStyle="">	        
 					<f:facet name="header">REGISTROS LOCALIZADOS</f:facet>
 					<rich:column>
-						<f:facet name="header">CPF</f:facet>
-		        		<h:outputText value="#{investigado.cpf}" />
-		        	</rich:column>
+						<f:facet name="header">INVESTIGAÇÃO</f:facet>
+		        		<h:outputText value="#{investigacao.eventoInvestigacao.descricao}" />
+		        	</rich:column>	        		
 	        		<rich:column>
-			        	<f:facet name="header">NOME</f:facet>
-			        	<h:outputText value="#{investigado.nome}" />
-		        	</rich:column>
-	        		<rich:column>
-			        	<f:facet name="header">CIDADE</f:facet>
-			        	<h:column><h:outputText value="#{investigado.endereco.cidade}" /></h:column>
+			        	<f:facet name="header">DATA</f:facet>
+			        	<h:column><h:outputText value="#{investigacao.cadastradoEm}" /></h:column>
 					</rich:column>		        	
-		        	<rich:column><s:link id="excluirButton" action="#{investigadoManaged.excluirInvestigado(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Investigado"/></s:link></rich:column>
-		        	<rich:column><s:link id="editarButton" action="#{investigadoManaged.selecionarInvestigado(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Investigado"/></s:link></rich:column>	        		        
+					<rich:column>
+			        	<f:facet name="header">SITUACAO</f:facet>
+			        	<h:column><h:outputText value="#{investigacao.situacao}" /></h:column>
+					</rich:column>				
+					<rich:column><h:commandLink id="alterarButton" action="#{investigacaoManaged.selecionarInvestigacao(investigacao)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Investigacao"/></h:commandLink></rich:column>	
+		        	<rich:column><h:commandLink id="excluirButton" action="#{investigacaoManaged.excluirInvestigacao(investigacao)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Investigacao"/></h:commandLink>></rich:column>
+					<rich:column><h:commandLink id="gerarButton" action="#{investigacaoManaged.gerarRis(investigacao)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Gerar Ris"/></h:commandLink></rich:column>
+					<rich:column><h:commandLink id="cadastrarParecerButton" action="#{investigacaoManaged.cadastrarParecer}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Cadastrar Parecer"/></h:commandLink></rich:column>		        		        		        
 		        </rich:dataTable>	           
 	        </div>			
         </rich:panel>                

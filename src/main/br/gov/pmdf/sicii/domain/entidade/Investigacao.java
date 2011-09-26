@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.jboss.seam.annotations.Name;
@@ -31,10 +32,12 @@ public class Investigacao extends BaseEntity {
 	@Column(name="ivtCodigo")
 	private Long codigoInvestigacao;
 	
+	@OneToOne
 	private Parecer parecer;
+		
 	private Situacao situacao;
+	
 	private EventoInvestigacao eventoInvestigacao;
-	private Investigado investigado;	
 	
 	@OneToMany
 	private List<Investigado> investigados;
@@ -67,13 +70,7 @@ public class Investigacao extends BaseEntity {
 	}
 	public void setEventoInvestigacao(EventoInvestigacao eventoInvestigacao) {
 		this.eventoInvestigacao = eventoInvestigacao;
-	}
-	public Investigado getInvestigado() {
-		return investigado;
-	}
-	public void setInvestigado(Investigado investigado) {
-		this.investigado = investigado;
-	}	
+	}		
 	public List<Investigado> getInvestigados() {
 		return investigados;
 	}
