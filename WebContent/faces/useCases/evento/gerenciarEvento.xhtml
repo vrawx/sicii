@@ -52,8 +52,8 @@
 			        		<f:facet name="header">DESCRIÇÃO</f:facet>
 			        		<h:outputText value="#{evento.descricao}" />
 			        	</rich:column>	        		        	
-			        	<rich:column><s:link id="excluir" action="#{eventoManaged.excluirEvento(evento)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Evento"/></s:link></rich:column>
-			        	<rich:column><s:link id="editar" action="/faces/useCases/evento/cadastrarEvento.xhtml"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Evento"/></s:link></rich:column>
+			        	<rich:column><h:commandLink id="excluir" action="#{eventoManaged.excluirEvento(evento)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Evento"/></h:commandLink></rich:column>
+			        	<rich:column><h:commandLink id="editar" action="#{eventoManaged.selecionarEvento(evento)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Evento"/></h:commandLink></rich:column>
 			        </rich:dataTable>		        	           
 		        </div>
 	        </a4j:form>			

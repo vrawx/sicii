@@ -7,6 +7,7 @@ import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
+import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.datamodel.DataModel;
 import br.gov.pmdf.sicii.aplicacao.facade.EventoFacade;
 import br.gov.pmdf.sicii.domain.entidade.Auditoria;
@@ -17,6 +18,7 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioEventoInvestigacao;
 import br.gov.pmdf.sicii.domain.service.EventoInvestigacaoService;
 
 @Name("eventoManaged")
+@Scope(ScopeType.CONVERSATION)
 public class EventoManaged {
 		
 	private static final long serialVersionUID = 1L;
@@ -52,9 +54,9 @@ public class EventoManaged {
 		//repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Pesquisar Evento", new Date(), eventoInvestigacao.getDescricao()));
 		eventosConsultados = repositorioEventoInvestigacao.recuperarPorFragmento(eventoInvestigacao);
 	}	
-	public String editarEvento(EventoInvestigacao eventoInvestigacao) {		
+	public String selecionarEvento(EventoInvestigacao eventoInvestigacao) {		
 		this.eventoInvestigacao = eventoInvestigacao;
-		return "foward";
+		return "select";
 	}
 	
 	public String excluirEvento(EventoInvestigacao eventoInvestigacao) throws Exception{

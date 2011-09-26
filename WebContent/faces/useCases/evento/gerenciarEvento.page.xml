@@ -3,12 +3,12 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
 	  
-	<navigation>		
-		
+	<begin-conversation flush-mode="manual" join="true"/>	  
+	<navigation>				
 		<rule if-outcome="sucess">
 			<redirect view-id="/faces/useCases/evento/gerenciarEvento.xhtml"/>				
 		</rule>		
-		<rule if-outcome="foward">
+		<rule if-outcome="select">
 			<redirect view-id="/faces/useCases/evento/cadastrarEvento.xhtml"/>			
 		</rule>						  
 	</navigation>	

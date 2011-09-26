@@ -50,7 +50,7 @@ public class InvestigadoManaged implements Serializable{
 	}
 	public String selecionarInvestigado(Investigado investigado) {		
 		this.investigado = investigado;				
-		//repositorioInvestigado.refresh(investigado);
+		repositorioInvestigado.refresh(investigado);
 		return "select";
 	}
 	public String alterarInvestigado(Investigado investigado) {		

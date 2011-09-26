@@ -5,7 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe TipoUsuario
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @SequenceGenerator(name="tipoUsuarioSequence", initialValue=0, sequenceName="tipoUsuarioSequencePostgres" )
-@Table(name="TIPOUSUARIO")
+@Name("tipoUsuario")
 public class TipoUsuario extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
