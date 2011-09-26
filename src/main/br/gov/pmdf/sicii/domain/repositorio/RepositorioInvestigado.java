@@ -14,4 +14,5 @@ import br.gov.pmdf.sicii.domain.entidade.Investigado;
 public interface RepositorioInvestigado extends Repositorio<Investigado> {
 	
 	List<Investigado> recuperarPorFragmento(Investigado investigado);
+	
 }

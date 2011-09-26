@@ -3,14 +3,11 @@ package br.gov.pmdf.sicii.aplicacao;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
-
+import org.jboss.seam.faces.FacesContext;
 import br.gov.pmdf.sicii.domain.entidade.Auditoria;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioAuditoria;
@@ -43,7 +40,7 @@ public class LoginManaged implements Serializable {
 			repositorioAuditoria.armazenar(new Auditoria(usuario, "Logou no Sistema", new Date(), "sistema"));			
 			return "sucess";			
 		}		
-		FacesContext.getCurrentInstance().addMessage("loginMessage", new FacesMessage("Usuario ou Senha invalido"));		
+		//FacesContext.getCurrentInstance().addMessage("loginMessage", new FacesMessage("Usuario ou Senha invalido"));		
 		return "fail";
 	}		
 	public String logoutMethod() {		

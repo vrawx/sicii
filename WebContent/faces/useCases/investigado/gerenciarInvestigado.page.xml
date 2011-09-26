@@ -2,14 +2,15 @@
 <page xmlns="http://jboss.com/products/seam/pages"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
+      
+    <begin-conversation join="true" flush-mode="manual"/>
 	
        
     <navigation >
-      <rule if-outcome="select">
-      		<begin-conversation/>      	     	 
+      <rule if-outcome="select">      	       	       			 
          <redirect view-id="/faces/useCases/investigado/cadastrarInvestigado.xhtml"/>
       </rule>   			
-      <rule if-outcome="sucess">      	 
+      <rule if-outcome="sucess">     
          <redirect view-id="/home.xhtml"/>
       </rule>      
    </navigation>
