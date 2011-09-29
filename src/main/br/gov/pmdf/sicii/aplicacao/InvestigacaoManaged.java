@@ -36,7 +36,7 @@ public class InvestigacaoManaged {
 	private List<Investigacao> investigacoes;	
 	
 	// investigadoManaged outjeta este objeto
-	@In(scope=ScopeType.CONVERSATION, required=true)
+	@In(required=true)
 	private Investigado investigado;
 	
 	@In
@@ -77,4 +77,7 @@ public class InvestigacaoManaged {
 	public List<Investigacao> getInvestigacoes() {
 		return investigacoes;
 	}
+	public Investigado getInvestigado() {
+		return investigado;
+	}	
 }
