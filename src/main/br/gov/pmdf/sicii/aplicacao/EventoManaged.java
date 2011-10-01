@@ -78,7 +78,7 @@ public class EventoManaged {
 			eventoInvestigacao.setAlteradoPor(usuarioLogado);
 			eventoInvestigacao.setAlteradoEm(new Date());
 			//Assesssoria Ativa do usuario logado			
-			eventoInvestigacao.setAssessoria(eventoFacade.getAssessoriaAtivaUsuario(usuarioLogado));
+//			eventoInvestigacao.setAssessoria(eventoFacade.getAssessoriaAtivaUsuario(usuarioLogado));
 			//eventoInvestigacao.setOrganizacao(null);
 			repositorioEventoInvestigacao.armazenar(eventoInvestigacao);
 			repositorioAuditoria.armazenar(new Auditoria(usuarioLogado, "Evento Managed - Cadastrar Evento", new Date(), eventoInvestigacao.getDescricao()+"-"+eventoInvestigacao.getCodigoEvento()));	
