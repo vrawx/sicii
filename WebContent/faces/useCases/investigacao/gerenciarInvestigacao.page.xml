@@ -6,7 +6,7 @@
 	<begin-conversation flush-mode="manual" join="true" nested="true"/>
 	<navigation>
 		<rule if-outcome="sucess">
-			<end-conversation/>
+			<end-conversation root="true"/>
 			<redirect view-id="/faces/useCases/investigacao/gerenciarInvestigacao.xhtml"/>						
 		</rule>		
 		<rule if-outcome="select">			

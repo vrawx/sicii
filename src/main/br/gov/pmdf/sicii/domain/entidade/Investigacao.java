@@ -1,7 +1,6 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,8 +33,10 @@ public class Investigacao extends BaseEntity {
 	private Long codigoInvestigacao;
 	
 	@OneToOne
-	private Parecer parecer;
-		
+	private Parecer parecer;	
+	
+	@OneToOne
+	@JoinColumn
 	private Situacao situacao;
 	
 	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
@@ -47,7 +48,7 @@ public class Investigacao extends BaseEntity {
 	
 	@OneToMany
 	private List<Pesquisa> pesquisas;
-
+	
 
 	//get and set da classe
 	public Long getCodigoInvestigacao() {

@@ -73,9 +73,10 @@
 			        		   
 						</h:panelGrid>
 						
-						<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />		        		
-		        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />
-		        		<h:commandLink id="investigacaoButton" action="#{investigadoManaged.detalharInvestigacoes(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/investigacao.png" alt="Detalhar Investigações"/></h:commandLink></rich:column>
+						<h:commandButton value="Salvar" action="#{investigadoManaged.cadastrarInvestigado}" id="cadastrarButton" />        		
+		        		<h:commandButton value="Cancelar" id="cancelarButton" action="/faces/useCases/investigado/gerenciarInvestigado.xhtml" />	        		
+		        		<h:commandLink id="investigacaoButton" action="#{investigadoManaged.detalharInvestigacoes(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/investigacao.png" alt="Detalhar Investigações"/></h:commandLink>
+		        		
 					</div>
 				</h:form>
 			</rich:panel>

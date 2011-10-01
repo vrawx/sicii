@@ -26,19 +26,19 @@ public class Organizacao extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="organizacaoSequence")
 	@Column(name="orgCodigo")
-	private Integer codigoOrganizacao;
+	private Long codigoOrganizacao;
 	
 	// Deve ser 0 - EXTERNO, 1 - INTERNO
 	private Integer tipo;
 	private String sigla;
 	private String descricao;
+	
 			
-		
 	//get and set da classe
-	public Integer getCodigoOrganizacao() {
+	public Long getCodigoOrganizacao() {
 		return codigoOrganizacao;
 	}
-	public void setCodigoOrganizacao(Integer codigoOrganizacao) {
+	public void setCodigoOrganizacao(Long codigoOrganizacao) {
 		this.codigoOrganizacao = codigoOrganizacao;
 	}
 	public Integer getTipo() {

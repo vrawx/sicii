@@ -31,4 +31,15 @@ INSERT INTO FUNCAOUSUARIO VALUES (nextval('funcaosequencepostgres'), now(), now(
 INSERT INTO USUARIOASSESSORIA VALUES (nextval('usuarioassessoriapostgres'), now(), now(), true, 1, 1, 1, 1, 1);
 INSERT INTO USUARIOASSESSORIA VALUES (nextval('usuarioassessoriapostgres'), now(), now(), true, 1, 2, 1, 1, 2);
 
-INSERT INTO PARECER VALUES (nextval('parecerSequencePostgres'), now(), now(),'parecer nao sei do que', 1, 1, 1);
+
+INSERT INTO PARECER VALUES (nextval('parecerSequencePostgres'), now(), now(),'parecer evento', 1, 1, 1);
+INSERT INTO PARECER VALUES (nextval('parecerSequencePostgres'), now(), now(),'parecer investigacao', 1, 1, 1);
+INSERT INTO PARECER VALUES (nextval('parecerSequencePostgres'), now(), now(),'parecer pesquisa', 1, 1, 1);
+
+INSERT INTO EVENTOINVESTIGACAO VALUES (nextval('eventoSequencePostgres'), now(), now(), 1985, 'Evento Investigacao 1985-498398', 498398, 1, 1, 2, 3, 1);
+INSERT INTO EVENTOINVESTIGACAO VALUES (nextval('eventoSequencePostgres'), now(), now(), 1979, 'Evento Investigacao 1979-498388', 498388, 1, 1, 2, 3, 1);
+
+INSERT INTO INVESTIGACAO VALUES (nextval('investigacaosequencepostgres'), now(), now(), 1, 1, 1, 1, 2);
+INSERT INTO INVESTIGACAO VALUES (nextval('investigacaosequencepostgres'), now(), now(), 1, 1, 1, 1, 3);
+INSERT INTO INVESTIGACAO VALUES (nextval('investigacaosequencepostgres'), now(), now(), 1, 1, 1, 1, 1);
+

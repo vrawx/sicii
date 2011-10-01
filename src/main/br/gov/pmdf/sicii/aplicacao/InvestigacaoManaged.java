@@ -1,5 +1,6 @@
 package br.gov.pmdf.sicii.aplicacao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.jboss.seam.ScopeType;
@@ -25,7 +26,7 @@ import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigacao;
 
 @Name("investigacaoManaged")
 @Scope(ScopeType.CONVERSATION)
-public class InvestigacaoManaged {
+public class InvestigacaoManaged  {
 	
 	@In(scope=ScopeType.SESSION) 
 	private Usuario usuarioLogado;
@@ -46,6 +47,11 @@ public class InvestigacaoManaged {
 	@In
 	private RepositorioAuditoria repositorioAuditoria;
 	
+	
+	public InvestigacaoManaged() {
+		System.out.println("funfa");
+		// TODO Auto-generated constructor stub
+	}
 	/*
 	 * 	Métodos de açoes do caso de uso Investigacao
 	 */	
@@ -94,7 +100,8 @@ public class InvestigacaoManaged {
 	 */
 	@Factory("investigacoes")
 	public void factoryInvestigacoes() {
-		investigacoes = repositorioInvestigacao.recuperarInvestigacoesInvestigado(investigado);
+		//investigacoes = repositorioInvestigacao.recuperarInvestigacoesInvestigado(investigado);
+		investigacoes = repositorioInvestigacao.recuperarTodos();
 	}
 	public List<Investigacao> getInvestigacoes() {
 		return investigacoes;
