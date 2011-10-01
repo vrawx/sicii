@@ -16,4 +16,6 @@ public interface Repositorio<T extends BaseEntity> extends Serializable{
 	List<T> recuperarTodos();
 	
 	void remover(T persistenceEntity);
+	
+	void refresh(T persistenceEntity);
 }

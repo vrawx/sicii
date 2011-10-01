@@ -32,5 +32,3 @@ INSERT INTO USUARIOASSESSORIA VALUES (nextval('usuarioassessoriapostgres'), now(
 INSERT INTO USUARIOASSESSORIA VALUES (nextval('usuarioassessoriapostgres'), now(), now(), true, 1, 2, 1, 1, 2);
 
 INSERT INTO PARECER VALUES (nextval('parecerSequencePostgres'), now(), now(),'parecer nao sei do que', 1, 1, 1);
-
-

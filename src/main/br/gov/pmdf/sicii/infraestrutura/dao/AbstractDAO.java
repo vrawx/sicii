@@ -29,6 +29,10 @@ public abstract class AbstractDAO<T extends BaseEntity> implements Repositorio<T
 		return entityManager.find(getPersistenceClass(),id);		
 	}
 	
+	public void refresh(T persistenceEntity) {
+		entityManager.refresh(persistenceEntity);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<T> recuperarTodos() {		
 		List<T> retorno = entityManager.createQuery("SELECT c FROM " + getPersistenceClass().getSimpleName() + " c").setMaxResults(50).getResultList();

@@ -33,11 +33,7 @@ public class EventoInvestigacao extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="eventoSequence")
 	@Column(name="eveCodigo")
-	private Long codigoEvento;
-	
-	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
-	@JoinColumn
-	private Assessoria assessoria;
+	private Long codigoEvento;	
 	
 	@OneToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
 	@JoinColumn(name="parCodigo")	
@@ -58,6 +54,8 @@ public class EventoInvestigacao extends BaseEntity {
 	@Transient
 	private List<Investigado> investigados;
 	
+	private List<Investigacao> investigacoes;
+	
 	public EventoInvestigacao() {
 	
 	}
@@ -65,13 +63,13 @@ public class EventoInvestigacao extends BaseEntity {
 	//get and set da classe
 	public Long getCodigoEvento() {
 		return codigoEvento;
-	}
-	public Assessoria getAssessoria() {		
-		return assessoria;
-	}
-	public void setAssessoria(Assessoria assessoria) {
-		this.assessoria = assessoria;
 	}	
+	public List<Investigacao> getInvestigacoes() {
+		return investigacoes;
+	}
+	public void setInvestigacoes(List<Investigacao> investigacoes) {
+		this.investigacoes = investigacoes;
+	}		
 	public Parecer getParecer() {
 		if (parecer == null) 
 			parecer = new Parecer();
