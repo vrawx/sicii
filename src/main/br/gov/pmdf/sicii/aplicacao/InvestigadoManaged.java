@@ -53,6 +53,10 @@ public class InvestigadoManaged implements Serializable{
 		repositorioInvestigado.refresh(investigado);
 		return "select";
 	}
+	public String detalharInvestigacoes(Investigado investigado) {		
+		this.investigado = investigado;
+		return "detalhar";
+	}
 	public String alterarInvestigado(Investigado investigado) {		
 		if( investigadoService.isCandidatoValido(investigado) ) {			
 			investigado.setAlteradoPor(usuarioLogado);

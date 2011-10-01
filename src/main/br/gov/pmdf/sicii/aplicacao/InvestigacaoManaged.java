@@ -12,6 +12,7 @@ import org.jboss.seam.annotations.datamodel.DataModel;
 
 import br.gov.pmdf.sicii.domain.entidade.Investigacao;
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
+import br.gov.pmdf.sicii.domain.entidade.Pesquisa;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioAuditoria;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigacao;
@@ -30,13 +31,13 @@ public class InvestigacaoManaged {
 	private Usuario usuarioLogado;
 	
 	@In(required=false) @Out(required=false)
-	private Investigacao investigacao;	
+	private Investigacao investigacao;
 	
 	@DataModel
-	private List<Investigacao> investigacoes;	
+	private List<Investigacao> investigacoes;
 	
 	// investigadoManaged outjeta este objeto
-	@In(required=true)
+	@In(required=true)  
 	private Investigado investigado;
 	
 	@In
@@ -46,7 +47,7 @@ public class InvestigacaoManaged {
 	private RepositorioAuditoria repositorioAuditoria;
 	
 	/*
-	 * 	Métodos de açoes do caso de uso
+	 * 	Métodos de açoes do caso de uso Investigacao
 	 */	
 	public String selecionarInvestigacao(Investigacao investigacao) {
 		this.investigacao = investigacao;
@@ -65,6 +66,27 @@ public class InvestigacaoManaged {
 	}	
 	public void cadastrarParecer() {
 		// TODO Auto-generated method stub
+	}	
+	/*
+	 * 	Métodos de açoes do caso de uso Pesquisa
+	 */
+	public void selecionarPesquisa(Pesquisa pesquisa) {		
+		// TODO Auto-generated method stub
+	}
+	public void alterarPesquisa(Pesquisa pesquisa) {
+		// TODO Auto-generated method stub
+	}
+	public void excluirPesquisa(Pesquisa pesquisa) {
+		// TODO Auto-generated method stub
+	}
+	public void importarPesquisa() {
+		// TODO Auto-generated method stub
+	}
+	public void desfazerVinculo(Pesquisa pesquisa) {		
+		// TODO Auto-generated method stub
+	}
+	public void gerenciarEmbasamento() {
+		
 	}
 	
 	/*

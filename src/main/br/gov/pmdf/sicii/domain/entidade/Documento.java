@@ -3,11 +3,16 @@ package br.gov.pmdf.sicii.domain.entidade;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe Documento
@@ -16,14 +21,17 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+@SequenceGenerator(name="documentoSequence", sequenceName="documentoSequencePostgres")
+@Name("documento")
 public class Documento extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 		
 	//atributos da classe
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer docCodigo;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="documentoSequence")
+	@Column(name="docCodigo")
+	private Long codigoDocumento;	
 	
 	private Organizacao organizacao;
 	private TipoDocumento tipoDocumento;
@@ -42,19 +50,18 @@ public class Documento extends BaseEntity {
 	@OneToMany
 	private List<Assessoria> assessorias;
 	
-	@OneToMany
+	@OneToMany(mappedBy="documento")	
 	private List<Pesquisa> pesquisas;
 	
 	public Documento() {
 
 	}
-
 	//get and set da classe
-	public Integer getDocCodigo() {
-		return docCodigo;
+	public Long getCodigoDocumento() {
+		return codigoDocumento;
 	}
-	public void setDocCodigo(Integer docCodigo) {
-		this.docCodigo = docCodigo;
+	public void setCodigoDocumento(Long codigoDocumento) {
+		this.codigoDocumento = codigoDocumento;
 	}
 	public Organizacao getOrganizacao() {
 		return organizacao;

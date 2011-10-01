@@ -11,7 +11,10 @@
       </rule>   			
       <rule if-outcome="sucess">     
          <redirect view-id="/home.xhtml"/>
-      </rule>      
+      </rule>  
+      <rule if-outcome="detalhar">      	 
+         <redirect view-id="/faces/useCases/investigacao/gerenciarInvestigacao.xhtml"/>
+      </rule>     
    </navigation>
 </page>
 

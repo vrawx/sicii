@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-
 import org.jboss.seam.annotations.Name;
 
 /**
@@ -21,15 +20,14 @@ import org.jboss.seam.annotations.Name;
  * OBJETIVO: Representa as Investigacoes do Investigado
  * AUTORES: Rogerio & Vitor
  */
-
 @Entity
-@SequenceGenerator(name="investigacaoSequence", sequenceName="investigacaoSequencePostgres" )
+@SequenceGenerator(name="investigacaoSequence", sequenceName="investigacaoSequencePostgres")
 @Name("investigacao")
 public class Investigacao extends BaseEntity {
-		
-	private static final long serialVersionUID = 1L;
 	
-	//atributos da classe
+	private static final long serialVersionUID = 1L;
+	//atributos da classe	
+																 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="investigacaoSequence")
 	@Column(name="ivtCodigo")

@@ -2,12 +2,16 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe Embasamento
@@ -16,33 +20,38 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+@SequenceGenerator(name="embasamentoSequence", sequenceName="embasamentoSequencePostgres")
+@Name("embasamento")
 public class Embasamento extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
 	//atributos da classe
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer embCodigo;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="embasamentoSequence")
+	@Column(name="embCodigo")
+	private Long codigoEmbasamento;
 	
+	@OneToOne
+	@JoinColumn
 	private TipoEmbasamento tipoEmbasamento;
+		
 	private Date adicionado;
 	private String link;
 	private String descricao;	
 	
-	@OneToMany
-	private List<Pesquisa> pesquisas;	
+	@ManyToOne
+	private Pesquisa pesquisa;	
 	
 	public Embasamento() {
 
 	}
-
 	//get and set
-	public Integer getEmbCodigo() {
-		return embCodigo;
+	public Long getCodigoEmbasamento() {
+		return codigoEmbasamento;
 	}
-	public void setEmbCodigo(Integer embCodigo) {
-		this.embCodigo = embCodigo;
+	public void setCodigoEmbasamento(Long codigoEmbasamento) {
+		this.codigoEmbasamento = codigoEmbasamento;
 	}
 	public TipoEmbasamento getTipoEmbasamento() {
 		return tipoEmbasamento;
@@ -68,10 +77,10 @@ public class Embasamento extends BaseEntity {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public List<Pesquisa> getPesquisas() {
-		return pesquisas;
+	public Pesquisa getPesquisa() {
+		return pesquisa;
 	}
-	public void setPesquisas(List<Pesquisa> pesquisas) {
-		this.pesquisas = pesquisas;
+	public void setPesquisa(Pesquisa pesquisa) {
+		this.pesquisa = pesquisa;
 	}
 }

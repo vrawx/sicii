@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
@@ -54,6 +55,7 @@ public class EventoInvestigacao extends BaseEntity {
 	@Transient
 	private List<Investigado> investigados;
 	
+	@OneToMany()	
 	private List<Investigacao> investigacoes;
 	
 	public EventoInvestigacao() {

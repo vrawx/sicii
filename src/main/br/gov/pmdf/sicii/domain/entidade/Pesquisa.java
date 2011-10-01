@@ -2,14 +2,18 @@ package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import org.jboss.seam.annotations.Name;
 
 /**
  * Classe Pesquisa
@@ -19,27 +23,46 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+@SequenceGenerator(name="pesquisaSequence", sequenceName="pesquisaSequencePostgres" )
+@Name("pesquisa")
 public class Pesquisa extends BaseEntity {
 			
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer pesCodigo;
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="pesquisaSequence")
+	@Column(name="pesCodigo")
+	private Long codigoPesquisa;
 	
+	@OneToOne
+	@JoinColumn
 	private Situacao situacao;
+	
+	@OneToOne
+	@JoinColumn
 	private Organizacao organizacao;
+	
+	@OneToOne
+	@JoinColumn
 	private TipoPesquisa tipoPesquisa;
-	private Investigacao investigacao;
-	private Date resposta;
-	private String rua;
-	private String logradouro;
-	private String bairro;
-	private String cidade;
-	private String cidadeUF;
-	private String dadosAdicionais;	
+		
+	@OneToOne
+	@JoinColumn
+	private Investigacao investigacao;	
+	
+	private Date dataResposta;
+	
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn
+	private Endereco endereco;
+	
+	private String dadosAdicionais;		
+	
+	@OneToOne
+	private Documento documento;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn
 	private List<Embasamento> embasamentos;
 	
 	public Pesquisa() {
@@ -47,89 +70,50 @@ public class Pesquisa extends BaseEntity {
 	}
 
 	//get and set
-	public Integer getPesCodigo() {
-		return pesCodigo;
+	public Long getCodigoPesquisa() {
+		return codigoPesquisa;
 	}
-
-	public void setPesCodigo(Integer pesCodigo) {
-		this.pesCodigo = pesCodigo;
+	public void setCodigoPesquisa(Long codigoPesquisa) {
+		this.codigoPesquisa = codigoPesquisa;
 	}
-
+	public Endereco getEndereco() {
+		if (endereco == null) {
+			endereco = new Endereco();			
+		}
+		return endereco;
+	}	
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 	public Situacao getSituacao() {
 		return situacao;
 	}
-
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
 	}
-
 	public Organizacao getOrganizacao() {
 		return organizacao;
 	}
-
 	public void setOrganizacao(Organizacao organizacao) {
 		this.organizacao = organizacao;
 	}
-
 	public TipoPesquisa getTipoPesquisa() {
 		return tipoPesquisa;
 	}
-
 	public void setTipoPesquisa(TipoPesquisa tipoPesquisa) {
 		this.tipoPesquisa = tipoPesquisa;
 	}
-
 	public Investigacao getInvestigacao() {
 		return investigacao;
 	}
-
 	public void setInvestigacao(Investigacao investigacao) {
 		this.investigacao = investigacao;
 	}
-
-	public Date getResposta() {
-		return resposta;
+	public Date getDataResposta() {
+		return dataResposta;
 	}
-
-	public void setResposta(Date resposta) {
-		this.resposta = resposta;
-	}
-
-	public String getRua() {
-		return rua;
-	}
-
-	public void setRua(String rua) {
-		this.rua = rua;
-	}
-
-	public String getLogradouro() {
-		return logradouro;
-	}
-
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-	public String getCidadeUF() {
-		return cidadeUF;
-	}
-	public void setCidadeUF(String cidadeUF) {
-		this.cidadeUF = cidadeUF;
+	public void setDataResposta(Date dataResposta) {
+		this.dataResposta = dataResposta;
 	}
 	public String getDadosAdicionais() {
 		return dadosAdicionais;
@@ -142,5 +126,14 @@ public class Pesquisa extends BaseEntity {
 	}
 	public void setEmbasamentos(List<Embasamento> embasamentos) {
 		this.embasamentos = embasamentos;
+	}
+	public Documento getDocumento() {		
+		if (documento == null) {
+			documento = new Documento();			
+		}
+		return documento;		
+	}
+	public void setDocumento(Documento documento) {
+		this.documento = documento;
 	}
 }
