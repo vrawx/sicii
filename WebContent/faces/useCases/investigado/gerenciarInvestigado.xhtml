@@ -50,8 +50,9 @@
 			        	<h:column><h:outputText value="#{investigado.endereco.cidade}" /></h:column>
 					</rich:column>		        	
 		        	<rich:column><h:commandLink id="excluirButton" action="#{investigadoManaged.excluirInvestigado(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Investigado"/></h:commandLink></rich:column>
-		        	<rich:column><h:commandLink id="editarButton" action="#{investigadoManaged.selecionarInvestigado(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Investigado"/></h:commandLink></rich:column>	        		        
-		        </rich:dataTable>		       
+		        	<rich:column><h:commandLink id="editarButton" action="#{investigadoManaged.selecionarInvestigado(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Investigado"/></h:commandLink></rich:column>
+		       		<rich:column><h:commandLink id="investigacaoButton" action="#{investigadoManaged.detalharInvestigacoes(investigado)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/investigacao.png" alt="Detalhar Investigações"/></h:commandLink></rich:column>	        		        
+		        </rich:dataTable>
 		     	</h:form>
 		     	
 	        </div>			

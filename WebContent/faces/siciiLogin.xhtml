@@ -16,7 +16,7 @@
 				<div class="dialog">
 					<h:panelGrid columns="2" rowClasses="prop"
 						columnClasses="name,value">
-						<h:outputLabel for="username">usuário</h:outputLabel>
+						<h:outputLabel id="outputLabel" for="username">usuário</h:outputLabel>
 						<h:inputText id="username" value="#{usuario.login}" />
 						<h:outputLabel for="password">Senha</h:outputLabel>
 						<h:inputSecret id="password" value="#{usuario.senha}" />
