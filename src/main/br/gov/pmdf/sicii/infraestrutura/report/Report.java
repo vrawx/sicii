@@ -1,8 +1,15 @@
 package br.gov.pmdf.sicii.infraestrutura.report;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -15,7 +22,12 @@ import org.jboss.seam.annotations.Name;
 @Name("report")
 public class Report {    
 	
-	private void generateReport(ResultSet resultSet, String fileName) throws JRException {
+	private Connection connection;
+	private Statement statement;
+	private ResultSet resultSet;	
+	
+	private void generateReport(String query, String fileName) throws JRException {
+		
 		/* implementação da interface JRDataSource para DataSource ResultSet */
 		JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(resultSet);
 		
@@ -31,5 +43,15 @@ public class Report {
 		
 		 /* Visualiza o relatório em formato PDF */
 		JasperViewer.viewReport("", false);
+	}
+	public void populateDataReport(String query, String fileName) throws SQLException, JRException {
+		statement = connection.createStatement();		
+		resultSet = statement.executeQuery(query);
+		generateReport(query, fileName);
+	}
+	public Report() throws NamingException, SQLException {
+		InitialContext initialContext = new InitialContext();
+		DataSource datasource = (DataSource) initialContext.lookup("java:/siciiDatasource");
+		connection = datasource.getConnection();
 	}
 }

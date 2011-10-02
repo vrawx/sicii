@@ -1,6 +1,7 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.Cascade;
 import org.jboss.seam.annotations.Name;
 
 /**
@@ -58,7 +62,12 @@ public class Investigado extends BaseEntity {
 	private Endereco endereco;
 	
 	private Boolean excluido;
-		
+	
+	@OneToMany(fetch=FetchType.LAZY,  mappedBy="investigado", cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+	private List<Investigacao> investigacoes;
+	
+	
 	//get and set da classe
 	public Endereco getEndereco() {
 		if (endereco == null) {
@@ -68,6 +77,9 @@ public class Investigado extends BaseEntity {
 	}
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	public List<Investigacao> getInvestigacoes() {
+		return investigacoes;
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;

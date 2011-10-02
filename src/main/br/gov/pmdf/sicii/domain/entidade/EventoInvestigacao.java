@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
 import org.jboss.seam.annotations.Name;
 
 /**
@@ -50,12 +52,11 @@ public class EventoInvestigacao extends BaseEntity {
 	
 	private Integer numeroEvento;	
 	private Integer ano;	
-	private String descricao;				
+	private String descricao;
 	
-	@Transient
-	private List<Investigado> investigados;
 	
-	@OneToMany()	
+	@OneToMany(fetch=FetchType.LAZY,  mappedBy="EventoInvestigacao", cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	private List<Investigacao> investigacoes;
 	
 	public EventoInvestigacao() {
@@ -79,13 +80,7 @@ public class EventoInvestigacao extends BaseEntity {
 	}
 	public void setParecer(Parecer parecer) {
 		this.parecer = parecer;
-	}
-	public List<Investigado> getInvestigados() {		
-		return investigados;
-	}
-	public void setInvestigados(List<Investigado> investigados) {
-		this.investigados = investigados;
-	}
+	}	
 	public Organizacao getOrganizacao() {
 		if(organizacao == null)
 			organizacao = new Organizacao();

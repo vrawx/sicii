@@ -12,6 +12,9 @@
 		<rule if-outcome="select">			
 			<redirect view-id="/faces/useCases/investigacao/cadastrarInvestigacao.xhtml"/>			
 		</rule>
+		<rule if-outcome="parecer">			
+			<redirect view-id="/faces/useCases/investigacao/cadastrarParecer.xhtml"/>			
+		</rule>
 	</navigation>
    
 </page>

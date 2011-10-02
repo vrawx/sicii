@@ -15,8 +15,9 @@ public class InvestigacaoDAO extends AbstractDAO<Investigacao> implements Reposi
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unchecked")
 	public List<Investigacao> recuperarInvestigacoesInvestigado(Investigado investigado) {
-		String query = "";
+		String query = "SELECT inv FROM Investigacao inv WHERE inv.investigados.codigoInvestigado == investigado.codigoInvestigado";		
 		return entityManager.createQuery(query).getResultList();		
 	}
 }

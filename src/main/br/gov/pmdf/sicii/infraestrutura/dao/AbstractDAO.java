@@ -2,11 +2,8 @@ package br.gov.pmdf.sicii.infraestrutura.dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
 import javax.persistence.EntityManager;
-
 import org.jboss.seam.annotations.In;
-
 import br.gov.pmdf.sicii.domain.entidade.BaseEntity;
 import br.gov.pmdf.sicii.domain.repositorio.Repositorio;
 

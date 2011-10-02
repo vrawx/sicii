@@ -1,9 +1,13 @@
 package br.gov.pmdf.sicii.domain.entidade;
 
 import java.util.List;
+
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +24,8 @@ import org.jboss.seam.annotations.Name;
  * AUTORES: Rogerio & Vitor
  */
 @Entity
+@AssociationOverrides({ @AssociationOverride(name = "pk.evento", joinColumns = @JoinColumn(name = "codigoEvento")),		
+						@AssociationOverride(name = "pk.investigado", joinColumns = @JoinColumn(name = "codigoInvestigado")) })
 @SequenceGenerator(name="investigacaoSequence", sequenceName="investigacaoSequencePostgres")
 @Name("investigacao")
 public class Investigacao extends BaseEntity {
@@ -39,16 +45,16 @@ public class Investigacao extends BaseEntity {
 	@JoinColumn
 	private Situacao situacao;
 	
-	@ManyToOne(cascade={CascadeType.REFRESH, CascadeType.REMOVE})
+	@ManyToOne(fetch=FetchType.LAZY, optional=false, cascade=CascadeType.ALL)
 	@JoinColumn
 	private EventoInvestigacao eventoInvestigacao;
 	
-	@OneToMany
-	private List<Investigado> investigados;
+	@ManyToOne(fetch=FetchType.LAZY, optional=false, cascade=CascadeType.ALL)
+	@JoinColumn
+	private Investigado investigado;		
 	
 	@OneToMany
-	private List<Pesquisa> pesquisas;
-	
+	private List<Pesquisa> pesquisas;	
 
 	//get and set da classe
 	public Long getCodigoInvestigacao() {
@@ -74,13 +80,7 @@ public class Investigacao extends BaseEntity {
 	}
 	public void setEventoInvestigacao(EventoInvestigacao eventoInvestigacao) {
 		this.eventoInvestigacao = eventoInvestigacao;
-	}		
-	public List<Investigado> getInvestigados() {
-		return investigados;
-	}
-	public void setInvestigados(List<Investigado> investigados) {
-		this.investigados = investigados;
-	}
+	}	
 	public List<Pesquisa> getPesquisas() {
 		return pesquisas;
 	}

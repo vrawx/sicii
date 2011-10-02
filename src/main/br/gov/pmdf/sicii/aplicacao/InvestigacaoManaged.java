@@ -1,7 +1,10 @@
 package br.gov.pmdf.sicii.aplicacao;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
+
+import net.sf.jasperreports.engine.JRException;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory;
@@ -13,10 +16,12 @@ import org.jboss.seam.annotations.datamodel.DataModel;
 
 import br.gov.pmdf.sicii.domain.entidade.Investigacao;
 import br.gov.pmdf.sicii.domain.entidade.Investigado;
+import br.gov.pmdf.sicii.domain.entidade.Parecer;
 import br.gov.pmdf.sicii.domain.entidade.Pesquisa;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioAuditoria;
 import br.gov.pmdf.sicii.domain.repositorio.RepositorioInvestigacao;
+import br.gov.pmdf.sicii.infraestrutura.report.Report;
 
 /*
  * 		Este caso de uso é iniciada a partir da execução do investigadoManaged, sendo esta classe resposável 
@@ -47,11 +52,9 @@ public class InvestigacaoManaged  {
 	@In
 	private RepositorioAuditoria repositorioAuditoria;
 	
+	@In(create=true)
+	private Report report;	
 	
-	public InvestigacaoManaged() {
-		System.out.println("funfa");
-		// TODO Auto-generated constructor stub
-	}
 	/*
 	 * 	Métodos de açoes do caso de uso Investigacao
 	 */	
@@ -67,12 +70,24 @@ public class InvestigacaoManaged  {
 		repositorioInvestigacao.remover(investigacao);
 		return "sucess";
 	}
+	public String selecionarParecer() {
+		return "parecer";
+	}
+	public String cadastrarParecer(Parecer parecer) {
+		investigacao.setParecer(parecer);
+		repositorioInvestigacao.armazenar(investigacao);
+		return "sucess";
+	}
 	public void gerarRis() {
-		// TODO Auto-generated method stub
-	}	
-	public void cadastrarParecer() {
-		// TODO Auto-generated method stub
-	}	
+		try {
+			report.populateDataReport("query", "risInvestigacao");
+		} catch (JRException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+	}		
+		
 	/*
 	 * 	Métodos de açoes do caso de uso Pesquisa
 	 */

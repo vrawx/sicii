@@ -22,9 +22,9 @@
 					</h:panelGrid>
 			</div>
 			<br/><br/>
-	        <div id="listaInvestigacoes" class="panelgrid,actionButtons">
-		        <h:panelGroup rendered="#{investigacaoManaged.investigacoes.size eq 0}" > <h3>Nenhuma investigacao</h3> </h:panelGroup>
-		        <rich:dataTable id="tableInvestigacao" value="#{investigacaoManaged.investigacoes}" var="investigacao" rendered="#{investigacaoManaged.investigacoes.size gt 0}" 
+	        <div id="listaInvestigacoes">
+		        <!--  <h:panelGroup rendered="#{investigacaoManaged.investigacoes.size eq 0}" > <h3>Nenhuma investigacao</h3> </h:panelGroup> -->
+		        <rich:dataTable id="tableInvestigacao" value="#{investigacaoManaged.investigacoes}" var="investigacao" 
 		           styleClass="gradeLocalizados" headerClass="gradeLocalizadosHeader" rowClasses="oddRow,evenRow" captionStyle="">	        
 					<f:facet name="header">REGISTROS LOCALIZADOS</f:facet>
 					<rich:column>
@@ -53,7 +53,7 @@
 			        		<h:column><h:outputText value="#{pesquisa.documento.numero}" /></h:column>
 						</rich:column>		        	
 						<rich:column>				        	
-			        		<h:column><h:outputText value="#{pesquisa.documento.data}" /></h:column>
+			        		<h:column><h:outputText value="#{pesquisa.cadastradoEm}" /></h:column>
 						</rich:column>				
 							<rich:column><h:commandLink id="alterarPesquisaButton" action="#{investigacaoManaged.selecionarPesquisa(pesquisa)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Pesquisa"/></h:commandLink></rich:column>	
 		        			<rich:column><h:commandLink id="excluirPesquisaButton" action="#{investigacaoManaged.excluirPesquisa(pesquisa)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Pesquisa"/></h:commandLink>></rich:column>
