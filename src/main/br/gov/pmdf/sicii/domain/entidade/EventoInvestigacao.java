@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -31,7 +32,7 @@ import org.jboss.seam.annotations.Name;
 public class EventoInvestigacao extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
-	
+		
 	//atributos da classe
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="eventoSequence")
