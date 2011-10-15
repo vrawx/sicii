@@ -42,4 +42,5 @@ INSERT INTO EVENTOINVESTIGACAO VALUES (nextval('eventoSequencePostgres'), now(),
 INSERT INTO INVESTIGACAO VALUES (nextval('investigacaosequencepostgres'), now(), now(), 1, 1, 1, 1, 2);
 INSERT INTO INVESTIGACAO VALUES (nextval('investigacaosequencepostgres'), now(), now(), 1, 1, 1, 1, 3);
 INSERT INTO INVESTIGACAO VALUES (nextval('investigacaosequencepostgres'), now(), now(), 1, 1, 1, 1, 1);
+INSERT INTO INVESTIGACAO VALUES (nextval('investigacaosequencepostgres'), now(), now(), 1, 1, 1, 2, 1);
 

@@ -34,6 +34,7 @@ public class InvestigacaoManaged implements Serializable {
 	@In(required=false) @Out(required=false)
 	private Investigacao investigacao;	
 	
+	@Out(required=false)
 	private List<Investigacao> investigacoes;
 	
 	// investigadoManaged outjeta este objeto
