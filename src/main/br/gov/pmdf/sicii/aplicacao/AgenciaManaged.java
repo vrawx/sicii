@@ -3,7 +3,6 @@ package br.gov.pmdf.sicii.aplicacao;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
@@ -11,7 +10,6 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Out;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.datamodel.DataModel;
-
 import br.gov.pmdf.sicii.domain.entidade.Agencia;
 import br.gov.pmdf.sicii.domain.entidade.Auditoria;
 import br.gov.pmdf.sicii.domain.entidade.Usuario;
@@ -81,6 +79,6 @@ public class AgenciaManaged implements Serializable {
 		this.agencia = agencia;
 	}
 	public List<Agencia> getAgenciaConsultadas() {
-		return agenciaConsultadas;
+		return agenciaConsultadas;		
 	}
 }

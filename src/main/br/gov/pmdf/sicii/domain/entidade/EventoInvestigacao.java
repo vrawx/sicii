@@ -55,7 +55,7 @@ public class EventoInvestigacao extends BaseEntity {
 	private String descricao;
 	
 	
-	@OneToMany(fetch=FetchType.LAZY,  mappedBy="EventoInvestigacao", cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(fetch=FetchType.LAZY,  mappedBy="eventoInvestigacao", cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	private List<Investigacao> investigacoes;
 	
