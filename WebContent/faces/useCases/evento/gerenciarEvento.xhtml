@@ -25,8 +25,8 @@
 								<h:outputLabel for="descricao">Descrição do Evento</h:outputLabel>
 								<h:inputText id="descricao" value="#{eventoInvestigacao.descricao}" />
 						</h:panelGrid>	
-						<s:button value="Buscar" id="buscarButton" action="#{eventoManaged.pesquisarEvento}" />					
-						<s:button value="Novo Evento" id="cadastrarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml"/>						
+						<h:commandButton value="Buscar" id="buscarButton" action="#{eventoManaged.pesquisarEvento}" />					
+						<h:commandButton  value="Novo Evento" id="cadastrarButton" action="/faces/useCases/evento/cadastrarEvento.xhtml"/>						
 				</div>
 			</h:form>
 			<br/>

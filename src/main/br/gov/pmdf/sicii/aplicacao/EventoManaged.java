@@ -26,7 +26,7 @@ public class EventoManaged {
 	@In(scope=ScopeType.SESSION)
 	private Usuario usuarioLogado;		
 	
-	@In(required=false)	@Out(required=false)
+	@In(scope=ScopeType.CONVERSATION, required=false)	@Out(scope=ScopeType.CONVERSATION,required=false)
 	private EventoInvestigacao eventoInvestigacao;
 	
 	@DataModel
