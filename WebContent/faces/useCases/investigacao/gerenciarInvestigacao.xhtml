@@ -18,14 +18,13 @@
 						<h:outputText value="#{investigacaoManaged.investigado.cpf}" />
 						<h:outputText value="#{investigacaoManaged.investigado.nome}" />
 						<h:outputText value="#{investigacaoManaged.investigado.nomeDoPai}" />
-						<h:outputText value="#{investigacaoManaged.investigado.nomeDaMae}" />																			
+						<h:outputText value="#{investigacaoManaged.investigado.nomeDaMae}" />																									
 					</h:panelGrid>
 			</div>
 			<br/><br/>
 	        <div id="listaInvestigacoes">
-		        <!--  <h:panelGroup rendered="#{investigacaoManaged.investigacoes.size eq 0}" > <h3>Nenhuma investigacao</h3> </h:panelGroup> -->
-		        <rich:dataTable id="tableInvestigacao" value="#{investigacaoManaged.investigacoes}" var="investigacao" 
-		           styleClass="gradeLocalizados" headerClass="gradeLocalizadosHeader" rowClasses="oddRow,evenRow" captionStyle="">	        
+	        	<h:form>		        
+		        <rich:dataTable id="tableInvestigacao" value="#{investigacaoManaged.investigacoes}" var="investigacao">		           	        
 					<f:facet name="header">REGISTROS LOCALIZADOS</f:facet>
 					<rich:column>
 						<f:facet name="header">INVESTIGAÇÃO</f:facet>
@@ -42,26 +41,10 @@
 					<rich:column><h:commandLink id="alterarButton" action="#{investigacaoManaged.selecionarInvestigacao(investigacao)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Investigacao"/></h:commandLink></rich:column>	
 		        	<rich:column><h:commandLink id="excluirButton" action="#{investigacaoManaged.excluirInvestigacao(investigacao)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Investigacao"/></h:commandLink>></rich:column>
 					<rich:column><h:commandLink id="gerarButton" action="#{investigacaoManaged.gerarRis(investigacao)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Gerar Ris"/></h:commandLink></rich:column>
-					<rich:column><h:commandLink id="cadastrarParecerButton" action="#{investigacaoManaged.cadastrarParecer}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Cadastrar Parecer"/></h:commandLink></rich:column>		        		        		        
-		        	
-		        	<!-- Lista de pesquisas de investigacao -->
-		        	<rich:dataTable id="tablePesquisa" value="#{investigacao.pesquisas}" var="pesquisa" rendered="#{investigacao.pesquisas gt 0}">
-		        		<rich:column>							
-			        		<h:outputText value="#{pesquisa.tipoPesquisa}" />
-		        		</rich:column>	        		
-		        		<rich:column>				        	
-			        		<h:column><h:outputText value="#{pesquisa.documento.numero}" /></h:column>
-						</rich:column>		        	
-						<rich:column>				        	
-			        		<h:column><h:outputText value="#{pesquisa.cadastradoEm}" /></h:column>
-						</rich:column>				
-							<rich:column><h:commandLink id="alterarPesquisaButton" action="#{investigacaoManaged.selecionarPesquisa(pesquisa)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/editar.png" alt="Editar Pesquisa"/></h:commandLink></rich:column>	
-		        			<rich:column><h:commandLink id="excluirPesquisaButton" action="#{investigacaoManaged.excluirPesquisa(pesquisa)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Excluir Pesquisa"/></h:commandLink>></rich:column>
-							<rich:column><h:commandLink id="importarPesquisaButton" action="#{investigacaoManaged.importarPesquisa()}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Importar Pesquisa"/></h:commandLink></rich:column>
-							<rich:column><h:commandLink id="desfazerVinculoButton" action="#{investigacaoManaged.desfazerVinculo(pesquisa)}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Desfazer vínculo Pesquisa"/></h:commandLink></rich:column>
-							<rich:column><h:commandLink id="gerenciarEmbasamentoButton" action="#{investigacaoManaged.gerenciarEmbasamento()}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Gerenciar Embasamento"/></h:commandLink></rich:column>
-		        	</rich:dataTable>
-		        </rich:dataTable>	           
+					<rich:column><h:commandLink id="cadastrarParecerButton" action="#{investigacaoManaged.cadastrarParecer}"><h:graphicImage styleClass="iconesDeGrade" value="/img/excluir.png" alt="Cadastrar Parecer"/></h:commandLink></rich:column>	        		        		        
+		        		        	
+		        </rich:dataTable>
+		        </h:form>	           
 	        </div>			
         </rich:panel>                
     </ui:define>

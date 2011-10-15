@@ -17,7 +17,7 @@ public class InvestigacaoDAO extends AbstractDAO<Investigacao> implements Reposi
 
 	@SuppressWarnings("unchecked")
 	public List<Investigacao> recuperarInvestigacoesInvestigado(Investigado investigado) {
-		String query = "SELECT inv FROM Investigacao inv WHERE inv.investigados.codigoInvestigado == investigado.codigoInvestigado";		
-		return entityManager.createQuery(query).getResultList();		
+		String query = "SELECT inv FROM Investigacao inv WHERE inv.investigado.codigoInvestigado =:codigoInvestigado";		
+		return entityManager.createQuery(query).setParameter("codigoInvestigado", investigado.getCodigoInvestigado()).getResultList();		
 	}
 }

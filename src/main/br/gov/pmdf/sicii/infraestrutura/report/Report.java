@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
 import net.sf.jasperreports.engine.JRException;
@@ -44,7 +45,7 @@ public class Report {
 		 /* Visualiza o relatório em formato PDF */
 		JasperViewer.viewReport("", false);
 	}
-	public void populateDataReport(String query, String fileName) throws SQLException, JRException {
+	public void populateDataReport(String query, String fileName) throws SQLException, JRException {		
 		statement = connection.createStatement();		
 		resultSet = statement.executeQuery(query);
 		generateReport(query, fileName);

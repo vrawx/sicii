@@ -87,4 +87,10 @@ public class Investigacao extends BaseEntity {
 	public void setPesquisas(List<Pesquisa> pesquisas) {
 		this.pesquisas = pesquisas;
 	}
+	public Investigado getInvestigado() {
+		return investigado;
+	}
+	public void setInvestigado(Investigado investigado) {
+		this.investigado = investigado;
+	}
 }
